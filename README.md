@@ -112,7 +112,7 @@ Vous pouvez :
 - Choisir le modèle (cnnbilstm ou graphcodebert).
 - Obtenir la liste des erreurs avec leur type et leur ligne.
 
-## Intallation des dépendances
+### Intallation des dépendances
 
 Utilisez le fichier requirements.txt
 
@@ -127,5 +127,5 @@ tqdm
 pycparser
 
 
-## Auteur
+### Auteur
 BARGO Alfred 
