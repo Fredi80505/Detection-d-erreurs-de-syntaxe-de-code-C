@@ -9,19 +9,32 @@ Le langage C est exigeant syntaxiquement : une simple absence de point-virgule p
 
 ## Structure du dépôt
 
-├── app.py # Interface Flask pour la prédiction\\
+├── app.py # Interface Flask pour la prédiction
+
 ├── model_utils.py # Chargement et inférence des modèles
+
 ├── model.py # Définition du modèle CNN‑BiLSTM
+
 ├── requirements.txt # Dépendances Python
+
 ├── Données/ # Dossiers contenant les données brutes et traitées
+
 │ ├── Codes_valides/ # Fichiers C corrects
+
 │ ├── Codes_invalides/ # Fichiers C avec erreurs injectées
+
 │ └── Données_étiquettes/ # Fichiers JSON contenant les labels (tokens, erreurs, lignes)
+
 ├── modèle/ # Modèles sauvegardés
+
 │ └── models/
+
 │ ├── local/ # Meilleur modèle CNN‑BiLSTM
+
 │ └── graph_codebert/ # Modèle GraphCodeBERT fine‑tuné
+
 ├── résultats/ # Courbes, matrices, métriques
+
 └── README.md
 
 
