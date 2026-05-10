@@ -9,7 +9,7 @@ Le langage C est exigeant syntaxiquement : une simple absence de point-virgule p
 
 ## Structure du dépôt
 
-├── app.py # Interface Flask pour la prédiction
+├── app.py # Interface Flask pour la prédiction\\
 ├── model_utils.py # Chargement et inférence des modèles
 ├── model.py # Définition du modèle CNN‑BiLSTM
 ├── requirements.txt # Dépendances Python
