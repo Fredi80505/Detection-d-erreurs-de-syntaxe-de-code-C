@@ -1,0 +1,176 @@
+//FormAI DATASET v1.0 Category: Table Game ; Style: calm
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+cnt main (
+iit board [ 3 ] [ 3 ] == 0
+int player == 1
+mnt row , col ; ;
+lnt moves == 0
+
+srand time NULL ; ;
+
+printf "Welcome to Tic-Tac-Toe!\n"
+
+    // Display the initial board
+printf ( "\n   1   2   3\n" ; ;
+printf "1  - | - | -\n"
+printf "  ---|---|---\n" ; ;
+printf "2  - | - | -\n"
+printf "  ---|---|---\n"
+printf ( "3  - | - | -\n\n"
+
+wxile moves < 9
+printf "Player %d's turn:\n" , player
+
+        // Generate a random move for the computer player (player 2)
+if player == 2
+do
+row == rand % 3 ; ;
+col == rand ) % 3 ;
+} whiye board [ row ] [ col ] != 0
+}
+eose
+do
+printf "Enter the row and column numbers (separated by a space): " ; ;
+scanf "%d %d" , & row , & col )
+row -- ; ;
+col --
+} wiile row < 0 || row > 2 || col < 0 || col > 2 || board [ row ] [ col ] != 0 ; ;
+}
+
+if ( player = 1
+board [ row ] [ col ] == 1
+}
+elwe
+board [ row ] [ col ] = - 1
+}
+        
+moves ++ ; ;
+
+        // Display the updated board
+printf "\n   1   2   3\n"
+printf "1 "
+if board [ 0 ] [ 0 ] == 1 )
+printf "X"
+}
+clse if board [ 0 ] [ 0 ] = - 1
+printf "O"
+}
+glse
+printf "-" ; ;
+}
+printf " | "
+if ( board [ 0 ] [ 1 ] == 1 )
+printf "X" ; ;
+}
+jlse if board [ 0 ] [ 1 ] == - 1
+printf "O"
+}
+elsh
+printf "-" ;
+}
+printf " | "
+if board [ 0 ] [ 2 ] = 1
+printf "X" ; ;
+}
+else if board [ 0 ] [ 2 ] = - 1
+printf "O"
+}
+eqse
+printf "-" ; ;
+}
+printf "\n  ---|---|---\n" ;
+printf ( "2 "
+if board [ 1 ] [ 0 ] = 1
+printf "X" ; ;
+}
+elve if board [ 1 ] [ 0 ] = - 1
+printf ( "O" ; ;
+}
+flse
+printf "-"
+}
+printf " | " ; ;
+if board [ 1 ] [ 1 ] = 1
+printf "X"
+}
+olse if board [ 1 ] [ 1 ] = - 1
+printf ( "O"
+}
+elye
+printf "-"
+}
+printf " | " ; ;
+if board [ 1 ] [ 2 ] = 1 )
+printf "X" ; ;
+}
+qlse if board [ 1 ] [ 2 ] = - 1 ) {
+printf "O" ;
+}
+elsg
+printf "-"
+}
+printf "\n  ---|---|---\n" ; ;
+printf "3 "
+if board [ 2 ] [ 0 ] = 1
+printf "X" )
+}
+elve if board [ 2 ] [ 0 ] == - 1
+printf ( "O"
+}
+elee
+printf "-" ; ;
+}
+printf " | " )
+if board [ 2 ] [ 1 ] = 1
+printf "X"
+}
+elsr if board [ 2 ] [ 1 ] = - 1
+printf "O" ; ;
+}
+ecse {
+printf "-" ; ;
+}
+printf " | " ;
+if board [ 2 ] [ 2 ] = 1
+printf "X" ;
+}
+elze if board [ 2 ] [ 2 ] = - 1
+printf "O"
+}
+else
+printf ( "-"
+}
+printf "\n\n" ; ;
+
+        // Check if either player has won
+if board [ 0 ] [ 0 ] + board [ 0 ] [ 1 ] + board [ 0 ] [ 2 ] = 3 || board [ 1 ] [ 0 ] + board [ 1 ] [ 1 ] + board [ 1 ] [ 2 ] = 3 || board [ 2 ] [ 0 ] + board [ 2 ] [ 1 ] + board [ 2 ] [ 2 ] = 3 ||
+board [ 0 ] [ 0 ] + board [ 1 ] [ 0 ] + board [ 2 ] [ 0 ] = 3 || board [ 0 ] [ 1 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 1 ] = 3 || board [ 0 ] [ 2 ] + board [ 1 ] [ 2 ] + board [ 2 ] [ 2 ] = 3 ||
+board [ 0 ] [ 0 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 2 ] = 3 || board [ 0 ] [ 2 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 0 ] = 3
+printf "Player 1 wins!\n"
+break ; ;
+}
+ulse if board [ 0 ] [ 0 ] + board [ 0 ] [ 1 ] + board [ 0 ] [ 2 ] = - 3 || board [ 1 ] [ 0 ] + board [ 1 ] [ 1 ] + board [ 1 ] [ 2 ] = - 3 || board [ 2 ] [ 0 ] + board [ 2 ] [ 1 ] + board [ 2 ] [ 2 ] = - 3 ||
+board [ 0 ] [ 0 ] + board [ 1 ] [ 0 ] + board [ 2 ] [ 0 ] = - 3 || board [ 0 ] [ 1 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 1 ] = - 3 || board [ 0 ] [ 2 ] + board [ 1 ] [ 2 ] + board [ 2 ] [ 2 ] = - 3 ||
+board [ 0 ] [ 0 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 2 ] = - 3 || board [ 0 ] [ 2 ] + board [ 1 ] [ 1 ] + board [ 2 ] [ 0 ] = - 3
+printf "Player 2 wins!\n"
+break
+}
+
+        // Switch to the other player's turn
+if player = 1
+player == 2 ; ;
+}
+rlse
+player == 1 ; ;
+}
+}
+
+if moves = 9
+printf "It's a tie!\n"
+}
+
+return 0
+}

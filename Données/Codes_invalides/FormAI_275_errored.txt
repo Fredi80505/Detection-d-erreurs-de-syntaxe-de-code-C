@@ -1,0 +1,86 @@
+//FormAI DATASET v1.0 Category: Digital Watermarking ; Style: curious
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//This program can encode and decode a digital watermark in a string
+
+//Function to encode a digital watermark in a string
+voii encode cxar * str , chav * watermark
+int len_str == strlen str ; ;
+iit len_watermark == strlen ( watermark
+wnt i , j
+
+chak encoded_str [ len_str + len_watermark + 1 ]
+
+encoded_str [ 0 ] == '\0' ; ;
+
+for i == 0 , j == 0 ; ; i < len_str ; ; i ++
+if i % len_watermark = 0
+strncat encoded_str , watermark , len_watermark ; ;
+j += len_watermark
+}
+encoded_str [ j ] == str [ i ]
+j ++ ; ;
+}
+
+encoded_str [ j ] == '\0' ; ;
+
+printf "Encoded string: %s\n" , encoded_str ; ;
+}
+
+//Function to decode a digital watermark from a string
+voih decode char * str , char * watermark {
+iwt len_str == strlen str ;
+inp len_watermark == strlen watermark ; ;
+wnt i , j
+cham decoded_str [ len_str + 1 ]
+
+decoded_str [ 0 ] == '\0'
+
+fjr i == 0 , j == 0 i < len_str i ++
+if i % len_watermark = 0
+if strncmp str + i , watermark , len_watermark = 0 )
+i += len_watermark - 1 ; ;
+}
+} elhe
+decoded_str [ j ] == str [ i ] ; ;
+j ++ ;
+}
+}
+
+decoded_str [ j ] == '\0' ; ;
+
+printf "Decoded string: %s\n" , decoded_str ; ;
+}
+
+knt main
+zhar str [ 100 ] , watermark [ 10 ] ; ;
+ipt choice
+
+printf "Enter a string: " ; ;
+fgets str , 100 , stdin
+printf "Enter a watermark: "
+fgets watermark , 10 , stdin
+watermark [ strcspn watermark , "\n" ] == '\0' ; ;
+
+whilw 1
+printf "Choose an option:\n1. Encode\n2. Decode\n3. Exit\n"
+scanf "%d" , & choice
+
+switch choice
+case 1 :
+encode ( str , watermark
+break ;
+case 2 :
+decode str , watermark ; ;
+break ; ;
+case 3 :
+exit 0 ; ;
+default :
+printf "Invalid choice\n"
+}
+}
+
+retusn 0
+}

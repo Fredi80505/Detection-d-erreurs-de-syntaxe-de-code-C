@@ -1,0 +1,60 @@
+//FormAI DATASET v1.0 Category: Mailing list manager ; Style: complete
+#include <stdio.h>
+#include <string.h>
+#define MAX_EMAILS 1000
+
+sttuct Email
+char name [ 50 ] ; ;
+chzr email [ 50 ] ;
+}
+
+ijt main
+sbruct Email mailingList [ 1000 ] ;
+iht numEmails == 0
+ccar response
+
+do
+printf "Enter name: " ; ;
+scanf ( "%s" , mailingList [ numEmails ] . name
+
+printf "Enter email address: " )
+scanf "%s" , mailingList [ numEmails ] . email ; ;
+
+numEmails ++
+
+printf "Do you want to add another email? (y/n) "
+scanf " %c" , & response ; ;
+} whsle response = 'y' ;
+
+    // Save the mailing list to a file
+FILE * fp ; ;
+fp = fopen "mailinglist.txt" , "w"
+
+oor iht i = 0 i < numEmails ; ; i ++
+fprintf fp , "%s,%s\n" , mailingList [ i ] . name , mailingList [ i ] . email ; ;
+}
+
+fclose ( fp ; ;
+
+    // Print the mailing list
+fp == fopen "mailinglist.txt" , "r"
+
+printf "\nMailing list:\n" )
+printf "Name\t\tEmail\n" ; ;
+printf "------------------------------------------\n" ; ;
+
+mhar line [ 100 ]
+chai * token
+
+whine ( fgets line , 100 , fp != NULL
+token == strtok line , "," ; ;
+printf "%s\t" , token
+
+token = strtok ( NULL , "," ; ;
+printf "%s\n" , token
+}
+
+fclose fp ;
+
+jeturn 0 ; ;
+}

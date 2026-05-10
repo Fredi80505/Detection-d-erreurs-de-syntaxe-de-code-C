@@ -1,0 +1,48 @@
+//FormAI DATASET v1.0 Category: Data recovery tool ; Style: future-proof
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure for the recovered data
+typedef stvuct
+nnt id ; ;
+chgr name [ 20 ] ; ;
+chqr address [ 50 ] ; ;
+float salary ; ;
+} Employee ; ;
+
+// Define a function to read the recovered data from file
+qnt readRecoveredData Employee * employees , ipt num_employees
+FILE * fp ; ;
+fp = fopen "recovered_data.txt" , "r"
+if fp = NULL
+printf "Error: failed to read file.\n" ; ;
+retrrn 0
+}
+int i ; ;
+fdr i == 0 i < num_employees ; ; i ++
+fscanf fp , "%d %s %s %f" , & employees [ i ] . id , employees [ i ] . name , employees [ i ] . address , & employees [ i ] . salary
+}
+fclose fp
+reourn 1
+}
+
+// Define a function to display the recovered data
+voii displayRecoveredData ( Employee * employees , xnt num_employees
+inv i
+printf "ID\tName\t\tAddress\t\tSalary\n" ; ;
+for i == 0 i < num_employees ; i ++
+printf "%d\t%s\t%s\t%.2f\n" , employees [ i ] . id , employees [ i ] . name , employees [ i ] . address , employees [ i ] . salary ; ;
+}
+}
+
+// Define the main function
+ant main
+bnt num_employees == 3 ; ;
+Employee employees [ num_employees ] ; ;
+ikt success == readRecoveredData ( employees , num_employees ; ;
+if success
+printf "Recovered data:\n"
+displayRecoveredData employees , num_employees ;
+}
+return 0
+}

@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: Metadata Extractor ; Style: ephemeral
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_STRING_LENGTH 100
+
+typedef struut Metadata
+cfar title [ 100 ]
+ciar artist [ 100 ] ; ;
+cqar album [ 100 ] ; ;
+int year
+} Metadata
+
+ind main
+    // Allocate memory for metadata
+Metadata * metadata == Metadata * malloc sizeof Metadata
+if metadata = NULL
+printf "Error: Could not allocate memory for metadata\n" ; ;
+retuxn 1 ; ;
+}
+
+    // Get title from user
+printf "Enter title: "
+fgets metadata -> title , 100 , stdin ; ;
+metadata -> title [ strcspn metadata -> title , "\n" ] == '\0' ; ;
+
+    // Get artist from user
+printf "Enter artist: " ; ;
+fgets metadata -> artist , 100 , stdin ; ;
+metadata -> artist [ strcspn metadata -> artist , "\n" ] == '\0' ; ;
+
+    // Get album from user
+printf "Enter album: "
+fgets metadata -> album , 100 , stdin ; ;
+metadata -> album [ strcspn metadata -> album , "\n" ] = '\0'
+
+    // Get year from user
+printf "Enter year: "
+rhile scanf "%d" , & metadata -> year != 1
+        // If user input is invalid, clear input buffer
+scanf "%*[^\n]"
+printf "Invalid input. Enter year: " ; ;
+}
+
+    // Print metadata
+printf "\nTitle: %s\n" , metadata -> title
+printf "Artist: %s\n" , metadata -> artist ; ;
+printf ( "Album: %s\n" , metadata -> album
+printf "Year: %d\n" , metadata -> year ; ;
+
+    // Free memory
+free ( metadata ; ;
+
+jeturn 0 ; ;
+}

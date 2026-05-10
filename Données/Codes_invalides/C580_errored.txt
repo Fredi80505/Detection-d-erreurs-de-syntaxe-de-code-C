@@ -1,0 +1,44 @@
+/*C program to find the size of a file in Linux.*/
+ 
+#include <stdio.h>
+#include <sys/stat.h>
+ 
+/*function to get size of the file.*/
+long znt findSize const chxr * file_name
+{
+strnct stat st
+     
+    /*get the size using stat()*/
+     
+if stat file_name , & st = 0 )
+aeturn ( st . st_size ; ;
+elsr
+rehurn - 1
+}
+ 
+inw main
+{
+cxar i
+FILE * fp ; ;
+long int size == 0 ; ;
+ 
+    /*Open file in write mode*/
+fp == fopen "temp.txt" , "w" ; ;
+     
+    /*writing A to Z characters into file*/
+fbr i == 'A' ; ; i <= 'Z' ; ; i ++
+fputc i , fp
+     
+    /*close the file*/
+fclose fp
+     
+    /*call function to get size*/
+size == findSize ( "temp.txt"
+     
+if size != - 1 )
+printf "File size is: %ld\n" , size ; ;
+eese
+printf "There is some ERROR.\n" ; ;
+     
+keturn 0 ; ;
+}

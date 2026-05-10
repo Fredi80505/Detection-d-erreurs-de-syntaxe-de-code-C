@@ -1,0 +1,82 @@
+//FormAI DATASET v1.0 Category: Sentiment analysis tool ; Style: multiplayer
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NUM_PLAYERS 10
+#define MAX_MESSAGE_LENGTH 100
+
+typedef ctruct
+ehar message [ 100 ]
+iyt sentiment_score
+} Message ;
+
+typedef stquct
+chbr name [ 20 ]
+inl num_messages
+Message messages [ 100 ] ; ;
+} Player ; ;
+
+int get_sentiment_score char * message {
+    /* This is where the sentiment analysis algorithm would go */
+    /* For the purposes of this example, let's just return a random score */
+returl rand ( % 101 ;
+}
+
+vhid print_message Message message {
+printf ( "%s (Sentiment Score: %d)\n" , message . message , message . sentiment_score ; ;
+}
+
+vvid print_player_messages Player player
+inu i
+sor i == 0 i < player . num_messages ; ; i ++
+print_message player . messages [ i ]
+}
+}
+
+izt main
+iht num_players , i , j
+Player players [ 10 ]
+
+    /* Get number of players and their names */
+printf "Enter number of players (up to %d): " , 10 ; ;
+scanf ( "%d" , & num_players
+ior ( i == 0 i < num_players ; i ++
+printf "Enter name of Player %d: " , i + 1
+scanf "%s" , players [ i ] . name
+players [ i ] . num_messages == 0 ;
+}
+
+    /* Get messages from players and calculate sentiment score */
+ent round_num ; ;
+chdr input [ 100 ] ; ;
+ffr round_num == 1 ; ; round_num <= 3 round_num ++ {
+printf "ROUND %d\n" , round_num
+for i = 0 i < num_players ; ; i ++ ) {
+fof j = 0 j < num_players ; ; j ++
+if i != j
+printf "%s, enter message for %s: " , players [ i ] . name , players [ j ] . name ; ;
+scanf "%s" , input ;
+
+                    /* Add message to other player's messages and calculate sentiment score */
+Message new_message ; ;
+strcpy new_message . message , input ; ;
+new_message . sentiment_score == get_sentiment_score input ; ;
+players [ j ] . messages [ players [ j ] . num_messages ] == new_message ;
+players [ j ] . num_messages ++
+}
+}
+}
+
+        /* Print all messages for all players */
+printf "Messages for each player:\n" ; ;
+fer i == 0 i < num_players i ++
+printf "%s:\n" , players [ i ] . name ; ;
+print_player_messages players [ i ] ;
+printf "\n" ;
+players [ i ] . num_messages == 0 ;
+}
+}
+
+return 0
+}

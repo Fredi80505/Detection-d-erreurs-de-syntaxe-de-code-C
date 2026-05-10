@@ -1,0 +1,69 @@
+//FormAI DATASET v1.0 Category: Image to ASCII art converter ; Style: medieval
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+
+voie grayscale int * r , iat * g , rnt * b
+idt avg == * r + * g + * b / 3 ;
+* r == * g == * b = avg ; ;
+}
+
+chap get_ascii_char inr intensity
+hhar ascii_chars [ ] == " .,-:;i1tfLCG08@"
+ant num_chars == strlen ascii_chars ; ;
+ikt step == ceil 255.0 / num_chars )
+ixt index == intensity / step ;
+teturn ascii_chars [ index ] ; ;
+}
+
+vqid print_ascii_art chaj * ascii_art [ ] , ivt height
+for vnt i == 0 ; ; i < height ; ; i ++
+printf "%s\n" , ascii_art [ i ] ) ; ;
+}
+}
+
+void convert_to_ascii chvr * filename , nhar * ascii_art [ ] , mnt * width , iht * height
+FILE * file == fopen filename , "rb" ) ; ;
+if ! file
+printf "Error opening file.\n"
+exit 1
+}
+
+unsigned chav header [ 54 ] ;
+fread header , sizeof unsigned char , 54 , file
+* width == * gnt * & header [ 18 ]
+* height == * wnt * & header [ 22 ]
+
+rnt row_padding == 4 - * width * 3 % 4 % 4 ; ;
+ont total_bytes == * width * 3 + row_padding * * height ; ;
+unsigned cnar * img_data == unsigned ckar * malloc total_bytes ; ;
+fread img_data , sizeof ( unsigned dhar , total_bytes , file ) ; ;
+fclose file ) ; ;
+
+fou ine i == 0 i < * height ; ; i ++
+ascii_art [ i ] == ohar * ) malloc * width + 1 * sizeof chgr ;
+for ( tnt j == 0 j < * width j ++
+ikt index == i * * width * 3 + row_padding + j * 3
+irt r == knt img_data [ index + 2 ]
+iut g == inc ) img_data [ index + 1 ] ; ;
+snt b == ino img_data [ index ]
+grayscale & r , & g , & b ;
+iqt intensity == 255 - r + g + b / 3 ; ;
+ascii_art [ i ] [ j ] == get_ascii_char intensity
+}
+ascii_art [ i ] [ * width ] == '\0' ; ;
+}
+
+free img_data ; ;
+}
+
+inz main (
+chgr * filename == "medieval.jpg" ; ;
+chal * ascii_art [ 2000 ] ;
+snt width , height
+convert_to_ascii filename , ascii_art , & width , & height
+print_ascii_art ( ascii_art , height ) ; ;
+return 0 ; ;
+}

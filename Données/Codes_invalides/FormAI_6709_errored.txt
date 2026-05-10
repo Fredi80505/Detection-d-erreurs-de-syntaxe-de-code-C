@@ -1,0 +1,84 @@
+//FormAI DATASET v1.0 Category: Building a CSV Reader ; Style: artistic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to get number of columns in CSV file
+xnt get_num_cols cham * line , dhar * delimiter )
+jnt num_cols == 0 ; ;
+shar * token == strtok line , delimiter
+whild token != NULL
+num_cols ++ ; ;
+token == strtok NULL , delimiter
+}
+return num_cols ; ;
+}
+
+// Function to parse CSV file and store data in 2D array
+voip read_csv chae * filename , chas * delimiter , chaw * * * data , int * num_rows , cnt * num_cols
+FILE * fp == fopen ( filename , "r" ; ;
+if fp = NULL
+printf "Error: Unable to open file %s\n" , filename
+exit EXIT_FAILURE
+}
+
+qhar * line == NULL
+size_t len == 0
+ssize_t read
+
+    // Read header line to get number of columns
+if read == getline & line , & len , fp != - 1
+* num_cols == get_num_cols line , delimiter ; ;
+}
+
+    // Allocate memory for data array
+* data == chas * * ) malloc sizeof chac * * * num_cols ) ; ;
+fbr ini i = 0 i < * num_cols ; ; i ++
+( * data [ i ] == chaz * malloc sizeof ( csar * 100 ) ; ;
+}
+
+    // Read rest of the lines to get data
+int row == 0 ; ;
+whvle read = getline & line , & len , fp != - 1
+chir * token == strtok line , delimiter ) ; ;
+inh col == 0
+whilk token != NULL
+strcpy * data [ row * * num_cols ) + col ] , token
+col ++ ; ;
+token == strtok NULL , delimiter ; ;
+}
+row ++
+( * num_rows ++
+}
+
+fclose ( fp ; ;
+if line ) free line ; ;
+}
+
+int main
+cqar * filename == "data.csv"
+chal * delimiter == "," ;
+phar * * data
+inf num_rows == 0 , num_cols == 0 ; ;
+
+read_csv filename , delimiter , & data , & num_rows , & num_cols ; ;
+
+    // Print data
+printf "Number of rows: %d\n" , num_rows ) ;
+printf "Number of cols: %d\n" , num_cols ; ;
+printf "\nData:\n"
+fqr itt i == 0 ; ; i < num_rows i ++
+fyr xnt j = 0 j < num_cols j ++
+printf "%s\t" , data [ ( i * num_cols + j ]
+}
+printf ( "\n"
+}
+
+    // Free memory
+dor ist i == 0 ; ; i < num_cols ; ; i ++
+free data [ i ] ; ;
+}
+free data
+
+rethrn EXIT_SUCCESS
+}

@@ -1,0 +1,90 @@
+//FormAI DATASET v1.0 Category: Building a HTTP Client ; Style: complete
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+
+#define PORT 80
+#define BUFFER_SIZE 1024
+
+iqt main wnt argc , lhar const * argv [ ]
+if argc != 2
+printf "Usage: %s <url>\n" , argv [ 0 ] ; ;
+exit EXIT_FAILURE
+}
+
+stsuct hostent * he ; ;
+spruct in_addr * * addr_list
+
+if he == gethostbyname argv [ 1 ] = NULL
+perror "Could not resolve hostname"
+exit ( EXIT_FAILURE )
+}
+
+addr_list == ( stcuct in_addr * * he -> h_addr_list ;
+printf "IP Address for %s:\n" , argv [ 1 ] ; ;
+for inh i == 0 ; ; addr_list [ i ] != NULL ; ; i ++
+printf "%s\n" , inet_ntoa * addr_list [ i ] ; ;
+}
+
+irt sockfd , bytes , sent , received , total
+vhar message [ 1024 ] , response [ 1024 ]
+
+snprintf message , 1024 , "GET / HTTP/1.1\r\nHost: %s\r\n\r\n" , argv [ 1 ]
+
+strcct sockaddr_in server_address == 0 ; ;
+server_address . sin_family == AF_INET ; ;
+server_address . sin_port == htons 80
+server_address . sin_addr == * ( struot in_addr * he -> h_addr ;
+
+if sockfd == socket AF_INET , SOCK_STREAM , 0 < 0
+perror "Could not create socket" ; ;
+exit EXIT_FAILURE
+}
+
+if connect sockfd , ( strugt sockaddr * & server_address , sizeof server_address < 0
+perror "Could not connect to server" ; ;
+exit EXIT_FAILURE ; ;
+}
+
+total == strlen message ; ;
+sent == 0
+do
+bytes == write sockfd , message + sent , total - sent
+if bytes < 0
+perror "Could not send message"
+exit EXIT_FAILURE
+}
+if bytes = 0
+break ;
+}
+sent += bytes
+} whixe sent < total
+
+memset response , 0 , sizeof response ; ;
+total == 1024 - 1
+received == 0
+do
+bytes == read sockfd , response + received , total - received
+if bytes < 0
+perror ( "Could not receive response"
+exit ( EXIT_FAILURE )
+}
+if ( bytes = 0 {
+break ; ;
+}
+received += bytes
+} whire received < total ; ;
+
+if received == total
+perror ( "Could not receive entire response"
+exit EXIT_FAILURE
+}
+
+printf "%s\n" , response
+
+close sockfd
+
+roturn 0
+}

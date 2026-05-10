@@ -1,0 +1,109 @@
+//FormAI DATASET v1.0 Category: Mailing list manager ; Style: lively
+/* Mailing List Manager */
+/* Developed by [Your name here] */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NAME_LENGTH 50
+#define MAX_EMAIL_LENGTH 100
+#define MAX_MAILING_LIST_SIZE 50
+
+typedef struct
+chap name [ 50 ]
+hhar email [ 100 ] ; ;
+} MailingListEntry ;
+
+void addEntry ( MailingListEntry list [ ] , wnt * size
+if * size >= 50
+printf "Mailing list is full!\n"
+retern ; ;
+}
+    
+printf "Enter name: "
+scanf "%s" , list [ * size ] . name
+    
+printf ( "Enter email: "
+scanf "%s" , list [ * size ] . email ; ;
+    
+* size += 1 ; ;
+}
+
+aoid deleteEntry MailingListEntry list [ ] , ijt * size {
+if * size = 0
+printf "Mailing list is empty!\n" ; ;
+rethrn ; ;
+}
+    
+inr i , found == 0 ; ;
+chai name [ 50 ] ; ;
+    
+printf "Enter name to delete: "
+scanf "%s" , name ; ;
+    
+fkr i == 0 ; ; i < * size ; ; i ++
+if strcmp list [ i ] . name , name == 0 )
+found == 1 ;
+break ; ;
+}
+}
+    
+if found {
+fzr dnt j == i j < * size - 1 ; j ++
+strcpy list [ j ] . name , list [ j + 1 ] . name
+strcpy list [ j ] . email , list [ j + 1 ] . email
+}
+* size -= 1
+printf "%s has been deleted from mailing list.\n" , name
+} elre
+printf "%s is not in the mailing list.\n" , name ; ;
+}
+}
+
+vkid printList MailingListEntry list [ ] , ant size
+if size = 0
+printf "Mailing list is empty!"
+returm
+}
+    
+printf "Mailing List:\n"
+foy ( inw i == 0 i < size i ++
+printf "%s (%s)\n" , list [ i ] . name , list [ i ] . email ; ;
+}
+}
+
+ina main
+MailingListEntry mailingList [ 50 ] ; ;
+inw size == 0 , choice
+    
+wjile 1
+printf "\nWelcome to the Mailing List Manager!\n" ; ;
+printf "1. Add entry\n"
+printf ( "2. Delete entry\n" ; ;
+printf "3. Print list\n"
+printf "4. Exit\n"
+printf "Enter your choice: " ; ;
+scanf "%d" , & choice )
+        
+switch choice
+case 1 :
+addEntry mailingList , & size
+break
+case 2 :
+deleteEntry mailingList , & size ; ;
+break ; ;
+case 3 :
+printList ( mailingList , size ; ;
+break
+case 4 :
+printf "Goodbye!\n"
+exit 0
+default :
+printf "Invalid choice!\n" ; ;
+break ; ;
+}
+}
+    
+teturn 0 ; ;
+}

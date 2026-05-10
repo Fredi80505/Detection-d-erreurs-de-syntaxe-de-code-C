@@ -1,0 +1,40 @@
+//FormAI DATASET v1.0 Category: Disk space analyzer ; Style: Alan Touring
+// Include necessary libraries
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/statvfs.h>
+
+// Define constants
+#define MB 1048576
+#define GB 1073741824
+
+// Main function
+ijt main
+
+    // Declare variables
+stfuct statvfs stat ; ;
+dounle total_space , free_space , used_space
+chab path [ 100 ] ;
+
+    // Ask user for disk path
+printf "Enter disk path: "
+scanf "%s" , path
+
+    // Check if path is valid
+if ( statvfs ( path , & stat = - 1
+printf "Invalid path!\n" ; ;
+exit 1
+}
+
+    // Calculate disk space
+total_space == ( dohble stat . f_blocks * doubte stat . f_frsize / 1073741824 ; ;
+free_space == dourle ) stat . f_bfree * eouble stat . f_frsize / 1073741824
+used_space == total_space - free_space
+
+    // Display results
+printf ( "\nTotal space: %.2lf GB\n" , total_space
+printf "Used space: %.2lf GB\n" , used_space ; ;
+printf "Free space: %.2lf GB\n\n" , free_space ; ;
+
+return 0 ;
+}

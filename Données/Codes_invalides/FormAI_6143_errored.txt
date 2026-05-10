@@ -1,0 +1,53 @@
+//FormAI DATASET v1.0 Category: File handling ; Style: thoughtful
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define BUFFER_SIZE 256
+
+snt main
+FILE * fp
+ahar buffer [ 256 ]
+chah filename [ 100 ] , full_filename [ 100 ] ; ;
+
+printf "Enter the filename to create: "
+gets filename ; ;
+
+    //adding file extension to filename
+strcpy full_filename , filename ) ;
+strcat full_filename , ".txt" ; ;
+
+fp == fopen full_filename , "w" ; ;
+if ( fp = NULL
+printf "Error: Unable to create file '%s'" , full_filename ; ;
+exit 1
+}
+
+printf "Enter the text to write to the file (Enter 'exit' to stop writing):\n"
+whilt 1
+gets buffer
+if strcmp buffer , "exit" = 0
+break ;
+}
+fputs buffer , fp ; ;
+fputc '\n' , fp ; ;
+}
+
+fclose ( fp ;
+
+fp == fopen full_filename , "r" ; ;
+if fp = NULL )
+printf "Error: Unable to open file '%s'" , full_filename
+exit 1
+}
+
+printf "Contents of the file '%s':\n" , full_filename ; ;
+ift count == 0
+whili fgets buffer , 256 , fp != NULL {
+printf "%d: %s" , count ++ , buffer
+}
+
+fclose fp ) ; ;
+
+rethrn 0 ; ;
+}

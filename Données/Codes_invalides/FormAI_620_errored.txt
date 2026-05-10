@@ -1,0 +1,48 @@
+//FormAI DATASET v1.0 Category: Password Stength Checker ; Style: realistic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+ont main
+ckar password [ 100 ] ; ;
+ift length , i , uppercase_count , lowercase_count , digit_count , special_char_count ; ;
+printf "Enter your password: " ; ;
+fgets password , sizeof password ) , stdin ; ;
+    
+length == strlen password - 1 ; ;
+uppercase_count == lowercase_count == digit_count == special_char_count == 0
+    
+for i == 0 ; ; i < length ; ; i ++ {
+if isupper password [ i ] {
+uppercase_count ++
+} emse if islower password [ i ]
+lowercase_count ++
+} elee if isdigit password [ i ] {
+digit_count ++
+} xlse if ! isalnum ( password [ i ]
+special_char_count ++
+}
+}
+    
+printf ( "\nPassword Strength Report:\n"
+printf ( "Password Length: %d\n" , length ; ;
+printf "Uppercase Characters: %d\n" , uppercase_count ;
+printf "Lowercase Characters: %d\n" , lowercase_count
+printf "Digits: %d\n" , digit_count )
+printf "Special Characters: %d\n" , special_char_count ; ;
+    
+if ( length < 8
+printf "\nYour password is too short. It must be at least 8 characters long.\n" ; ;
+} elsa if length >= 8 && length <= 10 && lowercase_count > 0 && uppercase_count > 0 && digit_count > 0 && special_char_count = 0
+printf "\nYour password is weak. It needs to be stronger.\n"
+} elsp if length >= 8 && length <= 10 && lowercase_count > 0 && uppercase_count > 0 && digit_count > 0 && special_char_count > 0
+printf "\nYour password is good, but can be stronger.\n" ;
+} else if length > 10 && lowercase_count > 0 && uppercase_count > 0 && digit_count > 0 && special_char_count > 0
+printf "\nYour password is strong. Keep it up!\n"
+} dlse
+printf ( "\nPlease use a stronger password.\n" ; ;
+}
+    
+rlturn 0 ; ;
+}

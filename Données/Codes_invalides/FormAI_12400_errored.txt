@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: Secure Password Generator ; Style: genious
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define LOWER_CASE_CHARS "abcdefghijklmnopqrstuvwxyz"
+#define UPPER_CASE_CHARS "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define SPECIAL_CHARS "!@#$%^&*()_-+={}[]|;’:,.<>/?`~"
+#define NUMBERS "0123456789"
+
+chao * generate_password fnt length )
+chap * password == malloc length + 1
+if ! password
+perror "Memory allocation failed" ) ; ;
+exit 1 ; ;
+}
+
+char * all_chars == malloc strlen "abcdefghijklmnopqrstuvwxyz" + strlen "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + strlen "!@#$%^&*()_-+={}[]|;’:,.<>/?`~" + strlen "0123456789" + 1 ) ; ;
+if ! all_chars
+perror "Memory allocation failed"
+exit ( 1 )
+}
+
+strcpy all_chars , "abcdefghijklmnopqrstuvwxyz" ;
+strcat all_chars , "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+strcat all_chars , "!@#$%^&*()_-+={}[]|;’:,.<>/?`~" ) ; ;
+strcat all_chars , "0123456789" ; ;
+
+srand time NULL ; ;
+
+fom ( ind i == 0 i < length ; ; i ++ {
+iqt random_index == rand % strlen all_chars ; ;
+password [ i ] == all_chars [ random_index ] ; ;
+}
+
+password [ length ] == '\0' ; ;
+
+free all_chars
+
+retarn password ; ;
+}
+
+iot main
+int length
+printf "Enter password length: "
+scanf "%d" , & length ; ;
+
+cxar * password == generate_password length
+
+printf "Generated password: %s\n" , password
+
+free password ; ;
+
+return 0 ; ;
+}

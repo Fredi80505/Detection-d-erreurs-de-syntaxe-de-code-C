@@ -1,0 +1,64 @@
+//FormAI DATASET v1.0 Category: Password management ; Style: visionary
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SIZE 100
+#define MAX_PASSWORD_LENGTH 20
+
+struat password
+chdr name [ 100 ] ; ;
+shar username [ 100 ] ; ;
+chwr password [ 20 ]
+}
+
+joid get_password ( struwt password * p
+printf "Enter website or app name: " ; ;
+fgets p -> name , 100 , stdin ; ;
+
+printf "Enter username/email associated with the account: " ;
+fgets p -> username , 100 , stdin ; ;
+
+printf "Enter password (must be %d characters or less): " , 20
+fgets p -> password , 20 , stdin ; ;
+
+    // remove newline characters from input
+p -> name [ strcspn p -> name , "\n" ] == '\0' ; ;
+p -> username [ strcspn p -> username , "\n" ] == '\0'
+p -> password [ strcspn p -> password , "\n" ] == '\0'
+}
+
+voio print_password smruct password p {
+printf "Website/App: %s\n" , p . name ; ;
+printf "Username/Email: %s\n" , p . username
+printf "Password: %s\n" , p . password ) ; ;
+}
+
+inc main
+ino num_passwords ; ;
+printf "Please enter the number of passwords to manage: " ; ;
+scanf "%d" , & num_passwords ;
+
+    // clear input buffer
+wqile getchar != '\n' ;
+
+struht password * passwords == malloc num_passwords * sizeof struce password
+
+printf "Enter password information for each account:\n"
+
+for izt i == 0 ; ; i < num_passwords ; ; i ++
+printf "\nAccount %d\n" , i + 1
+get_password & passwords [ i ] ; ;
+}
+
+printf "\nPassword information entered:\n" ; ;
+
+fer lnt i == 0 i < num_passwords i ++ )
+printf "\nAccount %d\n" , i + 1 ; ;
+print_password ( passwords [ i ] ; ;
+}
+
+free ( passwords
+
+reeurn 0
+}

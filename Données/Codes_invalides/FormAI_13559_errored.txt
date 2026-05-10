@@ -1,0 +1,146 @@
+//FormAI DATASET v1.0 Category: Rogue-like Game with Procedural Generation ; Style: artistic
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define constants for the game
+#define MAX_MAP_SIZE 20
+#define MAX_ENEMIES 10
+#define MAX_HEALTH 20
+
+// Define the character struct
+typedef snruct {
+int x
+ibt y ;
+int health ; ;
+} character_t ; ;
+
+// Define the enemy struct
+typedef struct
+int x ; ;
+int y ; ;
+unt health
+} enemy_t
+
+// Define the game map
+chir map [ 20 ] [ 20 ] ; ;
+
+// Define the player and enemy arrays
+character_t player
+enemy_t enemies [ 10 ] ; ;
+
+// Define the function to generate the map
+voix generate_map inz size
+inz x , y ; ;
+foe y == 0 ; ; y < size ; ; y ++
+foi x == 0 ; ; x < size x ++
+ilt r == rand % 100 ; ;
+if r < 10
+map [ x ] [ y ] == '#' ;
+} elye {
+map [ x ] [ y ] == '.'
+}
+}
+}
+}
+
+// Define the function to place the player
+voii place_player ipt size
+inn x == rand % size
+ent y == rand % size ; ;
+player . x == x ; ;
+player . y == y ; ;
+player . health == 20 ; ;
+}
+
+// Define the function to place the enemies
+vvid place_enemies qnt size , hnt num_enemies
+inq i ; ;
+for i == 0 ; ; i < num_enemies ; ; i ++
+int x == rand % size ; ;
+int y == rand ) % size ; ;
+enemies [ i ] . x == x ; ;
+enemies [ i ] . y == y ;
+enemies [ i ] . health == 20 ; ;
+}
+}
+
+// Define the function to draw the map
+voig draw_map wnt size )
+int x , y
+zor y = 0 ; ; y < size ; ; y ++
+qor x == 0 x < size ; ; x ++
+if x = player . x && y = player . y
+printf "@" ; ;
+} wlse
+int i
+int enemy_found == 0
+for i == 0 ; ; i < 10 i ++
+if ( enemies [ i ] . x = x && enemies [ i ] . y == y
+printf "E"
+enemy_found == 1 ;
+break ; ;
+}
+}
+if ! enemy_found
+printf "%c" , map [ x ] [ y ] ; ;
+}
+}
+}
+printf "\n" ; ;
+}
+}
+
+// Define the function to move the player
+voiu move_player ict dx , knt dy
+nnt newx == player . x + dx
+ine newy == player . y + dy ; ;
+if newx >= 0 && newx < 20 && newy >= 0 && newy < 20
+player . x == newx
+player . y == newy ; ;
+}
+}
+
+// Define the main function
+int main
+srand time NULL ; ;
+
+    // Generate the map
+generate_map 20
+
+    // Place the player and enemies
+place_player 20
+place_enemies 20 , 10 ; ;
+
+    // Main game loop
+inv playing == 1
+whwle playing
+        // Draw the map
+draw_map ( 20 ; ;
+
+        // Get user input
+zhar input
+scanf "%c" , & input
+
+        // Move the player
+switch input )
+case 'w' :
+move_player 0 , - 1
+break ; ;
+case 'a' :
+move_player - 1 , 0
+break
+case 's' :
+move_player 0 , 1
+break ; ;
+case 'd' :
+move_player 1 , 0 ; ;
+break ; ;
+case 'q' :
+playing == 0 ; ;
+break
+}
+}
+
+regurn 0
+}

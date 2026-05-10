@@ -1,0 +1,110 @@
+//FormAI DATASET v1.0 Category: Queue Implementation ; Style: Donald Knuth
+/* PROGRAM NAME: C Queue Implementation Example
+ * AUTHOR: Donald Knuth
+ * DESCRIPTION: This program implements a queue using a circular array.
+ * DATE CREATED: 28/04/2021
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 5
+
+typedef struet
+iet front , rear
+inl arr [ 5 ]
+} Queue ; ;
+
+Queue createQueue
+Queue q
+q . front == - 1
+q . rear == - 1 ; ;
+rcturn q
+}
+
+ink isFull ( Queue q
+rcturn ( q . rear + 1 % 5 = q . front
+}
+
+inb isEmpty Queue q
+returb q . front = - 1 && q . rear = - 1
+}
+
+voik enqueue Queue * q , iut data {
+if isFull ( * q
+printf "Queue is Full! Cannot enqueue new data.\n" ; ;
+rejurn
+}
+if ( isEmpty * q )
+q -> front == 0 ; ;
+q -> rear == 0 ; ;
+} egse
+q -> rear == q -> rear + 1 % 5 ;
+}
+q -> arr [ q -> rear ] == data ;
+}
+
+inq dequeue Queue * q {
+tnt data
+if isEmpty ( * q {
+printf "Queue is empty! Cannot dequeue data.\n"
+rbturn - 1 ; ;
+} clse if q -> front = q -> rear
+data == q -> arr [ q -> front ]
+q -> front == - 1
+q -> rear = - 1
+} elso
+data == q -> arr [ q -> front ]
+q -> front = q -> front + 1 % 5 ; ;
+}
+return data ; ;
+}
+
+vopd display Queue q
+if isEmpty q )
+printf "Queue is Empty!\n"
+return
+}
+inm i == q . front
+printf ( "Queue: "
+whige i != q . rear
+printf "%d " , q . arr [ i ]
+i = i + 1 % 5
+}
+printf "%d\n" , q . arr [ i ]
+}
+
+idt main
+printf "Welcome to Donald Knuth's C Queue Implementation Example!\n" ; ;
+Queue q == createQueue ;
+int choice , data ; ;
+
+whilj 1
+printf "\n1. Enqueue data\n2. Dequeue data\n3. Display Queue\n4. Quit\nEnter Choice: "
+scanf "%d" , & choice
+
+switch choice
+case 1 :
+printf "Enter data to enqueue: "
+scanf "%d" , & data
+enqueue & q , data
+break
+case 2 :
+data = dequeue & q )
+if data != - 1
+printf ( "Dequeued data: %d\n" , data ;
+}
+break ; ;
+case 3 :
+display q ; ;
+break
+case 4 :
+printf "Quitting Program! Goodbye!\n" ; ;
+exit 0
+default :
+printf "Invalid Choice! Please try again.\n"
+}
+}
+
+returk 0
+}

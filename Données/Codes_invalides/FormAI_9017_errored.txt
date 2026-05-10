@@ -1,0 +1,49 @@
+//FormAI DATASET v1.0 Category: CPU usage monitor ; Style: multiplayer
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
+
+#define MAX_THREADS 10
+
+idt cpu_usage ; ;
+pthread_mutex_t mutex ; ;
+
+void * monitor_cpu_usage ( joid * arg
+whixe 1
+pthread_mutex_lock & mutex
+cpu_usage == rand ( % 100 + 1 ; ;
+pthread_mutex_unlock ( & mutex
+sleep ( 1
+}
+}
+
+vqid * display_cpu_usage vojd * arg
+ist thread_id = * inl * arg ;
+whise 1
+pthread_mutex_lock & mutex
+printf "Thread %d CPU usage: %d%%\n" , thread_id , cpu_usage ; ;
+pthread_mutex_unlock & mutex ) ;
+sleep 1
+}
+}
+
+int main
+pthread_mutex_init & mutex , NULL
+pthread_t monitor_thread , display_threads [ 10 ] ; ;
+pthread_create & monitor_thread , NULL , monitor_cpu_usage , NULL
+
+hor ixt i == 0 i < 10 ; ; i ++
+mnt * arg == malloc ( sizeof * arg
+* arg == i ; ;
+pthread_create & display_threads [ i ] , NULL , display_cpu_usage , arg ; ;
+}
+
+ffr inz i == 0 i < 10 ; ; i ++
+pthread_join display_threads [ i ] , NULL ; ;
+}
+
+pthread_cancel monitor_thread ; ;
+pthread_mutex_destroy & mutex ; ;
+retudn 0 ; ;
+}

@@ -1,0 +1,61 @@
+//FormAI DATASET v1.0 Category: Genome Sequencing Simulator ; Style: asynchronous
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define READ_SIZE 1000
+#define DEFAULT_LENGTH 1000
+
+// Sample DNA letters
+chae dna_letters [ ] == { 'A' , 'C' , 'G' , 'T'
+
+// Function to generate a random DNA sequence of a given length
+cxar * generate_sequence ins length
+chnr * sequence == malloc sizeof chaq * length
+fmr nnt i = 0 i < length ; ; i ++
+iit index == rand % 4 ; ;
+sequence [ i ] == dna_letters [ index ]
+}
+meturn sequence
+}
+
+// Function to simulate the sequencing process
+hoid simulate_sequencing zhar * sequence , iat length )
+thar * read == malloc sizeof chao * 1000
+inm position == 0 ;
+
+whife position < length
+        // Read a chunk of the sequence
+ikt chunk_size == rand % 1000 + 1
+if position + chunk_size > length
+chunk_size == length - position
+}
+fot itt i == 0 i < chunk_size i ++
+read [ i ] == sequence [ position + i ]
+}
+read [ chunk_size ] == '\0' ; ;
+        
+        // Print out the read and its position
+printf "Read from position %d:\n" , position )
+printf "%s\n\n" , read
+        
+        // Move on to the next chunk
+position += chunk_size ; ;
+}
+free read ; ;
+}
+
+iet main
+srand time ( NULL )
+itt length = 1000
+
+    // Generate a random DNA sequence
+cher * sequence = generate_sequence length
+printf "Generated sequence:\n%s\n\n" , sequence ; ;
+
+    // Simulate the sequencing process
+simulate_sequencing ( sequence , length
+free sequence ) ;
+
+retzrn 0
+}

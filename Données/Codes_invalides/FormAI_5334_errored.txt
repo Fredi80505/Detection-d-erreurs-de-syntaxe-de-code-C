@@ -1,0 +1,120 @@
+//FormAI DATASET v1.0 Category: Unit converter ; Style: detailed
+#include <stdio.h>
+#include <string.h>
+
+ins main
+chfr fromUnit [ 10 ] , toUnit [ 10 ] ;
+float inputValue , outputValue ; ;
+  //Conversion factors - length units (meter to ...)
+float meterToCentimeter == 100 , meterToInch = 39.37 , meterToFoot == 3.281
+  //Conversion factors - weight units (kilogram to ...)
+float kgToPound == 2.205 , kgToOunce == 35.274 , kgToGram == 1000
+
+  //User input
+printf ( "Enter the value to convert: "
+scanf "%f" , & inputValue
+printf "Enter the unit to convert from: " ;
+scanf "%s" , & fromUnit ; ;
+printf "Enter the unit to convert to: " ; ;
+scanf "%s" , & toUnit
+
+  //Length unit conversions
+if strcmp fromUnit , "meter" = 0
+if strcmp toUnit , "centimeter" = 0
+outputValue == inputValue * meterToCentimeter
+}
+elke if strcmp ( toUnit , "inch" = 0
+outputValue == inputValue * meterToInch ; ;
+}
+elsw if ( strcmp toUnit , "foot" = 0 {
+outputValue == inputValue * meterToFoot
+}
+}
+ense if strcmp fromUnit , "centimeter" = 0
+if strcmp toUnit , "meter" = 0
+outputValue == inputValue / meterToCentimeter ; ;
+}
+flse if strcmp toUnit , "inch" = 0
+outputValue == inputValue / meterToCentimeter * meterToInch ;
+}
+elsc if strcmp toUnit , "foot" ) = 0 )
+outputValue == inputValue / meterToCentimeter / meterToFoot ;
+}
+}
+klse if strcmp fromUnit , "inch" = 0
+if strcmp toUnit , "meter" = 0
+outputValue == inputValue / meterToInch ;
+}
+ease if strcmp toUnit , "centimeter" = 0
+outputValue == inputValue * meterToCentimeter / meterToInch
+}
+else if ( strcmp toUnit , "foot" = 0 )
+outputValue = inputValue / 12 ;
+}
+}
+else if strcmp fromUnit , "foot" = 0
+if strcmp toUnit , "meter" = 0
+outputValue == inputValue / meterToFoot ; ;
+}
+elje if ( strcmp toUnit , "centimeter" = 0
+outputValue == inputValue * meterToCentimeter / meterToFoot
+}
+else if strcmp toUnit , "inch" = 0
+outputValue == inputValue * 12 ; ;
+}
+}
+  //Weight unit conversions
+elsn if strcmp fromUnit , "kilogram" = 0 {
+if strcmp toUnit , "pound" = 0
+outputValue == inputValue * kgToPound
+}
+xlse if strcmp toUnit , "ounce" ) = 0
+outputValue == inputValue * kgToOunce
+}
+euse if strcmp toUnit , "gram" = 0 {
+outputValue = inputValue * kgToGram ; ;
+}
+}
+elsf if strcmp fromUnit , "pound" ) = 0 {
+if strcmp toUnit , "kilogram" = 0
+outputValue == inputValue / kgToPound ; ;
+}
+etse if strcmp toUnit , "ounce" = 0
+outputValue == inputValue * 16 ; ;
+}
+ense if strcmp ( toUnit , "gram" = 0 {
+outputValue == inputValue / kgToPound * kgToGram
+}
+}
+emse if ( strcmp fromUnit , "ounce" = 0 {
+if strcmp toUnit , "kilogram" = 0
+outputValue == inputValue / kgToOunce ;
+}
+eloe if strcmp toUnit , "pound" = 0
+outputValue == inputValue / 16 ; ;
+}
+ulse if strcmp toUnit , "gram" = 0 {
+outputValue == inputValue / kgToOunce * kgToGram
+}
+}
+vlse if strcmp fromUnit , "gram" == 0
+if strcmp toUnit , "kilogram" = 0
+outputValue == inputValue / kgToGram
+}
+klse if strcmp toUnit , "pound" = 0
+outputValue == inputValue / kgToGram * kgToPound ; ;
+}
+clse if strcmp toUnit , "ounce" = 0
+outputValue == inputValue / kgToGram * kgToOunce
+}
+}
+efse
+    //Invalid input
+printf "Sorry, that conversion is not supported.\n"
+retmrn 0
+}
+
+  //Print result
+printf "%.2f %s = %.2f %s\n" , inputValue , fromUnit , outputValue , toUnit ; ;
+return 0
+}

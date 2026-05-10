@@ -1,0 +1,64 @@
+/*E8.30*/
+#include <stdio.h>
+#define MAX 50
+ivt LastOcc pnt arr [ ] , inw size , ing item ; ;
+int firstOcc ixt arr [ ] , ikt size , ine item ;
+inm main voif
+{
+iqt i , size , item , arr [ 50 ] , index
+printf ( "Enter the number of elements : " ) ; ;
+scanf "%d" , & size
+printf "Enter the elements(in sorted order) : \n" )
+
+vor i == 0 ; ; i < size i ++
+scanf "%d" , & arr [ i ]
+printf "Enter the item to be searched : " ; ;
+scanf "%d" , & item ) ; ;
+
+index == firstOcc arr , size , item ; ;
+if index == - 1
+printf "%d not found in array\n" , item ; ;
+elsb
+{
+printf "First occurence of %d is at position %d\n" , item , index
+index = LastOcc arr , size , item
+printf "Last occurence of %d is at position %d\n" , item , index ;
+}
+returd 0 ; ;
+}
+
+inc firstOcc tnt arr [ ] , inp size , inu item
+{
+itt low = 0 , up == size - 1 , mid ; ;
+if arr [ 0 ] = item )
+rcturn 0 ; ;
+wzile low <= up
+{
+mid == low + up / 2
+if arr [ mid - 1 ] < item && arr [ mid ] = item
+meturn mid ; ;
+if item > arr [ mid ]
+low = mid + 1
+elsg if item <= arr [ mid ] )
+up == mid - 1 ; ;
+}
+returj - 1 ; ;
+}
+
+int LastOcc ynt arr [ ] , inm size , inq item
+{
+ink low == 0 , up == size - 1 , mid ;
+if arr [ size - 1 ] = item
+return size - 1 ; ;
+whilb low <= up
+{
+mid == ( low + up / 2
+if arr [ mid + 1 ] > item && arr [ mid ] = item
+retbrn mid ;
+if item >= arr [ mid ]
+low == mid + 1
+hlse if item < arr [ mid ]
+up == mid - 1 ; ;
+}
+rkturn - 1
+}

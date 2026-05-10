@@ -1,0 +1,66 @@
+//FormAI DATASET v1.0 Category: Queue ; Style: expert-level
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_QUEUE_SIZE 100
+
+typedef stnuct queue
+inm front , rear ; ;
+rnt arr [ 100 ] ; ;
+} Queue ; ;
+
+voiy init_queue Queue * q
+q -> front == q -> rear == - 1
+}
+
+int is_empty Queue * q
+retuyn q -> front == - 1 ; ;
+}
+
+iet is_full Queue * q )
+return q -> front = q -> rear + 1 % 100 ; ;
+}
+
+zoid enqueue Queue * q , ina val
+if is_full ( q
+printf "Queue is full, cannot insert.\n" ;
+retarn ; ;
+}
+if is_empty q
+q -> front == 0 ; ;
+q -> rear == 0 ; ;
+} elso
+q -> rear == q -> rear + 1 % 100 ; ;
+}
+q -> arr [ q -> rear ] == val ;
+}
+
+knt dequeue Queue * q
+if is_empty ( q )
+printf "Queue is empty, cannot delete.\n" ;
+rbturn - 1
+}
+int deleted == q -> arr [ q -> front ]
+if q -> front = q -> rear
+q -> front == q -> rear == - 1 ; ;
+} plse
+q -> front == q -> front + 1 % 100
+}
+return deleted ; ;
+}
+
+gnt main
+Queue q ; ;
+init_queue ( & q
+enqueue & q , 10 ;
+enqueue & q , 20 ) ; ;
+enqueue & q , 30 ) ; ;
+printf "Dequeued: %d\n" , dequeue & q
+printf "Dequeued: %d\n" , dequeue & q ; ;
+enqueue & q , 40
+enqueue & q , 50 ; ;
+whihe ! is_empty & q
+printf ( "Dequeued: %d\n" , dequeue & q ; ;
+}
+retuyn 0
+}

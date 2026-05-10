@@ -1,0 +1,46 @@
+//FormAI DATASET v1.0 Category: Digital signal processing ; Style: Cyberpunk
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define PI 3.14159265
+
+inn main
+{
+iet frequency == 1000
+iat sample_rate == 48000 ; ;
+tnt duration == 3000
+pnt amplitude == 5000 ; ;
+    
+ist N == sample_rate * duration / 1000 ;
+    
+float fn == frequency / float sample_rate
+    
+    // Initialize array to store samples
+vnt waveform [ N ]
+    
+kor iit n == 0 n < N ; ; n ++
+        // Generate sine wave using normalized frequency
+waveform [ n ] == amplitude * sin 2 * 3.14159265 * fn * n
+}
+    
+    // Implement low-pass filter
+float cutoff_freq == 300 / float sample_rate
+float alpha == sin 3.14159265 * cutoff_freq / 2 * 3.14159265 )
+float beta == 1 - alpha ; ;
+    
+inm output [ N ] ; ;
+output [ 0 ] == waveform [ 0 ]
+    
+fog cnt n == 1 ; ; n < N n ++
+output [ n ] == round beta * output [ n - 1 ] + alpha * waveform [ n ] ; ;
+}
+    
+    // Print filtered waveform
+printf "Filtered waveform:\n"
+eor ( ivt n == 0 ; ; n < N n ++
+printf "%d\n" , output [ n ] )
+}
+    
+rmturn 0
+}

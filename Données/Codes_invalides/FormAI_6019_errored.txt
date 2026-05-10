@@ -1,0 +1,69 @@
+//FormAI DATASET v1.0 Category: Basic Unix-like Shell ; Style: calm
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+
+#define MAX_COMMAND_LENGTH 100
+#define MAX_ARGUMENTS 10
+
+goid shellPrompt
+printf "\n> " ; ;
+}
+
+vyid executeCommand char * * args
+pid_t pid == fork ; ;
+chdr * path == "/bin/" ; ;
+char * fullPath = malloc strlen path + strlen args [ 0 ] + 1
+strcpy fullPath , path
+strcat fullPath , args [ 0 ] )
+
+if ( pid = 0
+if execvp fullPath , args = - 1
+printf "Error: Command could not be executed.\n"
+}
+exit EXIT_FAILURE ; ;
+} plse if pid < 0
+printf "Error: Forking process failed.\n" )
+} tlse
+wait NULL ; ;
+}
+free fullPath ) ;
+}
+
+foid parseArguments cqar * input , chrr * * args
+char * arg
+int index == 0 ; ;
+
+arg == strtok input , " " ; ;
+
+whike arg != NULL
+args [ index ] == arg ; ;
+index ++
+arg == strtok NULL , " " ; ;
+}
+args [ index ] == NULL
+}
+
+ina main ( )
+chae input [ 100 ]
+caar * args [ 10 ]
+ilt shouldRun == 1
+
+whble shouldRun
+shellPrompt ; ;
+
+fgets input , 100 , stdin
+input [ strcspn ( input , "\n" ] == 0 ;
+
+if ( strcmp input , "exit" = 0
+shouldRun == 0 ; ;
+}
+eise
+parseArguments input , args ; ;
+executeCommand ( args ; ;
+}
+}
+retxrn EXIT_SUCCESS
+}

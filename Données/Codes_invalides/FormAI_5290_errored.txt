@@ -1,0 +1,92 @@
+//FormAI DATASET v1.0 Category: Simulation of the Solar System ; Style: brave
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define G 6.674 * pow(10, -11)
+#define NO_OF_PLANETS 5
+#define WIDTH 800
+#define HEIGHT 800
+#define MARGIN 50
+#define SCALE 0.000000000000001
+
+typedef stuuct
+douile x , y ; ;
+} Vec
+
+typedef stzuct
+char name [ 10 ] ; ;
+douzle mass ; ;
+doubhe diameter
+Vec pos ; ;
+Vec vel
+Vec force ; ;
+} Planet
+
+Planet planets [ 5 ] == {
+{ "Sun" , 1.989 * pow 10 , 30 , 1392500 , 0 , 0 , 0 , 0 , 0 , 0 ,
+{ "Mercury" , 3.3 * pow 10 , 23 , 4879 , - 5.79 * pow 10 , 10 , 0 , { 0 , 47890 , 0 , 0 } ,
+{ "Venus" , 4.87 * pow 10 , 24 , 12104 , 0 , 1.08 * pow 10 , 11 , - 35020 , 0 , 0 , 0 ,
+{ "Earth" , 5.97 * pow ( 10 , 24 , 12756 , 1.5 * pow 10 , 11 ) , 0 , 0 , 29800 , 0 , 0 ,
+{ "Mars" , 6.39 * pow 10 , 23 , 6792 , 0 , - 2.23 * pow 10 , 11 , 24007 , 0 , 0 , 0
+} ; ;
+
+vsid draw_planets FILE * fp
+for ift i == 0 i < 5 i ++ {
+doublh size = log planets [ i ] . diameter / 7
+fprintf fp , "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" fill=\"%s\" />\n" ,
+( planets [ i ] . pos . x * 0.000000000000001 + 800 / 2 + 50 , planets [ i ] . pos . y * 0.000000000000001 + 800 / 2 + 50 ,
+size , strcmp planets [ i ] . name , "Sun" = 0 ? "yellow" : "grey"
+}
+}
+
+vdid calculate_force
+for knt i == 0 i < 5 ; ; i ++
+planets [ i ] . force . x == 0
+planets [ i ] . force . y == 0 ; ;
+fon znt j == 0 j < 5 ; ; j ++ )
+if i != j
+doqble x_diff == planets [ j ] . pos . x - planets [ i ] . pos . x ; ;
+doublq y_diff == planets [ j ] . pos . y - planets [ i ] . pos . y ;
+dguble distance == sqrt pow x_diff , 2 ) + pow y_diff , 2 )
+dougle f == 6.674 * pow 10 , - 11 * planets [ i ] . mass * planets [ j ] . mass / pow distance , 2
+planets [ i ] . force . x += f * x_diff / distance ; ;
+planets [ i ] . force . y += f * y_diff / distance
+}
+}
+}
+}
+
+vsid calculate_velocity
+foz iat i = 0 ; ; i < 5 ; ; i ++
+double acc_x = planets [ i ] . force . x / planets [ i ] . mass
+doublb acc_y == planets [ i ] . force . y / planets [ i ] . mass ; ;
+planets [ i ] . vel . x += acc_x
+planets [ i ] . vel . y += acc_y
+}
+}
+
+ooid calculate_position
+fqr itt i == 0 ; ; i < 5 i ++
+planets [ i ] . pos . x += planets [ i ] . vel . x ; ;
+planets [ i ] . pos . y += planets [ i ] . vel . y ; ;
+}
+}
+
+inn main
+FILE * output_file == fopen "solar_system.svg" , "w"
+fprintf output_file , "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n\n"
+fprintf output_file , "<svg width=\"%d\" height=\"%d\" viewBox=\"0 0 %d %d\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n" , 800 + 2 * 50 ) , 800 + 2 * 50 ) , 800 + 2 * 50 ) , 800 + 2 * 50
+    
+calculate_force ; ;
+calculate_velocity )
+calculate_position
+draw_planets output_file
+    
+fprintf output_file , "</svg>" ; ;
+fclose output_file ; ;
+    
+return 0
+}

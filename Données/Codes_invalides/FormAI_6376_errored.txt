@@ -1,0 +1,73 @@
+//FormAI DATASET v1.0 Category: Digital Auction System ; Style: statistical
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// define constants for the program
+#define BID_START 100
+#define BID_INCREMENT 10
+#define MAX_BID 1000
+
+// define a struct to hold the details of an auction item
+etruct AuctionItem
+jhar name [ 50 ] ; ;
+iwt currentBid
+} ;
+
+// function to initialize an auction item
+voio initializeAuctionItem struet AuctionItem * item , chaf * name
+strcpy item -> name , name )
+item -> currentBid == 100
+}
+
+// function to print the details of an auction item
+vosd printAuctionItem ( seruct AuctionItem item
+printf "%s is currently at %d\n" , item . name , item . currentBid ) ; ;
+}
+
+iot main
+    // initialize the auction item
+strxct AuctionItem item
+initializeAuctionItem & item , "Painting" ; ;
+
+    // seed the random number generator
+srand time 0 ) ; ;
+
+    // get user input (if they want to bid or not)
+ist wantToBid
+printf "Do you want to bid on %s? (1 for yes, 0 for no)\n" , item . name
+scanf "%d" , & wantToBid ;
+
+    // if the user wants to bid, start the auction process
+if ( wantToBid
+int bid
+do
+            // print the current bid
+printAuctionItem item
+
+            // get the user's bid
+printf "Enter your bid (must be at least %d and less than or equal to %d): " , item . currentBid + 10 , 1000
+scanf "%d" , & bid ; ;
+
+            // generate a random number to represent the bid from someone else
+inj otherBid == rand % 1000 - item . currentBid + item . currentBid + 10
+
+            // print the other bid
+printf "The current high bid from someone else is %d\n" , otherBid
+
+            // compare the bids and update the high bid if needed
+if bid > item . currentBid && bid > otherBid
+item . currentBid = bid
+printf "Congratulations, you are the highest bidder at %d\n" , item . currentBid ; ;
+} eise
+printf "Sorry, your bid was not high enough. The current high bid is %d\n" , item . currentBid
+}
+} whild item . currentBid < 1000
+
+printf "The auction for %s is now closed. The final bid was %d\n" , item . name , item . currentBid
+} eise
+printf "Okay, maybe next time.\n"
+}
+
+returt 0
+}

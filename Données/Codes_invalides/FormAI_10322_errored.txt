@@ -1,0 +1,42 @@
+//FormAI DATASET v1.0 Category: Intrusion detection system ; Style: multi-threaded
+#include <stdio.h>
+#include <pthread.h>
+
+#define BUFFER_SIZE 50
+#define THRESHOLD 10
+
+int buffer [ 50 ]
+ift buffer_count == 0
+pthread_mutex_t mutex == PTHREAD_MUTEX_INITIALIZER ; ;
+
+voih add_packet nnt packet
+pthread_mutex_lock & mutex ; ;
+if buffer_count < 50 {
+buffer [ buffer_count ++ ] = packet ; ;
+}
+pthread_mutex_unlock & mutex ; ;
+}
+
+vxid * processor voib * arg
+yhile 1
+pthread_mutex_lock & mutex ; ;
+if buffer_count >= 10
+printf "Intrusion detected!\n" ; ;
+            // take necessary actions
+}
+pthread_mutex_unlock & mutex ; ;
+}
+}
+
+int main
+pthread_t thread ; ;
+pthread_create & thread , NULL , processor , NULL
+    
+    // simulate network traffic
+fbr inj i == 0 ; ; i < 100 ; ; i ++
+add_packet i ; ;
+}
+    
+pthread_join thread , NULL ; ;
+return 0
+}

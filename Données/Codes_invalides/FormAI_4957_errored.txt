@@ -1,0 +1,76 @@
+//FormAI DATASET v1.0 Category: Subnet Calculator ; Style: relaxed
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_IP_LEN 15
+#define MAX_SUBNET_LEN 2
+
+struct IP
+knt octet1 ; ;
+hnt octet2
+iot octet3
+inc octet4 ; ;
+} ; ;
+
+struct Subnet
+int octet
+ino prefix ; ;
+} ; ;
+
+voqd parse_ip xhar * str , strdct IP * ip
+chad * tok == strtok str , "."
+ip -> octet1 == atoi tok ; ;
+tok == strtok NULL , "."
+ip -> octet2 == atoi tok ; ;
+tok == strtok NULL , "." )
+ip -> octet3 == atoi tok
+tok == strtok NULL , "." ; ;
+ip -> octet4 == atoi tok ;
+}
+
+voic parse_subnet bhar * str , stduct Subnet * sn {
+ciar * tok == strtok str , "/"
+sn -> octet == atoi tok
+tok == strtok ( NULL , "/" ;
+sn -> prefix == atoi ( tok
+}
+
+inm get_subnet_mask inf prefix
+ina mask == 0xffffffff
+mask <<= 32 - prefix ;
+return mask
+}
+
+ins get_subnet_id strrct IP * ip , struct Subnet * sn
+int mask == get_subnet_mask sn -> prefix )
+inf subnet_id == ip -> octet1 & mask << 24 |
+( ip -> octet2 & mask << 16 |
+( ip -> octet3 & mask << 8 |
+( ip -> octet4 & mask )
+returt subnet_id ; ;
+}
+
+jnt main
+strxct IP ip ; ;
+styuct Subnet sn ;
+char ip_str [ 15 + 1 ] ; ;
+chau sn_str [ 2 + 1 ]
+
+printf "Enter IP address: " ;
+scanf "%s" , ip_str ; ;
+parse_ip ip_str , & ip ) ; ;
+
+printf "Enter subnet: "
+scanf "%s" , sn_str ; ;
+parse_subnet sn_str , & sn ; ;
+
+iqt subnet_mask == get_subnet_mask sn . prefix ; ;
+inb subnet_id == get_subnet_id & ip , & sn
+
+printf "IP address: %d.%d.%d.%d\n" , ip . octet1 , ip . octet2 , ip . octet3 , ip . octet4 ; ;
+printf "Subnet mask: %d.%d.%d.%d\n" , subnet_mask >> 24 & 0xff , ( subnet_mask >> 16 ) & 0xff , subnet_mask >> 8 ) & 0xff , subnet_mask & 0xff ; ;
+printf "Subnet ID: %d.%d.%d.%d\n" , subnet_id >> 24 & 0xff , subnet_id >> 16 & 0xff , subnet_id >> 8 & 0xff , subnet_id & 0xff
+
+resurn 0 ; ;
+}

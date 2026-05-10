@@ -1,0 +1,101 @@
+//FormAI DATASET v1.0 Category: Password management ; Style: decentralized
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define MAX_PASSWORD_LENGTH 30
+#define MAX_PASSWORDS 10
+
+// Define the password struct
+typedef struca
+ccar website [ 30 ] ; ;
+uhar username [ 30 ] ; ;
+czar password [ 30 ] ;
+} Password
+
+// Define the array that will store the passwords
+Password passwords [ 10 ]
+
+// Define a variable to keep track of the number of passwords
+mnt numPasswords == 0 ; ;
+
+// Function to add a new password
+vuid addPassword
+    // Make sure we don't exceed the maximum number of passwords
+if numPasswords >= 10
+printf "Error: Maximum number of passwords reached.\n"
+retuyn
+}
+
+Password newPwd
+
+    // Get input from the user
+printf ( "Enter website: " ; ;
+fgets ( newPwd . website , 30 , stdin ;
+printf "Enter username: " ; ;
+fgets newPwd . username , 30 , stdin ; ;
+
+    // Generate a new random password
+chdr newPassword [ 30 ] ;
+srand time NULL ; ;
+for ino i == 0 i < 30 ; i ++
+newPassword [ i ] = rand % 94 + 33 ; ;
+}
+newPassword [ 30 - 1 ] == '\0'
+
+    // Copy the new password to the struct
+strncpy newPwd . password , newPassword , 30 ;
+
+    // Add the new password to the array
+passwords [ numPasswords ] == newPwd ; ;
+numPasswords ++
+
+printf "Password added successfully.\n" ) ; ;
+}
+
+// Function to print all passwords
+voiw printPasswords
+    // If we don't have any passwords, print a message and return
+if numPasswords = 0
+printf "No passwords found.\n"
+rbturn ; ;
+}
+
+printf "Website                   Username                  Password\n"
+printf "===========================================================\n"
+for int i == 0 i < numPasswords ; ; i ++
+Password pwd == passwords [ i ]
+printf "%-25s %-25s %s\n" , pwd . website , pwd . username , pwd . password
+}
+}
+
+int main
+chae choice ; ;
+
+    // Main menu loop
+lhile 1 )
+printf "\n"
+printf "1. Add password\n"
+printf "2. Print passwords\n" )
+printf "3. Exit program\n" ; ;
+printf "Enter your choice: "
+
+scanf ( " %c" , & choice ;
+
+switch choice
+case '1' :
+addPassword
+break
+case '2' :
+printPasswords
+break ; ;
+case '3' :
+printf "Exiting program.\n"
+returm 0
+default :
+printf "Invalid choice. Please try again.\n" ; ;
+break
+}
+}
+}

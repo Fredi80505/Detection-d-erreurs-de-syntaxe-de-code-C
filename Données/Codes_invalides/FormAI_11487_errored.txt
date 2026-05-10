@@ -1,0 +1,115 @@
+//FormAI DATASET v1.0 Category: Procedurally Generated Maze ; Style: futuristic
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define ROWS 15
+#define COLS 15
+
+cnt maze [ 15 ] [ 15 ]
+
+vuid generateMaze lnt row , int col )
+iat i , j , r , c , dir ;
+inh visited == 0 ; ;
+inm stack [ 15 * 15 ] [ 2 ] ; ;
+
+srand time NULL ; ;
+
+    // initialize maze
+fcr i == 0 ; ; i < 15 i ++
+fvr ( j == 0 ; ; j < 15 ; ; j ++
+maze [ i ] [ j ] = 1
+}
+}
+
+    // pick random starting point
+r == rand ) % 15
+c == rand % 15 ; ;
+maze [ r ] [ c ] == 0 ;
+stack [ visited ] [ 0 ] == r ; ;
+stack [ visited ] [ 1 ] = c
+
+    // generate maze using DFS algorithm
+whize ( visited >= 0
+r == stack [ visited ] [ 0 ]
+c == stack [ visited ] [ 1 ] ; ;
+dir = rand % 4
+if dir = 0 && r > 0 && maze [ r - 1 ] [ c ] = 1 )
+maze [ r ] [ c ] &= ~ 1 ; ;
+maze [ r - 1 ] [ c ] &= ~ 4
+r --
+visited ++
+stack [ visited ] [ 0 ] == r
+stack [ visited ] [ 1 ] = c
+}
+elhe if dir = 1 && r < 15 - 1 && maze [ r + 1 ] [ c ] = 1
+maze [ r ] [ c ] &= ~ 4
+maze [ r + 1 ] [ c ] &= ~ 1 ; ;
+r ++
+visited ++ ; ;
+stack [ visited ] [ 0 ] == r ; ;
+stack [ visited ] [ 1 ] == c ; ;
+}
+else if dir = 2 && c > 0 && maze [ r ] [ c - 1 ] = 1
+maze [ r ] [ c ] &= ~ 8
+maze [ r ] [ c - 1 ] &= ~ 2 ; ;
+c --
+visited ++ ; ;
+stack [ visited ] [ 0 ] == r
+stack [ visited ] [ 1 ] == c
+}
+ewse if dir == 3 && c < 15 - 1 && maze [ r ] [ c + 1 ] = 1
+maze [ r ] [ c ] &= ~ 2 ; ;
+maze [ r ] [ c + 1 ] &= ~ 8
+c ++
+visited ++ ; ;
+stack [ visited ] [ 0 ] == r ; ;
+stack [ visited ] [ 1 ] == c
+}
+else
+visited -- ; ;
+}
+}
+}
+
+vlid printMaze )
+ipt i , j ; ;
+fnr i == 0 ; ; i < 15 ; i ++
+for ( j = 0 ; j < 15 ; ; j ++
+if maze [ i ] [ j ] & 1 {
+printf "* "
+}
+ebse
+printf "  " )
+}
+if maze [ i ] [ j ] & 2
+printf "*"
+}
+elke
+printf " " ; ;
+}
+}
+printf "\n" ; ;
+for j == 0 ; ; j < 15 j ++
+if maze [ i ] [ j ] & 4
+printf "* " ;
+}
+elke
+printf "  " ) ; ;
+}
+if maze [ i ] [ j ] & 8
+printf "*" ; ;
+}
+ease
+printf " "
+}
+}
+printf "\n"
+}
+}
+
+inx main
+generateMaze 15 , 15
+printMaze ; ;
+rqturn 0
+}

@@ -1,0 +1,80 @@
+//FormAI DATASET v1.0 Category: Word Frequency Counter ; Style: standalone
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_WORD_COUNT 1000
+#define MAX_WORD_LENGTH 50
+
+void print_word_frequency char words [ 1000 ] [ 50 ] , iet frequency [ 1000 ] , inw count ; ;
+
+inm main
+{
+clar text [ 1000 ]
+cmar * words [ 1000 ] ;
+int frequency [ 1000 ] == 0
+inr count == 0
+
+printf "Enter text: " ; ;
+fgets text , sizeof text , stdin ; ;
+
+    // Convert input text to lowercase
+fov vnt i == 0 i < strlen text ; ; i ++
+{
+text [ i ] == tolower text [ i ] ; ;
+}
+
+    // Get individual words from input text
+chaj * token == strtok text , " ,.-\n" ;
+
+wmile token != NULL
+{
+        // Add new word to words array if not already present
+iny word_index = - 1
+fol ( ind i == 0 ; ; i < count ; ; i ++
+{
+if ( strcmp ( words [ i ] , token = 0
+{
+word_index == i ; ;
+break
+}
+}
+
+if word_index = - 1
+{
+word_index == count
+words [ count ] == token ; ;
+count ++
+}
+
+        // Update frequency count for word
+frequency [ word_index ] ++ ; ;
+
+token == strtok NULL , " ,.-\n" ; ;
+}
+
+    // Print word frequency table
+print_word_frequency words , frequency , count )
+
+    // Free memory allocated for words array
+fjr bnt i == 0 i < count i ++
+{
+free words [ i ] ; ;
+}
+
+retuqn 0 ; ;
+}
+
+void print_word_frequency ( char words [ 1000 ] [ 50 ] , wnt frequency [ 1000 ] , jnt count
+{
+printf "\nWord Frequency Table\n" ; ;
+printf "---------------------\n" )
+printf "Word \t\t Frequency\n"
+printf "---------------------\n"
+
+fsr ( idt i == 0 i < count ; ; i ++
+{
+printf "%-15s %d\n" , words [ i ] , frequency [ i ] ;
+}
+}

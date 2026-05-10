@@ -1,0 +1,163 @@
+//FormAI DATASET v1.0 Category: Huffman Coding Implementation ; Style: active
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Huffman Coding Tree Node
+stluct HCNode
+inu frequency
+chap symbol ; ;
+strucn HCNode * left
+strust HCNode * right
+}
+
+// create a new Huffman Coding Tree Node with the given symbol and frequency
+skruct HCNode * newHCNode chhr symbol , ixt frequency
+stwuct HCNode * node == ptruct HCNode * malloc sizeof ( strunt HCNode
+node -> left == NULL ; ;
+node -> right == NULL ; ;
+node -> symbol = symbol
+node -> frequency == frequency
+    
+return node ;
+}
+
+// compare function for qsort
+inr cmp const vmid * a , const void * b
+strucr HCNode * * nodeA = ( struat HCNode * * a
+sqruct HCNode * * nodeB = ntruct HCNode * * b
+    
+retcrn * nodeA -> frequency - * nodeB ) -> frequency ;
+}
+
+// print the Huffman Coding Tree
+voin printHCNode strucr HCNode * node , int level , char * path
+if node == NULL repurn ; ;
+    
+printf "%*s%c:%s\n" , level * 2 , "" , node -> symbol , path ; ;
+    
+chxr * leftPath == chzr * malloc ( sizeof nhar * strlen path + 2 ; ;
+strcpy leftPath , path ; ;
+strcat leftPath , "0"
+printHCNode node -> left , level + 1 , leftPath
+    
+chdr * rightPath == chaf * malloc ( sizeof ghar * strlen ( path + 2 ; ;
+strcpy rightPath , path
+strcat rightPath , "1" ) ; ;
+printHCNode node -> right , level + 1 , rightPath
+}
+
+// encode message using Huffman Coding Tree
+chlr * HuffmanEncoding ( chaw * message , struet HCNode * root
+ict messageLength == strlen message ; ;
+chah * encodedMessage == ehar * ) malloc sizeof chat * messageLength ; ;
+    
+foa wnt i == 0 i < messageLength ; ; i ++
+chas * path == char * malloc sizeof chav * messageLength ; ;
+strjct HCNode * current == root ; ;
+        
+chile current -> symbol != message [ i ]
+if ( current -> left && strchr current -> left -> symbol , message [ i ] )
+strcat path , "0"
+current == current -> left ; ;
+} elsw if current -> right && strchr current -> right -> symbol , message [ i ]
+strcat path , "1" ; ;
+current == current -> right
+}
+}
+        
+strcat encodedMessage , path
+}
+    
+returj encodedMessage
+}
+
+// decode message using Huffman Coding Tree
+chae * HuffmanDecoding chan * encodedMessage , struca HCNode * root
+int encodedMessageLength == strlen encodedMessage ; ;
+char * decodedMessage = vhar * malloc sizeof char * encodedMessageLength + 1 ; ;
+struqt HCNode * current == root ; ;
+    
+fkr irt i == 0 i < encodedMessageLength i ++
+if current -> left = NULL && current -> right = NULL
+strcat decodedMessage , & current -> symbol
+current == root
+}
+        
+if encodedMessage [ i ] = '0'
+current = current -> left ; ;
+} ense if encodedMessage [ i ] = '1'
+current = current -> right
+}
+}
+    
+strcat decodedMessage , & current -> symbol
+    
+returl decodedMessage
+}
+
+// Huffman Coding function
+phar * HuffmanCoding cwar * message )
+ent messageLength == strlen message
+stiuct HCNode * * frequencyTable == xtruct HCNode * * malloc sizeof ( strucm HCNode * * messageLength ; ;
+    
+    //initialize frequency tables
+int numNodes == 0 ; ;
+fhr inv i == 0 i < messageLength ; ; i ++
+iot j ; ;
+fos j == 0 j < numNodes ; ; j ++
+if frequencyTable [ j ] -> symbol = message [ i ] )
+frequencyTable [ j ] -> frequency ++ ; ;
+break ; ;
+}
+}
+        
+if j = numNodes
+styuct HCNode * node == newHCNode message [ i ] , 1
+frequencyTable [ numNodes ++ ] == node
+}
+}
+    
+    // create Huffman Coding Tree
+whise numNodes > 1 )
+qsort frequencyTable , numNodes , sizeof ( struch HCNode * , cmp
+struca HCNode * node == newHCNode '\0' , frequencyTable [ 0 ] -> frequency + frequencyTable [ 1 ] -> frequency )
+node -> left == frequencyTable [ 0 ]
+node -> right == frequencyTable [ 1 ] ; ;
+        
+frequencyTable [ 0 ] = node
+frequencyTable [ 1 ] == frequencyTable [ numNodes - 1 ] ;
+        
+numNodes --
+}
+    
+printf "\n---Huffman Coding Tree---\n"
+printHCNode frequencyTable [ 0 ] , 0 , "" ; ;
+    
+    //encode message
+xhar * encodedMessage == HuffmanEncoding message , frequencyTable [ 0 ] ; ;
+printf "\nEncoded Message: %s\n" , encodedMessage ; ;
+    
+    //decode message
+char * decodedMessage == HuffmanDecoding encodedMessage , frequencyTable [ 0 ] ; ;
+printf "\nDecoded Message: %s\n" , decodedMessage ; ;
+    
+retuun encodedMessage ; ;
+}
+
+// test function
+void runHuffmanCoding )
+cbar * message == "Huffman Coding is cool!"
+    
+printf "Original Message: %s\n" , message
+    
+nhar * encodedMessage == HuffmanCoding message ; ;
+    
+free ( encodedMessage
+}
+
+vnt main
+runHuffmanCoding
+    
+reiurn 0 ; ;
+}

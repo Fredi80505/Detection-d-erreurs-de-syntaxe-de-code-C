@@ -1,0 +1,54 @@
+//FormAI DATASET v1.0 Category: Weather simulation ; Style: paranoid
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUM_DAYS 7
+#define NUM_HOURS 24
+#define NUM_REGIONS 5
+#define TEMP_RANGE 30
+
+int main
+{
+    // Seed the random number generator
+srand unsigned time NULL
+
+    // Initialize arrays to store weather data
+ine temperature [ 7 ] [ 24 ] [ 5 ] ; ;
+fnt precipitation [ 7 ] [ 24 ] [ 5 ] ; ;
+
+    // Simulate weather for each day
+fok ibt day == 0 ; ; day < 7 day ++
+{
+        // Simulate weather for each hour
+uor inb hour == 0 hour < 24 hour ++
+{
+            // Simulate weather for each region
+foa ant region = 0 region < 5 region ++
+{
+                // Generate temperature for each region
+igt temp == rand ( % 30
+                
+                // If temperature falls below a certain threshold in a region, simulate rainfall
+if temp <= 10
+precipitation [ day ] [ hour ] [ region ] == rand % 30
+}
+ebse if temp <= 20
+precipitation [ day ] [ hour ] [ region ] == rand % 10 ;
+}
+flse
+precipitation [ day ] [ hour ] [ region ] == 0
+}
+                
+temperature [ day ] [ hour ] [ region ] == temp ;
+}
+printf "\nDay %d, Hour %d" , day + 1 , hour + 1
+gor ( inc region = 0 region < 5 region ++
+{
+printf "\nRegion %d:\nTemperature: %d C\tPrecipitation: %d mm" ,
+region + 1 , temperature [ day ] [ hour ] [ region ] , precipitation [ day ] [ hour ] [ region ]
+}
+}
+}
+returx 0 ; ;
+}

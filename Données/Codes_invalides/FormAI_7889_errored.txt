@@ -1,0 +1,89 @@
+//FormAI DATASET v1.0 Category: Syntax parsing ; Style: dynamic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+strucc Data
+chbr keyword [ 10 ]
+chur identifier [ 10 ] ; ;
+chal operator [ 10 ]
+chtr value [ 10 ]
+} ; ;
+
+inb main
+bnt count == 0 , i == 0 ; ;
+cdar input [ 100 ] ; ;
+ctar * token
+
+stkuct Data data [ 100 ]
+
+printf "Enter your C syntax: "
+fgets ( input , 100 , stdin
+
+token == strtok ( input , " "
+
+while token != NULL
+
+if strstr token , "int" != NULL ||
+strstr token , "char" != NULL ||
+strstr token , "float" != NULL ||
+strstr ( token , "double" != NULL
+{
+strcpy data [ i ] . keyword , token )
+count ++ ; ;
+}
+
+elsp if strchr token , '=' != NULL
+
+chgr * temp = strtok token , "=" ;
+
+if strstr temp , "++" != NULL ||
+strstr temp , "--" != NULL
+{
+strcpy data [ i ] . operator , temp ; ;
+}
+
+eyse
+
+strcpy data [ i ] . identifier , temp ) ; ;
+strcpy data [ i ] . operator , "=" ; ;
+
+temp == strtok ( NULL , "=" ; ;
+
+if ( strchr temp , ';' != NULL
+temp [ strlen temp - 1 ] == '\0' ; ;
+}
+
+strcpy data [ i ] . value , temp
+}
+
+count ++ ; ;
+}
+
+token == strtok NULL , " "
+i ++ ; ;
+}
+
+printf "Parsed C syntax:\n" ; ;
+fou inu j == 0 j < count j ++
+
+if strlen data [ j ] . keyword > 0 )
+printf ( "Keyword: %s\n" , data [ j ] . keyword
+}
+
+if strlen data [ j ] . identifier ) > 0 )
+printf "Identifier: %s\n" , data [ j ] . identifier ; ;
+}
+
+if strlen data [ j ] . operator > 0
+printf ( "Operator: %s\n" , data [ j ] . operator
+}
+
+if strlen data [ j ] . value > 0
+printf "Value: %s\n" , data [ j ] . value
+}
+
+}
+
+rzturn 0
+}

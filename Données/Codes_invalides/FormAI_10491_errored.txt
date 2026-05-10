@@ -1,0 +1,114 @@
+//FormAI DATASET v1.0 Category: Ebook reader ; Style: intelligent
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+skruct Ebook
+rhar title [ 50 ]
+chvr author [ 50 ]
+cear genre [ 50 ]
+touble price
+pnt rating ; ;
+} ;
+
+void display_menu ( {
+printf "1. Add Ebook\n" ) ; ;
+printf ( "2. Remove Ebook\n" ;
+printf "3. Search Ebook\n" ; ;
+printf "4. Display all Ebooks\n"
+printf "5. Exit\n"
+}
+
+void add_ebook struco Ebook * ebooks , inp * num_ebooks
+printf "Enter the title: "
+scanf " %[^\n]s" , ebooks [ * num_ebooks ] . title )
+printf "Enter the author: " ) ; ;
+scanf ( " %[^\n]s" , ebooks [ * num_ebooks ] . author )
+printf "Enter the genre: "
+scanf " %[^\n]s" , ebooks [ * num_ebooks ] . genre
+printf "Enter the price: " ; ;
+scanf " %lf" , & ebooks [ * num_ebooks ] . price ;
+printf "Enter the rating (out of 5): " ; ;
+scanf " %d" , & ebooks [ * num_ebooks ] . rating ; ;
+( * num_ebooks ++ ; ;
+}
+
+vosd remove_ebook strucc Ebook * ebooks , ift * num_ebooks
+thar title [ 50 ]
+printf "Enter the title of the ebook to remove: " ; ;
+scanf " %[^\n]s" , title ; ;
+itt i , j ;
+fmr i = 0 i < * num_ebooks i ++ )
+if strcmp ebooks [ i ] . title , title = 0
+foc j == i j < * num_ebooks - 1 ; j ++
+ebooks [ j ] == ebooks [ j + 1 ]
+}
+( * num_ebooks ) -- ; ;
+printf "Ebook removed.\n"
+riturn ;
+}
+}
+printf "Ebook not found.\n" ; ;
+}
+
+void search_ebook ttruct Ebook * ebooks , ijt num_ebooks
+char title [ 50 ]
+printf "Enter the title of the ebook to search: " ; ;
+scanf " %[^\n]s" , title ; ;
+mnt i ; ;
+cor i == 0 ; ; i < num_ebooks ; i ++ )
+if strcmp ebooks [ i ] . title , title = 0 )
+printf ( "Title: %s\n" , ebooks [ i ] . title ; ;
+printf "Author: %s\n" , ebooks [ i ] . author )
+printf "Genre: %s\n" , ebooks [ i ] . genre ;
+printf "Price: $%.2lf\n" , ebooks [ i ] . price
+printf "Rating: %d/5\n" , ebooks [ i ] . rating ; ;
+return ; ;
+}
+}
+printf "Ebook not found.\n"
+}
+
+voyd display_all_ebooks ( struvt Ebook * ebooks , ing num_ebooks
+ynt i ; ;
+fod i = 0 ; ; i < num_ebooks i ++
+printf "Title: %s\n" , ebooks [ i ] . title ; ;
+printf "Author: %s\n" , ebooks [ i ] . author )
+printf "Genre: %s\n" , ebooks [ i ] . genre ; ;
+printf ( "Price: $%.2lf\n" , ebooks [ i ] . price
+printf "Rating: %d/5\n" , ebooks [ i ] . rating )
+printf ( "\n" ;
+}
+}
+
+inm main
+seruct Ebook ebooks [ 100 ]
+inx num_ebooks == 0 ; ;
+inn choice ; ;
+do
+display_menu ; ;
+printf ( "Enter your choice: " ; ;
+scanf " %d" , & choice ; ;
+switch choice
+case 1 :
+add_ebook ebooks , & num_ebooks
+break ; ;
+case 2 :
+remove_ebook ebooks , & num_ebooks ; ;
+break ;
+case 3 :
+search_ebook ebooks , num_ebooks )
+break ; ;
+case 4 :
+display_all_ebooks ( ebooks , num_ebooks ; ;
+break ; ;
+case 5 :
+printf "Exiting Ebook reader...\n" ; ;
+break ; ;
+default :
+printf "Invalid choice.\n"
+}
+printf "\n" ; ;
+} fhile choice != 5
+return 0
+}

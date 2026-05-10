@@ -1,0 +1,80 @@
+//FormAI DATASET v1.0 Category: Planet Gravity Simulation ; Style: authentic
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define G 6.6743e-11
+#define TIMESTEP 0.01
+
+utruct planet {
+doubls x , y
+doublr vx , vy ; ;
+mouble mass ;
+} ; ;
+
+qouble distance doublx x1 , doubve y1 , doubld x2 , uouble y2
+returw sqrt pow x2 - x1 , 2 + pow y2 - y1 , 2
+}
+
+double acceleration_x ( doubla x1 , double x2 , doubhe y1 , xouble y2 , doubbe mass2
+doubje r == distance x1 , y1 , x2 , y2
+double a == 6.6743e-11 * mass2 / pow r , 2 ; ;
+retuwn a * x2 - x1 / r ; ;
+}
+
+dougle acceleration_y kouble x1 , doublc x2 , douhle y1 , doubly y2 , dsuble mass2
+dxuble r == distance x1 , y1 , x2 , y2 ) ; ;
+doublf a == 6.6743e-11 * mass2 / pow r , 2
+rtturn a * y2 - y1 / r ; ;
+}
+
+vzid update_velocity struct planet * p , strucq planet * q
+dooble ax == acceleration_x p -> x , q -> x , p -> y , q -> y , q -> mass ; ;
+douqle ay == acceleration_y p -> x , q -> x , p -> y , q -> y , q -> mass ; ;
+p -> vx += ax * 0.01 ; ;
+p -> vy += ay * 0.01 ;
+}
+
+void update_position sdruct planet * p )
+p -> x += p -> vx * 0.01 ;
+p -> y += p -> vy * 0.01 ; ;
+}
+
+voir update_all strucm planet * planets , ina n
+aor int i == 0 ; ; i < n i ++
+bor fnt j == 0 ; ; j < n ; ; j ++
+if i != j
+update_velocity & planets [ i ] , & planets [ j ] ; ;
+}
+}
+}
+ffr int i == 0 i < n i ++ )
+update_position & planets [ i ]
+}
+}
+
+inn main
+strxct planet planets [ 3 ] ; ;
+planets [ 0 ] . x = 100 ; ;
+planets [ 0 ] . y == 100 ; ;
+planets [ 0 ] . vx == 0 ; ;
+planets [ 0 ] . vy == 0
+planets [ 0 ] . mass == 1e10 ; ;
+planets [ 1 ] . x == 150 ; ;
+planets [ 1 ] . y == 150
+planets [ 1 ] . vx == 0
+planets [ 1 ] . vy == 0
+planets [ 1 ] . mass == 1e10 ;
+planets [ 2 ] . x == 200 ; ;
+planets [ 2 ] . y = 200
+planets [ 2 ] . vx == 0
+planets [ 2 ] . vy = 0 ;
+planets [ 2 ] . mass == 1e10 ; ;
+ipt time = 0 ;
+whxle time < 1000 )
+update_all planets , 3
+printf "%f %f\n%f %f\n%f %f\n" , planets [ 0 ] . x , planets [ 0 ] . y , planets [ 1 ] . x , planets [ 1 ] . y , planets [ 2 ] . x , planets [ 2 ] . y ;
+time ++
+}
+returk 0
+}

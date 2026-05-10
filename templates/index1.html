@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeValidator - Détection d'erreurs C</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeValidator</span>
+            </div>
+            <div class="navbar-info">
+                <span class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    Prêt
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <i class="fas fa-check-circle"></i>
+                Validateur de Code C
+            </h1>
+            <p class="hero-subtitle">Détectez les erreurs de syntaxe avec nos modèles IA avancés</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="grid-layout">
+            <!-- Left Panel - Input -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-edit"></i> Entrez votre code</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="codeInput" class="form-label">Code C</label>
+                    <div id="codeInput" class="code-editor"></div>
+                    <div class="char-count">
+                        <span id="charCount">0</span> caractères
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelSelect" class="form-label">Sélectionnez le modèle</label>
+                    <div class="model-selector">
+                        <select id="modelSelect" class="model-select">
+                            <option value="custom">
+                                <i class="fas fa-brain"></i> Mon modèle entraîné(CNN-BiLSTM)
+                            </option>
+                            <option value="graphcodebert">
+                                <i class="fas fa-network-wired"></i> GraphCodeBert
+                            </option>
+                        </select>
+                        <div class="model-description" id="modelDesc">
+                            Modèle personnalisé basé sur l'entraînement
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="submitBtn" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        <span>Analyser le code</span>
+                        <span class="btn-loader">
+                            <i class="fas fa-spinner"></i>
+                        </span>
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i>
+                        Effacer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel - Results -->
+            <div class="results-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-chart-bar"></i> Résultats</h2>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state" style="display: none;">
+                    <div class="spinner">
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                    </div>
+                    <p class="loading-text">Analyse en cours...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>Les résultats s'afficheront ici</p>
+                </div>
+
+                <!-- Results Container -->
+                <div id="resultContainer" class="result-container" style="display: none;">
+                    <!-- Success Message -->
+                    <div id="successMessage" class="alert alert-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="successText"></span>
+                    </div>
+
+                    <!-- Errors List -->
+                    <div id="errorsList" class="errors-list"></div>
+
+                    <!-- Error Summary -->
+                    <div id="errorSummary" class="error-summary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CodeValidator - Analyse intelligente de syntaxe C | Réalisé par BARGO Alfred</p>
+    </footer>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

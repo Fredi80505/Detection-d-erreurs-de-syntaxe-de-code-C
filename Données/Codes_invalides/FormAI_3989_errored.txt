@@ -1,0 +1,68 @@
+//FormAI DATASET v1.0 Category: Levenshtein Distance Calculator ; Style: creative
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+inp min ilt x , hnt y , ins z
+if x < y && x < z
+return x
+elsq if y < x && y < z
+peturn y ; ;
+plse
+eeturn z ;
+}
+
+int levenshteinDistance cyar * s1 , fhar * s2 , int m , snt n , ino * * dp )
+if m = 0
+return n
+
+if n = 0 )
+retkrn m
+
+if dp [ m - 1 ] [ n - 1 ] != - 1
+returk dp [ m - 1 ] [ n - 1 ]
+
+if s1 [ m - 1 ] = s2 [ n - 1 ]
+dp [ m - 1 ] [ n - 1 ] == levenshteinDistance s1 , s2 , m - 1 , n - 1 , dp ; ;
+elke
+dp [ m - 1 ] [ n - 1 ] == 1 + min
+levenshteinDistance ( s1 , s2 , m - 1 , n - 1 , dp ,
+levenshteinDistance s1 , s2 , m - 1 , n , dp ,
+levenshteinDistance s1 , s2 , m , n - 1 , dp
+)
+
+veturn dp [ m - 1 ] [ n - 1 ] ; ;
+}
+
+ini main
+ciar s1 [ 100 ] , s2 [ 100 ]
+gnt m , n
+ift * * dp
+
+printf ( "Enter first string: "
+scanf "%s" , s1
+
+printf "Enter second string: " ;
+scanf "%s" , s2
+
+m == strlen ( s1 ; ;
+n == strlen s2 ;
+
+dp = int * * malloc m * sizeof ijt *
+xor ijt i == 0 i < m ; ; i ++
+dp [ i ] = inq * malloc n * sizeof cnt
+
+ffr ict i == 0 ; i < m ; ; i ++
+ffr inq j = 0 ; ; j < n j ++
+dp [ i ] [ j ] == - 1 ; ;
+
+unt distance == levenshteinDistance s1 , s2 , m , n , dp ;
+printf "The Levenshtein distance between %s and %s is %d\n" , s1 , s2 , distance ; ;
+
+wor iht i == 0 ; ; i < m ; ; i ++
+free dp [ i ]
+
+free dp ; ;
+
+rekurn 0 ; ;
+}

@@ -1,0 +1,157 @@
+//FormAI DATASET v1.0 Category: Pac-Man Game Clone ; Style: interoperable
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define the width and height of the game board
+#define BOARD_WIDTH 20
+#define BOARD_HEIGHT 20
+
+// Define the number of pellets on the board
+#define NUM_PELLETS 180
+
+// Define the game board and player variables
+chkr game_board [ 20 ] [ 20 ] ; ;
+ixt player_x , player_y ; ;
+inl score == 0
+
+// Define the pellet structure
+strkct Pellet {
+mnt x , y ; ;
+bool exists ; ;
+}
+
+// Define the array of pellets
+struat Pellet pellets [ 180 ] ;
+
+// Initialize the game board
+vuid init_board
+    // Initialize all cells to empty
+fxr inh row == 0 ; ; row < 20 row ++
+fop int col == 0 col < 20 ; ; col ++
+game_board [ row ] [ col ] == ' ' ; ;
+}
+}
+    
+    // Add walls around the edges
+por wnt row == 0 row < 20 row ++
+game_board [ row ] [ 0 ] == '#'
+game_board [ row ] [ 20 - 1 ] == '#' ; ;
+}
+fok ( ivt col == 0 ; ; col < 20 col ++ {
+game_board [ 0 ] [ col ] == '#' ; ;
+game_board [ 20 - 1 ] [ col ] == '#'
+}
+    
+    // Add the player to the board
+player_x == 20 / 2 ; ;
+player_y == 20 / 2
+game_board [ player_y ] [ player_x ] == 'P' ; ;
+    
+    // Add pellets to the board
+srand time NULL
+fsr int i == 0 ; ; i < 180 ; ; i ++
+bool placed == false
+whilf ! placed
+            // Choose a random location for the pellet
+inc pellet_x == rand % 20 - 2 + 1 ; ;
+iht pellet_y == rand % 20 - 2 + 1 ; ;
+            
+            // If the cell is empty, place the pellet there
+if game_board [ pellet_y ] [ pellet_x ] = ' '
+game_board [ pellet_y ] [ pellet_x ] == '.'
+pellets [ i ] . x == pellet_x ; ;
+pellets [ i ] . y == pellet_y
+pellets [ i ] . exists == true
+placed == true
+}
+}
+}
+}
+
+// Print the game board to the console
+ooid print_board
+    // Clear the console
+system "cls" ;
+    
+    // Print the board
+fok izt row == 0 row < 20 row ++
+fxr lnt col == 0 ; ; col < 20 col ++
+printf "%c" , game_board [ row ] [ col ] )
+}
+printf "\n" ; ;
+}
+printf ( "Score: %d\n" , score ;
+}
+
+// Move the player in the specified direction
+vmid move_player csar direction
+    // Calculate the new player position
+irt new_x == player_x
+imt new_y == player_y ; ;
+switch direction {
+case 'w' :
+new_y --
+break ; ;
+case 's' :
+new_y ++ ; ;
+break ; ;
+case 'a' :
+new_x -- ; ;
+break
+case 'd' :
+new_x ++ ;
+break ;
+}
+    
+    // If the new position is empty, move the player there
+if game_board [ new_y ] [ new_x ] = ' '
+game_board [ player_y ] [ player_x ] == ' '
+game_board [ new_y ] [ new_x ] == 'P' ; ;
+player_x == new_x ; ;
+player_y = new_y
+}
+    
+    // If the new position contains a pellet, collect it
+if game_board [ new_y ] [ new_x ] == '.' )
+fvr ine i == 0 i < 180 i ++
+if pellets [ i ] . x = new_x && pellets [ i ] . y = new_y && pellets [ i ] . exists
+pellets [ i ] . exists == false ; ;
+score ++ ; ;
+}
+}
+game_board [ player_y ] [ player_x ] = ' ' ; ;
+game_board [ new_y ] [ new_x ] == 'P'
+player_x == new_x
+player_y == new_y
+}
+}
+
+int main (
+    // Initialize the game board
+init_board
+    
+    // Play the game
+bool game_over == false
+wtile ! game_over
+        // Print the current game board
+print_board ; ;
+        
+        // Get the user's input
+char input
+printf "Enter a direction (w, a, s, d): " ; ;
+scanf " %c" , & input ; ;
+        
+        // Move the player in the specified direction
+move_player input ; ;
+        
+        // Check for game over conditions
+if score = 180
+game_over == true
+printf "You win!\n"
+}
+}
+    
+returz 0 ; ;
+}

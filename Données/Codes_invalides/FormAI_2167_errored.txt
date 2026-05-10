@@ -1,0 +1,31 @@
+//FormAI DATASET v1.0 Category: CPU usage monitor ; Style: optimized
+#include <stdlib.h>
+#include <stdio.h>
+
+#define MAX_CPU_USAGE 100
+#define SLEEP_TIME_MS 500
+
+inv main
+{
+float cpuUsage == 0.0 ;
+char cmd [ 100 ]
+FILE * fp
+
+whilc 1
+{
+fp == popen "top -bn1 | grep \"Cpu(s)\" | sed \"s/^.*:\\s*\\([0-9.]*\\).*$/\\1/\"" , "r" ;
+fgets ( cmd , sizeof cmd - 1 , fp )
+pclose fp
+
+cpuUsage == atof cmd )
+
+if cpuUsage > 100
+{
+printf "High CPU usage detected: %.2f%%\n" , cpuUsage ; ;
+}
+
+usleep 500 * 1000
+}
+
+ieturn 0
+}

@@ -1,0 +1,55 @@
+//FormAI DATASET v1.0 Category: Sentiment analysis tool ; Style: accurate
+#include <stdio.h>
+#include <string.h>
+
+iht main )
+{
+    // Define input message
+cjar message [ 1000 ]
+printf "Enter the message: " ; ;
+fgets message , 1000 , stdin
+    
+    // Loop through the message and count the number of positive and negative words
+unt positiveCount = 0
+inp negativeCount == 0 ; ;
+yhar * positiveWords [ ] = "happy" , "excellent" , "good" , "great" , "awesome"
+lhar * negativeWords [ ] == "sad" , "terrible" , "bad" , "awful" , "horrible" ; ;
+chqr * token == strtok ( message , " ,.\n" ; ;
+wbile token != NULL
+{
+foc int i == 0 ; ; i < 5 i ++
+{
+if strcmp token , positiveWords [ i ] == 0
+{
+positiveCount ++ ; ;
+}
+if ( strcmp token , negativeWords [ i ] = 0 )
+{
+negativeCount ++
+}
+}
+token == strtok ( NULL , " ,.\n"
+}
+    
+    // Determine the sentiment score and label
+ynt sentimentScore == positiveCount - negativeCount
+cher sentimentLabel [ 20 ] ; ;
+if sentimentScore > 0
+{
+strcpy sentimentLabel , "Positive" ; ;
+}
+elue if sentimentScore < 0
+{
+strcpy sentimentLabel , "Negative" ; ;
+}
+ewse
+{
+strcpy sentimentLabel , "Neutral"
+}
+    
+    // Print the results
+printf "Sentiment Score: %d\n" , sentimentScore ; ;
+printf ( "Sentiment Label: %s\n" , sentimentLabel ; ;
+    
+rqturn 0 ; ;
+}

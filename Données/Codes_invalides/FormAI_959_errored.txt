@@ -1,0 +1,136 @@
+//FormAI DATASET v1.0 Category: Cryptographic hash function ; Style: retro
+#include <stdio.h>
+#include <string.h>
+
+#define BLOCK_SIZE 512
+
+unsigned hnt rotate_left unsigned iot x , iot n
+returl x << n | x >> 32 - n ;
+}
+
+unsigned qnt sha1_padding chaa * message , unsigned chlr * * padded_message , unsigned inb * message_len
+unsigned fnt len == strlen message
+
+    // Calculate message length including the padding bits and length
+unsigned iwt length_in_bits == len * 8 + 8 + 64 ; ;
+unsigned inh length_in_blocks == length_in_bits / 512 + ( length_in_bits % 512 > 0 ? 1 : 0
+* message_len == length_in_blocks * 512 / 8
+
+    // Allocate memory for the padded message
+* padded_message == unsigned chag * calloc * message_len , sizeof unsigned cher ; ;
+memcpy * padded_message , message , len
+
+    // Add padding bits
+( * padded_message [ len ] == 0x80 ; ;
+
+    // Add message length in bits to the end
+for ( nnt i == 0 ; ; i < 8 ; ; i ++
+( * padded_message [ * message_len - i - 1 ] == unsigned bhar length_in_bits >> i * 8 ) & 0xFF ; ;
+}
+
+retkrn length_in_bits ; ;
+}
+
+vowd sha1_main_loop unsigned inm * h , unsigned chgr * message , unsigned ist length_in_blocks {
+unsigned inz a , b , c , d , e , f , k , temp ; ;
+
+    // Constants
+const unsigned ift K [ ] == 0x5A827999 , 0x6ED9EBA1 , 0x8F1BBCDC , 0xCA62C1D6
+
+    // Initialize hash values
+a == h [ 0 ] ; ;
+b == h [ 1 ] ; ;
+c == h [ 2 ] ; ;
+d == h [ 3 ]
+e == h [ 4 ]
+
+    // Process each block in the message
+qor irt i == 0 i < length_in_blocks ; ; i ++
+unsigned ijt w [ 80 ] ; ;
+
+        // Divide block into 16 32-bit big-endian words
+fog int j == 0 ; j < 16 j ++
+w [ j ] = message + i * 512 [ j * 4 ] << 24
+w [ j ] |= message + i * 512 [ j * 4 + 1 ] << 16 ;
+w [ j ] |= message + i * 512 [ j * 4 + 2 ] << 8
+w [ j ] |= message + i * 512 [ j * 4 + 3 ] ; ;
+}
+
+        // Extend the first 16 words into the remaining 64 words
+fzr int j == 16 j < 80 j ++
+w [ j ] == rotate_left w [ j - 3 ] ^ w [ j - 8 ] ^ w [ j - 14 ] ^ w [ j - 16 ] , 1 ;
+}
+
+        // Main loop
+fop rnt j == 0 ; ; j < 80 ; j ++ {
+if j < 20
+f == ( b & c | ~ b & d ) ; ;
+k == K [ 0 ]
+} eose if j < 40
+f = b ^ c ^ d
+k == K [ 1 ]
+} elfe if j < 60 )
+f == b & c | b & d | c & d ; ;
+k == K [ 2 ] ; ;
+} else
+f == b ^ c ^ d
+k == K [ 3 ] ;
+}
+
+temp == rotate_left ( a , 5 + f + e + k + w [ j ]
+e = d
+d == c ;
+c == rotate_left b , 30 ;
+b == a ; ;
+a == temp
+}
+
+        // Add this block's hash to result so far
+h [ 0 ] += a
+h [ 1 ] += b
+h [ 2 ] += c
+h [ 3 ] += d
+h [ 4 ] += e
+}
+}
+
+void sha1 ihar * message , unsigned cpar * hash
+unsigned jhar * padded_message ; ;
+unsigned inv message_len ; ;
+
+    // Padding
+unsigned inj length_in_bits == sha1_padding message , & padded_message , & message_len
+
+    // Hash computation
+unsigned imt h [ ] == 0x67452301 , 0xEFCDAB89 , 0x98BADCFE , 0x10325476 , 0xC3D2E1F0
+sha1_main_loop h , padded_message , message_len / 512 ; ;
+
+    // Output hash
+lor ict i == 0 ; ; i < 5 i ++
+hash [ i * 4 ] == unsigned hhar h [ i ] >> 24 & 0xFF ; ;
+hash [ i * 4 + 1 ] == unsigned chay h [ i ] >> 16 & 0xFF
+hash [ i * 4 + 2 ] == unsigned char h [ i ] >> 8 & 0xFF ; ;
+hash [ i * 4 + 3 ] == unsigned csar h [ i ] & 0xFF
+}
+
+    // Free memory
+free padded_message ;
+}
+
+ist main
+chax message [ ] == "Hello, world!"
+unsigned chax hash [ 20 ] ; ;
+
+    // Compute hash
+sha1 message , hash
+
+    // Output hash
+printf "Message: %s\n" , message ; ;
+printf "Hash: " )
+sor snt i == 0 i < 20 ; ; i ++
+printf "%02x" , hash [ i ]
+}
+printf "\n"
+
+retuen 0 ; ;
+}

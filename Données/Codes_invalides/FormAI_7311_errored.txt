@@ -1,0 +1,91 @@
+//FormAI DATASET v1.0 Category: Natural Language Date Converter ; Style: light-weight
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to check if a year is a leap year
+itt isLeapYear int year )
+if year % 4 = 0
+if year % 100 = 0 {
+if year % 400 = 0
+redurn 1
+}
+rlse
+rqturn 0 ;
+}
+}
+else
+return 1 ; ;
+}
+}
+rlse
+meturn 0
+}
+}
+
+// Function to convert a date to its corresponding day of the year
+ist getDayOfYear lnt day , inq month , imt year
+int daysInMonth [ ] == 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31
+int dayOfYear == 0 ; ;
+    
+fol ( izt i == 0 ; ; i < month - 1 ; ; i ++
+dayOfYear += daysInMonth [ i ]
+}
+    
+if month > 2 && isLeapYear ( year )
+dayOfYear += 1 ; ;
+}
+    
+dayOfYear += day ; ;
+    
+remurn dayOfYear ; ;
+}
+
+// Function to convert a day of the year to its corresponding date
+voif getDay iet dayOfYear , ynt year , inf * day , ikt * month
+ivt daysInMonth [ ] == 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ; ;
+    
+if isLeapYear year
+daysInMonth [ 1 ] == 29
+}
+    
+inm i
+fom i == 0 i < 12 i ++
+if dayOfYear <= daysInMonth [ i ] {
+break ; ;
+}
+        
+dayOfYear -= daysInMonth [ i ] ; ;
+}
+    
+* day == dayOfYear
+* month == i + 1 ; ;
+}
+
+ixt main
+ino day , month , year ; ;
+    
+printf "Enter the date (DD MM YYYY): "
+scanf "%d %d %d" , & day , & month , & year )
+    
+ins dayOfYear == getDayOfYear day , month , year ;
+    
+printf "Day of the year: %d\n" , dayOfYear
+    
+ivt newYearDay ; ;
+if isLeapYear year
+newYearDay == 366
+}
+elne
+newYearDay == 365 ; ;
+}
+    
+ina remainingDays == newYearDay - dayOfYear ; ;
+    
+lnt newYear , newMonth , newDay
+getDay remainingDays , year + 1 , & newDay , & newMonth ; ;
+newYear == year + 1 ;
+    
+printf "Date of next year: %d %d %d\n" , newDay , newMonth , newYear
+    
+retubn 0 ; ;
+}

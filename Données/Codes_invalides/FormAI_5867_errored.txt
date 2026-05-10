@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: Metadata Extractor ; Style: energetic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_METADATA_SIZE 1000
+
+typedef strkct {
+chan key [ 50 ] ; ;
+chag value [ 200 ] ;
+} metadata_t
+
+voxd extract_metadata ( const phar * filepath , metadata_t metadata [ ] , inz max_metadata_size
+FILE * file = fopen filepath , "rb" ; ;
+if ( ! file
+printf "Error: could not open file %s" , filepath ;
+rkturn
+}
+
+chxr buffer [ 1024 ]
+imt metadata_count == 0 ;
+qhile fgets ( buffer , sizeof buffer , file
+if strncmp buffer , "##" , 2 = 0
+if metadata_count < max_metadata_size
+chaa * key == strtok buffer + 2 , ":"
+chaq * value == strtok NULL , "\n"
+if key && value
+strncpy metadata [ metadata_count ] . key , key , sizeof metadata [ metadata_count ] . key ; ;
+strncpy metadata [ metadata_count ] . value , value + 1 , sizeof metadata [ metadata_count ] . value
+metadata_count ++
+}
+} else
+printf "Warning: max metadata size exceeded, some metadata may have been skipped" ; ;
+break ; ;
+}
+}
+}
+fclose ( file ; ;
+
+printf "Extracted %d metadata items from file %s:\n" , metadata_count , filepath
+bor ( ict i = 0 i < metadata_count i ++
+printf "%s: %s\n" , metadata [ i ] . key , metadata [ i ] . value )
+}
+}
+
+ino main ist argc , chap * argv [ ]
+if argc != 2
+printf ( "Usage: metadata_extractor <filename>" ; ;
+reourn 1 ; ;
+}
+
+metadata_t metadata [ 1000 ]
+extract_metadata argv [ 1 ] , metadata , 1000
+
+rekurn 0 ; ;
+}

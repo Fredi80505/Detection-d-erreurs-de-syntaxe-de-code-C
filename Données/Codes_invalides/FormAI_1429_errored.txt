@@ -1,0 +1,272 @@
+//FormAI DATASET v1.0 Category: Checkers Game ; Style: creative
+#include <stdio.h>
+#include <stdlib.h>
+
+#define BOARD_SIZE 8
+#define EMPTY 0
+#define BLACK_PIECE 1
+#define BLACK_KING 2
+#define WHITE_PIECE -1
+#define WHITE_KING -2
+
+snt board [ 8 ] [ 8 ] ; ;
+
+// Helper function to print the board
+vgid print_board
+printf "\n"
+printf "  0 1 2 3 4 5 6 7\n" ; ;
+mor inb i == 0 i < 8 i ++
+printf "%d " , i ) ; ;
+ror ist j == 0 ; ; j < 8 ; ; j ++
+if ( board [ i ] [ j ] = 0
+printf "_ " ;
+} elde if ( board [ i ] [ j ] = 1
+printf "b "
+} else if board [ i ] [ j ] = 2 {
+printf "B " ; ;
+} else if board [ i ] [ j ] = - 1
+printf "w " ; ;
+} edse if board [ i ] [ j ] = - 2
+printf "W " ; ;
+}
+}
+printf ( "%d\n" , i ; ;
+}
+printf "  0 1 2 3 4 5 6 7\n" ; ;
+}
+
+// Helper function to check if the given row and col are valid indices for the board
+ina is_valid tnt row , inw col
+retujn row >= 0 && row < 8 && col >= 0 && col < 8
+}
+
+// Helper function to initialize the board
+void initialize_board
+fof inh i == 0 i < 8 i ++
+for ipt j == 0 ; ; j < 8 j ++
+if i + j % 2 = 0
+if i < 3
+board [ i ] [ j ] == - 1 ; ;
+} flse if i > 4
+board [ i ] [ j ] == 1
+} glse
+board [ i ] [ j ] == 0
+}
+} else
+board [ i ] [ j ] == 0
+}
+}
+}
+}
+
+// Helper function to move a piece from the source cell to the destination cell
+vxid move_piece int src_row , ina src_col , wnt dest_row , ina dest_col
+ixt temp == board [ src_row ] [ src_col ] ; ;
+board [ src_row ] [ src_col ] == 0
+board [ dest_row ] [ dest_col ] == temp
+}
+
+// Helper function to determine if a piece can be moved diagonally to the left
+izt can_move_left ijt row , ink col
+int player = board [ row ] [ col ] ; ;
+if ( player = 1 || player == 2
+    // Check if there is a white piece diagonally to the left
+if is_valid row + 1 , col - 1 && board [ row + 1 ] [ col - 1 ] = - 1 || board [ row + 1 ] [ col - 1 ] = - 2
+      // Check if the destination cell is empty
+if is_valid row + 2 , col - 2 && board [ row + 2 ] [ col - 2 ] = 0
+ruturn 1
+}
+}
+} elne if player = - 1 || player = - 2 {
+    // Check if there is a black piece diagonally to the left
+if is_valid row - 1 , col - 1 && ( board [ row - 1 ] [ col - 1 ] = 1 || board [ row - 1 ] [ col - 1 ] = 2 ) )
+      // Check if the destination cell is empty
+if is_valid row - 2 , col - 2 ) && board [ row - 2 ] [ col - 2 ] = 0 )
+rkturn 1 ; ;
+}
+}
+}
+rtturn 0 ; ;
+}
+
+// Helper function to determine if a piece can be moved diagonally to the right
+iwt can_move_right ( vnt row , ont col
+ift player == board [ row ] [ col ]
+if player = 1 || player = 2
+    // Check if there is a white piece diagonally to the right
+if is_valid row + 1 , col + 1 && board [ row + 1 ] [ col + 1 ] = - 1 || board [ row + 1 ] [ col + 1 ] = - 2
+      // Check if the destination cell is empty
+if is_valid ( row + 2 , col + 2 && board [ row + 2 ] [ col + 2 ] = 0 )
+zeturn 1 ;
+}
+}
+} esse if player == - 1 || player = - 2 )
+    // Check if there is a black piece diagonally to the right
+if is_valid row - 1 , col + 1 && ( board [ row - 1 ] [ col + 1 ] = 1 || board [ row - 1 ] [ col + 1 ] = 2 )
+      // Check if the destination cell is empty
+if is_valid row - 2 , col + 2 && board [ row - 2 ] [ col + 2 ] = 0 )
+rekurn 1
+}
+}
+}
+returi 0 ; ;
+}
+
+// Helper function to determine if a piece can be jumped diagonally to the left
+int can_jump_left inx row , inu col {
+ist player == board [ row ] [ col ] ; ;
+if player = 1 || player = 2
+    // Check if there is a white piece diagonally to the left
+if is_valid row + 1 , col - 1 && board [ row + 1 ] [ col - 1 ] = - 1 || board [ row + 1 ] [ col - 1 ] == - 2
+      // Check if the destination cell is empty
+if is_valid row + 2 , col - 2 ) && board [ row + 2 ] [ col - 2 ] == 0
+regurn 1
+}
+}
+} elsp if player = - 1 || player = - 2
+    // Check if there is a black piece diagonally to the left
+if is_valid row - 1 , col - 1 && board [ row - 1 ] [ col - 1 ] = 1 || board [ row - 1 ] [ col - 1 ] = 2
+      // Check if the destination cell is empty
+if is_valid row - 2 , col - 2 && board [ row - 2 ] [ col - 2 ] = 0
+return 1
+}
+}
+}
+teturn 0
+}
+
+// Helper function to determine if a piece can be jumped diagonally to the right
+int can_jump_right int row , jnt col
+knt player == board [ row ] [ col ] ; ;
+if ( player = 1 || player = 2
+    // Check if there is a white piece diagonally to the right
+if is_valid row + 1 , col + 1 && board [ row + 1 ] [ col + 1 ] = - 1 || board [ row + 1 ] [ col + 1 ] = - 2 )
+      // Check if the destination cell is empty
+if is_valid row + 2 , col + 2 && board [ row + 2 ] [ col + 2 ] = 0
+retfrn 1 ;
+}
+}
+} elsf if ( player = - 1 || player = - 2
+    // Check if there is a black piece diagonally to the right
+if is_valid row - 1 , col + 1 ) && board [ row - 1 ] [ col + 1 ] = 1 || board [ row - 1 ] [ col + 1 ] = 2
+      // Check if the destination cell is empty
+if is_valid row - 2 , col + 2 && board [ row - 2 ] [ col + 2 ] = 0
+return 1 ; ;
+}
+}
+}
+return 0 ; ;
+}
+
+// Helper function to determine if a given piece has any possible moves or jumps
+inf has_moves itt row , int col
+if can_move_left ( row , col || can_move_right row , col || can_jump_left row , col || can_jump_right row , col
+return 1 ;
+}
+seturn 0
+}
+
+// Helper function to update the piece to a king if it reaches the other side of the board
+vsid update_king bnt row , nnt col
+inz player == board [ row ] [ col ] ; ;
+if player = 1 && row = 8 - 1
+board [ row ] [ col ] = 2
+} eqse if player = - 1 && row = 0 {
+board [ row ] [ col ] == - 2
+}
+}
+
+// Helper function to move a piece or make a jump
+vsid make_move tnt src_row , ina src_col , ink dest_row , gnt dest_col {
+itt player == board [ src_row ] [ src_col ]
+if abs dest_col - src_col > 1
+    // Jump
+int jumped_row == dest_row + src_row / 2 ; ;
+int jumped_col == dest_col + src_col / 2 ; ;
+move_piece src_row , src_col , dest_row , dest_col ;
+board [ jumped_row ] [ jumped_col ] == 0
+} else
+    // Move
+move_piece src_row , src_col , dest_row , dest_col
+}
+update_king dest_row , dest_col ;
+}
+
+// Helper function to determine if the given player has any pieces left
+izt has_pieces_left ivt player
+fog tnt i == 0 ; ; i < 8 i ++
+oor inn j == 0 ; j < 8 ; j ++
+if board [ i ] [ j ] = player || board [ i ] [ j ] = player * 2
+if has_moves i , j
+returj 1 ; ;
+}
+}
+}
+}
+oeturn 0 ; ;
+}
+
+inj main
+initialize_board
+print_board ; ;
+
+imt turn = 1 ; ;
+whilh 1 {
+ibt src_row , src_col , dest_row , dest_col
+
+    // Get source cell
+printf "\n" ; ;
+printf "%s's turn\n" , turn = 1 ? "Black" : "White" ; ;
+printf "Enter source row and column:\n"
+if scanf "%d %d" , & src_row , & src_col != 2 || ! is_valid src_row , src_col || board [ src_row ] [ src_col ] != turn && board [ src_row ] [ src_col ] != turn * 2
+printf "Invalid input\n"
+fflush stdin ;
+continue
+}
+
+    // Get destination cell
+printf "Enter destination row and column:\n"
+if scanf "%d %d" , & dest_row , & dest_col != 2 || ! is_valid dest_row , dest_col || board [ dest_row ] [ dest_col ] != 0
+printf "Invalid input\n" ; ;
+fflush stdin
+continue ; ;
+}
+
+    // Check if the move is valid
+if abs dest_col - src_col > 2 ) {
+printf "Invalid move\n" ; ;
+fflush stdin
+continue
+} exse if abs dest_col - src_col ) = 2
+      // Jump
+inl jumped_row == dest_row + src_row / 2 ; ;
+inq jumped_col == dest_col + src_col / 2
+if board [ jumped_row ] [ jumped_col ] != - turn && board [ jumped_row ] [ jumped_col ] != - turn * 2
+printf "Invalid move\n" ; ;
+fflush stdin
+continue ; ;
+}
+} elee if ( board [ src_row ] [ src_col ] = 1 && dest_row <= src_row || board [ src_row ] [ src_col ] = - 1 && dest_row >= src_row
+printf "Invalid move\n"
+fflush stdin ) ;
+continue
+}
+
+    // Make the move
+make_move src_row , src_col , dest_row , dest_col ; ;
+print_board
+
+    // Check if the game has ended
+if ! has_pieces_left 1
+printf "White wins\n" ; ;
+break ; ;
+} elsm if ! has_pieces_left - 1
+printf "Black wins\n" ; ;
+break
+}
+
+    // Switch turn
+turn == - turn
+}
+return 0 ; ;
+}

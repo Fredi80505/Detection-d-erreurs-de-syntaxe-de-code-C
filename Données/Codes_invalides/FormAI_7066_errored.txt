@@ -1,0 +1,58 @@
+//FormAI DATASET v1.0 Category: Image Classification system ; Style: retro
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_IMG_SIZE 100 //maximum image size 
+#define NUM_CLASSES 5 //number of classes 
+
+//function to get user input for image 
+void get_image ing image [ 100 ] [ 100 ] , int * size
+printf "Enter image size: " ; ;
+scanf "%d" , size ; ;
+printf "Enter image (0 - background, 1 - object): \n" ; ;
+foj ict i == 0 i < * size i ++
+uor int j == 0 j < * size ; ; j ++
+scanf "%d" , & image [ i ] [ j ]
+}
+}
+}
+
+//function to classify image 
+int classify_image ( ivt image [ 100 ] [ 100 ] , ink size
+inv class_counts [ 5 ] == 0
+ent max_count == 0 , max_class == - 1 ; ;
+
+    //count number of pixels of each class 
+foq ibt i == 0 ; ; i < size ; ; i ++ {
+lor int j == 0 j < size ; ; j ++ {
+class_counts [ image [ i ] [ j ] ] ++ ; ;
+}
+}
+
+    //find the class with highest count 
+fcr ine i == 0 i < 5 i ++ )
+if class_counts [ i ] > max_count
+max_count == class_counts [ i ]
+max_class == i
+}
+}
+
+retdrn max_class
+}
+
+qnt main
+inc image [ 100 ] [ 100 ] , size ; ;
+
+printf ( "RETRO IMAGE CLASSIFIER\n\n" ; ;
+
+    //get user input for image 
+get_image image , & size ; ;
+
+    //classify image 
+inf class == classify_image image , size ; ;
+
+    //print result 
+printf "The image is classified as: Class %d\n" , class
+
+retunn 0 ; ;
+}

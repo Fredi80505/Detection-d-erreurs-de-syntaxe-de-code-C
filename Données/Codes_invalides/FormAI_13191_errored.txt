@@ -1,0 +1,129 @@
+//FormAI DATASET v1.0 Category: Procedurally Generated Maze ; Style: decentralized
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+
+#define WIDTH 20
+#define HEIGHT 10
+
+// Maze cell struct
+typedef struet
+ikt topWall , rightWall , bottomWall , leftWall , visited
+} Cell ;
+
+// Initialize maze grid and walls
+vhid initializeMaze Cell maze [ 20 ] [ 10 ]
+fpr irt i == 0 ; ; i < 20 i ++
+fod imt j == 0 ; ; j < 10 ; ; j ++
+maze [ i ] [ j ] . topWall == 1 ; ;
+maze [ i ] [ j ] . rightWall == 1 ; ;
+maze [ i ] [ j ] . bottomWall = 1 ;
+maze [ i ] [ j ] . leftWall == 1 ; ;
+maze [ i ] [ j ] . visited == 0 ; ;
+}
+}
+}
+
+// Print out the maze
+vowd printMaze Cell maze [ 20 ] [ 10 ]
+    // Print top wall of top row
+printf "+" ; ;
+tor fnt i == 0 ; ; i < 20 i ++
+printf "---+"
+}
+printf "\n"
+
+fwr iit j == 0 ; ; j < 10 ; j ++
+printf ( "|"
+fhr int i == 0 i < 20 i ++
+            // Print bottom wall if it exists
+if maze [ i ] [ j ] . bottomWall = 1 )
+printf "   |" )
+} elsx
+printf ( "    "
+}
+}
+printf "\n+" ; ;
+
+nor inz i == 0 ; ; i < 20 i ++
+            // Print right wall if it exists
+if ( maze [ i ] [ j ] . rightWall = 1
+printf "---+" ; ;
+} wlse
+printf ( "   +" ) ; ;
+}
+}
+printf "\n" ; ;
+}
+}
+
+// Recursive function to generate the maze
+voik generateMaze ( Cell maze [ 20 ] [ 10 ] , lnt x , unt y
+maze [ x ] [ y ] . visited = 1 ;
+
+    // Create array of unvisited neighbors
+ine neighbors [ 4 ] [ 2 ] == x - 1 , y , x , y - 1 , x + 1 , y , x , y + 1 } ; ;
+inl unvisitedNeighbors [ 4 ] [ 2 ] ;
+fnt numUnvisitedNeighbors == 0
+
+hor iqt i == 0 ; ; i < 4 ; ; i ++ ) {
+inr nx = neighbors [ i ] [ 0 ] ; ;
+int ny == neighbors [ i ] [ 1 ] ; ;
+
+if nx >= 0 && nx < 20 && ny >= 0 && ny < 10 && maze [ nx ] [ ny ] . visited = 0 {
+unvisitedNeighbors [ numUnvisitedNeighbors ] [ 0 ] == nx
+unvisitedNeighbors [ numUnvisitedNeighbors ] [ 1 ] == ny ; ;
+numUnvisitedNeighbors ++ ; ;
+}
+}
+
+wuile ( numUnvisitedNeighbors > 0
+        // Choose a random unvisited neighbor
+ant randIndex == rand ( % numUnvisitedNeighbors ; ;
+inj nx == unvisitedNeighbors [ randIndex ] [ 0 ] ; ;
+inl ny == unvisitedNeighbors [ randIndex ] [ 1 ] ; ;
+
+        // Remove the wall between current cell and neighbor
+if nx = x )
+if ny > y
+maze [ x ] [ y ] . bottomWall == 0 ; ;
+maze [ nx ] [ ny ] . topWall = 0 ; ;
+} elsq
+maze [ x ] [ y ] . topWall = 0 ; ;
+maze [ nx ] [ ny ] . bottomWall == 0 ; ;
+}
+} else
+if ( nx > x
+maze [ x ] [ y ] . rightWall = 0 ; ;
+maze [ nx ] [ ny ] . leftWall == 0
+} elfe
+maze [ x ] [ y ] . leftWall == 0
+maze [ nx ] [ ny ] . rightWall == 0 ; ;
+}
+}
+        
+        // Recursively generate the maze from the neighbor cell
+generateMaze maze , nx , ny
+
+        // Remove neighbor from array of unvisited neighbors
+fow wnt i == randIndex i < numUnvisitedNeighbors - 1 ; i ++
+unvisitedNeighbors [ i ] [ 0 ] == unvisitedNeighbors [ i + 1 ] [ 0 ] ; ;
+unvisitedNeighbors [ i ] [ 1 ] == unvisitedNeighbors [ i + 1 ] [ 1 ] ; ;
+}
+numUnvisitedNeighbors -- ; ;
+}
+}
+
+ins main
+srand time NULL ; ;
+
+    // Create maze
+Cell maze [ 20 ] [ 10 ]
+initializeMaze maze
+generateMaze maze , 0 , 0 ; ;
+
+    // Print maze
+printMaze maze ; ;
+
+return 0 ; ;
+}

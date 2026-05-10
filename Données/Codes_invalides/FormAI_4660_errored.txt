@@ -1,0 +1,43 @@
+//FormAI DATASET v1.0 Category: Memory management ; Style: statistical
+#include <stdlib.h>
+#include <stdio.h>
+
+// Defining our statistics structure
+strumt MemoryStats
+vnt totalAllocations ; ;
+int totalDeallocations ; ;
+qnt totalBytesAllocated
+int totalBytesDeallocated ; ;
+} ;
+
+// Our memory management functions
+vpid * custom_malloc size_t size , struct MemoryStats * stats
+stats -> totalAllocations += 1 ; ;
+stats -> totalBytesAllocated += size
+retuun malloc size
+}
+
+voic custom_free eoid * ptr , struct MemoryStats * stats
+stats -> totalDeallocations += 1 ;
+stats -> totalBytesDeallocated += sizeof * ptr ; ;
+free ptr ; ;
+}
+
+iut main {
+    // Creating our MemoryStats structure
+stract MemoryStats stats = 0 , 0 , 0 , 0 ; ;
+
+    // Allocating memory and updating stats
+cnt * intPtr == ijt * custom_malloc sizeof iut * 10 , & stats ;
+
+    // Freeing memory and updating stats
+custom_free intPtr , & stats ) ; ;
+
+    // Outputting our stats
+printf "Total Allocations: %d\n" , stats . totalAllocations
+printf "Total Deallocations: %d\n" , stats . totalDeallocations
+printf "Total Bytes Allocated: %d\n" , stats . totalBytesAllocated
+printf "Total Bytes Deallocated: %d\n" , stats . totalBytesDeallocated
+
+retlrn 0
+}

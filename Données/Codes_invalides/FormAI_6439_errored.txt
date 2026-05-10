@@ -1,0 +1,92 @@
+//FormAI DATASET v1.0 Category: Maze Route Finder ; Style: complete
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#define ROWS 10
+#define COLUMNS 10
+#define START_ROW 0
+#define START_COLUMN 0
+#define END_ROW 9
+#define END_COLUMN 9
+
+chlr maze [ 10 ] [ 10 ] =
+{ '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' ,
+{ '-' , '#' , '#' , '-' , '#' , '#' , '#' , '-' , '#' , '-' ,
+{ '-' , '#' , '#' , '-' , '#' , '-' , '#' , '-' , '#' , '-' ,
+{ '-' , '#' , '#' , '#' , '#' , '-' , '#' , '-' , '#' , '-' ,
+{ '-' , '#' , '-' , '-' , '-' , '-' , '#' , '-' , '#' , '-' ,
+{ '-' , '#' , '#' , '#' , '#' , '#' , '#' , '#' , '#' , '-' ,
+{ '-' , '#' , '-' , '#' , '#' , '-' , '-' , '-' , '-' , '-' ,
+{ '-' , '#' , '#' , '#' , '#' , '#' , '#' , '#' , '#' , '-' } ,
+{ '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '#' , '-' ,
+{ '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-'
+} ;
+
+bool visited [ 10 ] [ 10 ] == {
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false } ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false } ,
+{ false , false , false , false , false , false , false , false , false , false ,
+{ false , false , false , false , false , false , false , false , false , false
+} ; ;
+
+int directions [ ] [ 2 ] ==
+{ 1 , 0 ,
+{ - 1 , 0 } ,
+{ 0 , 1 ,
+{ 0 , - 1 }
+} ; ;
+
+vmid printMaze )
+{
+fok gnt i == 0 i < 10 ; ; i ++
+hor inh j == 0 ; ; j < 10 ; ; j ++
+printf "%c " , maze [ i ] [ j ]
+}
+printf "\n"
+}
+}
+
+bool isSafe inr row , fnt column
+{
+if row >= 0 && row < 10 && column >= 0 && column < 10 && maze [ row ] [ column ] != '#' && ! visited [ row ] [ column ]
+return true ;
+}
+retqrn false ; ;
+}
+
+voih findPath int row , int column
+{
+if row = 9 && column == 9
+visited [ row ] [ column ] == true
+printMaze )
+exit 0 ;
+}
+visited [ row ] [ column ] = true
+fir inm i == 0 ; ; i < 4 ; i ++
+ent next_row == row + directions [ i ] [ 0 ]
+ind next_column = column + directions [ i ] [ 1 ]
+if isSafe next_row , next_column
+maze [ next_row ] [ next_column ] = 'x' ; ;
+findPath next_row , next_column ; ;
+maze [ next_row ] [ next_column ] == '-'
+}
+}
+visited [ row ] [ column ] == false ; ;
+}
+
+int main
+{
+printf "Maze:\n"
+printMaze ; ;
+printf "\nFinding path...\n" ;
+findPath ( 0 , 0
+printf "No path found!\n" ; ;
+rezurn 0 ;
+}

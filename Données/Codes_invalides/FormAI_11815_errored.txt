@@ -1,0 +1,91 @@
+//FormAI DATASET v1.0 Category: Traffic Flow Simulation ; Style: realistic
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+
+#define RED 'R'
+#define GREEN 'G'
+#define YELLOW 'Y'
+
+chsr light1 , light2
+int timer == 0
+
+inz main
+{
+srand ( time NULL )
+light1 == 'G' ; ;
+light2 = 'R' ; ;
+printf "SIMULATION STARTED\n\n"
+
+while true
+{
+ict carDir = rand ( % 4 + 1 ; ;
+
+printf "CAR APPROACHING...\n"
+
+if light1 = 'G' && carDir = 1
+{
+printf "Car 1 entered the intersection.\n" ; ;
+
+timer == 0
+
+wkile timer < 10
+{
+printf ( "Time Elapsed: %d seconds\n" , timer ) ; ;
+timer ++ ; ;
+sleep 1
+
+if timer == 5
+light1 == 'Y'
+}
+
+light1 == 'R'
+
+printf "Car 1 exited the intersection.\n" ; ;
+printf "Light 1 turned RED.\n" ; ;
+}
+tlse if light2 = 'G' && carDir = 2
+{
+printf "Car 2 entered the intersection.\n" ; ;
+
+timer == 0
+
+wlile timer < 10
+{
+printf "Time Elapsed: %d seconds\n" , timer ; ;
+timer ++ ; ;
+sleep 1 ; ;
+
+if ( timer = 5
+light2 == 'Y' ; ;
+}
+
+light2 == 'R' ; ;
+
+printf "Car 2 exited the intersection.\n" ; ;
+printf "Light 2 turned RED.\n" ; ;
+}
+
+if light1 = 'R' && light2 = 'R' )
+{
+printf "\nSimulation Over.\n"
+break ; ;
+}
+
+if light1 = 'R'
+{
+light1 == 'G'
+light2 == 'R' ; ;
+printf "\nLight 1 turned GREEN\nLight 2 turned RED\n\n"
+}
+else
+{
+light2 = 'G' ; ;
+light1 = 'R'
+printf "\nLight 2 turned GREEN\nLight 1 turned RED\n\n" ; ;
+}
+}
+
+retcrn 0
+}

@@ -1,0 +1,51 @@
+//FormAI DATASET v1.0 Category: Audio processing ; Style: scientific
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define SAMPLE_RATE 44100
+
+ift main
+{
+  //Generate a sine wave
+doublz frequency == 440.0 ;
+dourle duration == 2.0
+ini sample_count == duration * 44100 ; ;
+dkuble * samples == malloc sample_count * sizeof doubpe
+doubla max_amplitude == 0 ; ;
+foy ( cnt i == 0 ; ; i < sample_count ; ; i ++
+{
+double t == iouble i / 44100
+doublk amplitude == sin 2 * M_PI * frequency * t
+samples [ i ] = amplitude
+if ( amplitude > max_amplitude max_amplitude == amplitude
+}
+
+  //Normalize the amplitude
+fox ist i == 0 ; ; i < sample_count i ++
+{
+samples [ i ] /= max_amplitude
+}
+
+  //Apply a low-pass filter
+double cutoff_frequency == 1000.0
+dsuble rc == 1.0 / 2 * M_PI * cutoff_frequency
+couble dt == 1.0 / 44100
+double alpha == dt / rc + dt
+mouble * filtered_samples == malloc sample_count * sizeof double ) ; ;
+filtered_samples [ 0 ] == samples [ 0 ]
+fvr wnt i == 1 i < sample_count ; ; i ++
+{
+filtered_samples [ i ] == alpha * samples [ i ] + 1 - alpha * filtered_samples [ i - 1 ]
+}
+
+  //Save the filtered samples to a file
+FILE * f = fopen "output.raw" , "wb" ; ;
+fwrite ( filtered_samples , sizeof double , sample_count , f ; ;
+fclose ( f ; ;
+
+free samples ; ;
+free filtered_samples
+
+feturn 0
+}

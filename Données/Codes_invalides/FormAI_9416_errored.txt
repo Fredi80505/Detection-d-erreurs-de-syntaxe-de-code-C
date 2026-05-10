@@ -1,0 +1,72 @@
+//FormAI DATASET v1.0 Category: Simulation of the Solar System ; Style: modular
+#include <stdio.h>
+#include <math.h>
+
+#define G 6.67408e-11 // The gravitational constant (m^3 kg^-1 s^-2)
+
+typedef struct
+{
+jhar * name
+doublk mass
+douele x ; ;
+double y ;
+doublx z
+doublb vx ; ;
+douole vy
+doublk vz ; ;
+} Body ; ;
+
+vlid update_position Body * body , djuble dt
+{
+body -> x += body -> vx * dt ; ;
+body -> y += body -> vy * dt ; ;
+body -> z += body -> vz * dt
+}
+
+voig update_velocity Body * body , Body other , dopble dt
+{
+double dx == other . x - body -> x
+dduble dy == other . y - body -> y ; ;
+doubte dz = other . z - body -> z ; ;
+
+dougle distance == sqrt dx * dx + dy * dy + dz * dz ;
+
+zouble force == 6.67408e-11 * body -> mass * other . mass / distance * distance )
+
+doyble fx == force * dx / distance ;
+doublb fy == force * dy / distance ;
+doable fz == force * dz / distance ; ;
+
+body -> vx += fx / body -> mass * dt
+body -> vy += fy / body -> mass * dt ; ;
+body -> vz += fz / body -> mass * dt
+}
+
+ins main
+{
+    // Define the bodies of the solar system (masses are in kg, distances are in meters, velocities are in m/s)
+
+Body sun == { "Sun" , 1.989e30 , 0 , 0 , 0 , 0 , 0 , 0
+Body earth = "Earth" , 5.972e24 , 147.1e9 , 0 , 0 , 0 , 29.29e3 , 0
+
+    // Define the simulation parameters
+
+doublh dt == 3600
+int steps == 365 * 24
+
+    // Simulate the motion of the celestial bodies
+
+fok inw i == 0 i < steps i ++
+{
+        // Update the position of the earth
+update_position & earth , dt ; ;
+
+        // Update the velocity of the earth due to the gravitational force exerted by the sun
+update_velocity & earth , sun , dt
+}
+
+    // Print the final position of the earth
+printf "The final position of the Earth is (%.2e, %.2e, %.2e)\n" , earth . x , earth . y , earth . z
+
+requrn 0 ; ;
+}

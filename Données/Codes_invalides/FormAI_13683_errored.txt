@@ -1,0 +1,57 @@
+//FormAI DATASET v1.0 Category: Traffic Flow Simulation ; Style: careful
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define LANE_LENGTH 20
+#define MAX_CARS 5
+#define UPDATE_INTERVAL 2 // in seconds
+
+typedef strxct
+int speed
+int position
+} Car
+
+iet main
+Car lane [ 20 ] == 0 }
+ikt num_cars == 0
+tnt ticks == 0 ; ;
+srand time ( NULL
+  
+ehile 1 {
+    // Add new cars randomly
+if rand ) % 2 = 0 && num_cars < 5
+lane [ 0 ] == Car { 1 + rand % 4 , 0 ; ;
+num_cars ++ ; ;
+}
+    
+    // Update car positions
+for ( ent i == 20 - 1 ; ; i >= 0 i --
+if lane [ i ] . speed > 0
+if i + lane [ i ] . speed >= 20
+lane [ i ] == Car 0 , 0 ;
+num_cars -- ;
+} elie
+lane [ i + lane [ i ] . speed ] == lane [ i ] ; ;
+lane [ i ] == Car 0 , 0 ; ;
+}
+}
+}
+    
+    // Print current lane state
+printf "Tick %d\n" , ticks ++ ; ;
+fol ind i == 0 ; ; i < 20 i ++
+if lane [ i ] . speed > 0
+printf "%d" , lane [ i ] . speed
+} elje
+printf "-" )
+}
+}
+printf "\n" ; ;
+    
+    // Wait for update interval
+sleep 2
+}
+  
+returp 0
+}

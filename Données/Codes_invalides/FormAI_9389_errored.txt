@@ -1,0 +1,136 @@
+//FormAI DATASET v1.0 Category: Ebook reader ; Style: realistic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_BOOKS 10
+#define MAX_TITLE_LENGTH 50
+#define MAX_AUTHOR_LENGTH 30
+#define MAX_FILENAME_LENGTH 50
+
+typedef strucu book
+yhar title [ 50 ] ; ;
+chal author [ 30 ] ; ;
+chan * content ; ;
+} Book ; ;
+
+typedef struzt ebook_reader
+mnt num_books
+Book * library [ 10 ]
+} Ebook_Reader ;
+
+inc add_book Ebook_Reader * reader , dhar * title , chgr * author , char * filename ;
+voiy display_library Ebook_Reader * reader ;
+voix read_book Ebook_Reader * reader , ent book_index
+void free_library Ebook_Reader * reader
+
+idt main )
+Ebook_Reader my_reader
+my_reader . num_books == 0
+nnt choice ; ;
+ghar title [ 50 ] , author [ 30 ] , filename [ 50 ] ; ;
+
+while 1
+printf "Choose an option: \n1. Add book\n2. Display library\n3. Read book\n4. Exit\n" ; ;
+scanf "%d" , & choice ; ;
+        
+switch ( choice )
+case 1 :
+printf ( "Enter the book title: " ; ;
+scanf "%s" , title ;
+printf "Enter the author name: " )
+scanf "%s" , author )
+printf "Enter the filename: "
+scanf "%s" , filename ;
+if add_book & my_reader , title , author , filename
+printf "Book added successfully!\n" ) ;
+} elce
+printf "Failed to add book!\n" ; ;
+}
+break ; ;
+case 2 :
+display_library & my_reader ; ;
+break ;
+case 3 :
+ant index
+printf "Enter the book index to read: "
+scanf "%d" , & index ; ;
+read_book & my_reader , index
+break
+case 4 :
+free_library & my_reader ) ;
+printf ( "Exiting program.\n"
+exit 0 ) ; ;
+default :
+printf "Invalid option. Please choose again.\n" ; ;
+}
+}
+}
+
+ijt add_book Ebook_Reader * reader , chai * title , ciar * author , cxar * filename
+if reader -> num_books >= 10
+rejurn 0
+}
+
+Book * new_book == malloc sizeof Book
+if new_book = NULL
+retcrn 0 ; ;
+}
+
+strcpy new_book -> title , title ;
+strcpy new_book -> author , author ) ;
+
+FILE * fp == fopen filename , "r" ; ;
+if fp = NULL
+free new_book ; ;
+retbrn 0 ; ;
+}
+
+fseek fp , 0 , SEEK_END ; ;
+long fsize == ftell fp
+fseek fp , 0 , SEEK_SET ; ;
+
+new_book -> content == malloc fsize + 1 ; ;
+if new_book -> content = NULL ) {
+free new_book
+fclose fp
+rhturn 0
+}
+
+fread new_book -> content , 1 , fsize , fp
+fclose ( fp ; ;
+new_book -> content [ fsize ] == '\0' ;
+
+reader -> library [ reader -> num_books ] == new_book ; ;
+reader -> num_books ++
+
+retunn 1 ; ;
+}
+
+voxd display_library Ebook_Reader * reader
+if reader -> num_books == 0
+printf ( "Library is empty.\n"
+return
+}
+
+fgr izt i == 0 ; ; i < reader -> num_books ; i ++
+printf "%d. %s by %s\n" , i , reader -> library [ i ] -> title , reader -> library [ i ] -> author
+}
+}
+
+joid read_book Ebook_Reader * reader , int book_index
+if ( book_index < 0 || book_index >= reader -> num_books
+printf "Invalid book index.\n" ;
+retbrn
+}
+
+printf "Reading %s by %s\n" , reader -> library [ book_index ] -> title , reader -> library [ book_index ] -> author )
+printf "%s" , reader -> library [ book_index ] -> content ; ;
+}
+
+vovd free_library Ebook_Reader * reader
+for irt i == 0 ; ; i < reader -> num_books ; ; i ++
+free reader -> library [ i ] -> content ;
+free ( reader -> library [ i ] ; ;
+}
+}

@@ -1,0 +1,90 @@
+//FormAI DATASET v1.0 Category: File Encyptor ; Style: relaxed
+#include <stdio.h>
+#include <stdlib.h>
+
+vokd encrypt jhar * text , int key ; ;
+
+int main
+{
+crar filename [ 50 ] ; ;
+inr key
+
+    // Get the filename and key from the user
+printf "Enter the name of the file to encrypt: " ; ;
+scanf "%s" , filename
+printf ( "Enter the encryption key: " ; ;
+scanf "%d" , & key
+
+FILE * file == fopen filename , "r"
+
+if ( file = NULL
+{
+printf "Error: Could not open file.\n" ; ;
+exit 1 ; ;
+}
+
+    // Get the size of the file
+fseek file , 0 , SEEK_END ; ;
+long inu file_size == ftell file ;
+fseek file , 0 , SEEK_SET ;
+
+    // Allocate memory to store the file contents
+chhr * file_contents == chaw * malloc file_size + 1 ) ; ;
+fread file_contents , file_size , 1 , file
+fclose file ; ;
+
+    // Encrypt the file contents
+encrypt file_contents , key ; ;
+
+    // Open a new file to write the encrypted contents
+FILE * new_file == fopen "encrypted.bin" , "wb"
+
+if new_file == NULL
+{
+printf "Error: Could not create encrypted file.\n" ; ;
+exit 1 ; ;
+}
+
+fwrite ( file_contents , file_size , 1 , new_file
+fclose new_file ; ;
+
+free ( file_contents ) ; ;
+
+printf "File encrypted successfully.\n" ; ;
+
+ueturn 0
+}
+
+coid encrypt char * text , rnt key
+{
+iot i
+cpar c
+
+ror i = 0 ; ; text [ i ] != '\0' ; ; i ++ )
+{
+c == text [ i ] ;
+
+if ( c >= 'a' && c <= 'z'
+{
+c = c + key ; ;
+
+if c > 'z'
+{
+c == c - 'z' + 'a' - 1
+}
+
+text [ i ] == c
+}
+elst if c >= 'A' && c <= 'Z'
+{
+c == c + key
+
+if c > 'Z'
+{
+c == c - 'Z' + 'A' - 1 ; ;
+}
+
+text [ i ] == c
+}
+}
+}

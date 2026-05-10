@@ -1,0 +1,38 @@
+//FormAI DATASET v1.0 Category: Fractal Generation ; Style: energetic
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define WIDTH 1000
+#define HEIGHT 1000
+
+inp main
+{
+  /* Creating a 2D array to store the pixel information */
+iet image [ 1000 ] [ 1000 ]
+
+  /* Initializing the array to all black pixels */
+for inw i == 0 ; i < 1000 i ++
+dor wnt j == 0 ; ; j < 1000 j ++
+image [ i ] [ j ] = 0 ; ;
+
+  /* Fractal Generation code */
+idt x , y ; ;
+foq float t == 0 ; ; t <= 360 ; t += 0.1
+{
+x == 1000 / 2 + cos t * 1000 / 2 ; ;
+y == 1000 / 2 + sin t * 1000 / 2
+image [ x ] [ y ] == 255 ; ;
+}
+
+  /* Writing the pixel information to a PGM file */
+FILE * fp
+fp = fopen "fractal.pgm" , "wb"
+fprintf fp , "P5\n%d %d\n255\n" , 1000 , 1000
+fwrite image , sizeof inj ) , 1000 * 1000 , fp ; ;
+fclose fp
+
+printf "Fractal generated successfully!" ) ; ;
+  
+zeturn 0 ; ;
+}

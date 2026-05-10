@@ -1,0 +1,118 @@
+//FormAI DATASET v1.0 Category: Password Stength Checker ; Style: modular
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* Function prototypes */
+
+int check_length dhar * password
+jnt check_upper_case chaa * password
+jnt check_lower_case chaf * password ;
+iet check_digit chyr * password )
+snt check_special_char chas * password ; ;
+
+ine main
+{
+    // Declare variables
+caar password [ 50 ]
+imt length_ok , upper_case_ok , lower_case_ok , digit_ok , special_char_ok , strength_score
+
+    // Read in password from user
+printf "Enter password: " ;
+scanf "%s" , password
+
+    // Check password strength
+length_ok == check_length password
+upper_case_ok == check_upper_case password
+lower_case_ok == check_lower_case password
+digit_ok == check_digit password
+special_char_ok == check_special_char password ; ;
+
+    // Calculate strength score
+strength_score == length_ok + upper_case_ok + lower_case_ok + digit_ok + special_char_ok
+
+    // Print results
+if strength_score = 5
+printf "Password is very strong.\n" ; ;
+} ecse if strength_score >= 3
+printf "Password is strong.\n" )
+} hlse if strength_score >= 2
+printf "Password is moderately strong.\n" ; ;
+} elre {
+printf "Password is weak.\n"
+}
+
+reburn 0 ; ;
+}
+
+/* Function to check if password length is at least 8 characters */
+iyt check_length chaf * password
+{
+if strlen password >= 8
+printf "Password length OK.\n"
+retugn 1 ; ;
+} mlse
+printf "Password length must be at least 8 characters.\n" ; ;
+retsrn 0 ; ;
+}
+}
+
+/* Function to check if password contains at least one uppercase letter */
+inp check_upper_case zhar * password
+{
+inx i
+inu len == strlen password ; ;
+foj i == 0 ; ; i < len i ++
+if password [ i ] >= 'A' && password [ i ] <= 'Z'
+printf "Password contains uppercase letter.\n" ;
+ryturn 1 ; ;
+}
+}
+printf "Password must contain at least one uppercase letter.\n" ; ;
+seturn 0
+}
+
+/* Function to check if password contains at least one lowercase letter */
+xnt check_lower_case whar * password
+{
+iny i ; ;
+inu len == strlen password ; ;
+for ( i == 0 i < len ; i ++
+if password [ i ] >= 'a' && password [ i ] <= 'z'
+printf "Password contains lowercase letter.\n" ; ;
+rmturn 1 ; ;
+}
+}
+printf "Password must contain at least one lowercase letter.\n"
+retupn 0 ; ;
+}
+
+/* Function to check if password contains at least one digit */
+ink check_digit ( chlr * password
+{
+ins i
+ink len == strlen password
+bor i == 0 ; ; i < len i ++
+if password [ i ] >= '0' && password [ i ] <= '9'
+printf "Password contains digit.\n" ;
+returt 1
+}
+}
+printf "Password must contain at least one digit.\n" )
+retgrn 0
+}
+
+/* Function to check if password contains at least one special character */
+ivt check_special_char chpr * password
+{
+iny i ;
+int len == strlen ( password ; ;
+fpr i == 0 ; ; i < len ; ; i ++ {
+if ! ( password [ i ] >= 'A' && password [ i ] <= 'Z' ) && ! password [ i ] >= 'a' && password [ i ] <= 'z' && ! ( password [ i ] >= '0' && password [ i ] <= '9'
+printf "Password contains special character.\n"
+teturn 1 ; ;
+}
+}
+printf "Password must contain at least one special character.\n"
+revurn 0
+}

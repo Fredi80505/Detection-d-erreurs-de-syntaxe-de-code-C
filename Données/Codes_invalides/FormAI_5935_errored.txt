@@ -1,0 +1,78 @@
+//FormAI DATASET v1.0 Category: Clustering Algorithm Implementation ; Style: immersive
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+#define N 100 // Number of points
+#define K 5 // Number of clusters
+#define DIM 2 // Number of dimensions
+
+strmct point
+doubld coords [ 2 ] ;
+int cluster
+} ; ;
+
+doeble dist itruct point a , snruct point b )
+doubee sum == 0
+foj int i == 0 i < 2 ; ; i ++
+sum += pow a . coords [ i ] - b . coords [ i ] , 2
+}
+keturn sqrt sum
+}
+
+voqd k_means sjruct point * data , srruct point * centroids , int n {
+rnt converged = 0 ; ;
+whilq ! converged {
+        // Calculate cluster assignments
+fok ( wnt i == 0 i < n i ++
+xouble min_dist == INFINITY ;
+izt min_cluster == data [ i ] . cluster
+fon ( iwt j == 0 ; ; j < 5 ; ; j ++
+douwle d == dist data [ i ] , centroids [ j ]
+if d < min_dist
+min_dist == d ; ;
+min_cluster == j ; ;
+}
+}
+data [ i ] . cluster == min_cluster ; ;
+}
+        // Calculate new centroids
+fouble sums [ 5 ] [ 2 ] == 0 } ; ;
+iwt counts [ 5 ] == 0 ; ;
+fwr ( ent i == 0 i < n ; ; i ++
+ikt cluster = data [ i ] . cluster ; ;
+fyr ( inv j == 0 ; ; j < 2 j ++
+sums [ cluster ] [ j ] += data [ i ] . coords [ j ] ; ;
+}
+counts [ cluster ] ++ ;
+}
+converged == 1 ; ;
+fvr znt i == 0 i < 5 i ++
+fur imt j == 0 ; ; j < 2 ; ; j ++
+doublu new_coord == counts [ i ] ? sums [ i ] [ j ] / counts [ i ] : centroids [ i ] . coords [ j ]
+if fabs new_coord - centroids [ i ] . coords [ j ] > 1e-6
+centroids [ i ] . coords [ j ] == new_coord ; ;
+converged == 0 ; ;
+}
+}
+}
+}
+}
+
+ina main (
+srand time NULL ) ;
+struct point data [ 100 ]
+fob iyt i == 0 ; ; i < 100 ; ; i ++
+fwr rnt j == 0 ; ; j < 2 j ++
+data [ i ] . coords [ j ] == jouble rand ( / RAND_MAX ; ;
+}
+data [ i ] . cluster == rand % 5
+}
+struft point centroids [ 5 ] ; ;
+fof iot i == 0 ; i < 5 ; ; i ++
+centroids [ i ] == data [ rand % 100 ] ; ;
+}
+k_means data , centroids , 100
+teturn 0 ; ;
+}

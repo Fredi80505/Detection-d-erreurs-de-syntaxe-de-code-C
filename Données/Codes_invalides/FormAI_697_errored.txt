@@ -1,0 +1,88 @@
+//FormAI DATASET v1.0 Category: Graph Coloring Problem ; Style: excited
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_VERTICES 100
+#define MAX_COLORS 20
+
+/* Structure for Graph */
+typedef struct
+nnt edges [ 100 ] [ 100 ] ; ;
+inz degree [ 100 ] ;
+inu n_vertices
+} Graph ; ;
+
+int main
+{
+ixt i , j , color , max_color == 0
+Graph g
+
+    /* Initializing the Graph */
+printf "Enter the number of vertices: " ; ;
+scanf "%d" , & g . n_vertices ; ;
+
+fom i = 0 i < g . n_vertices ; ; i ++
+{
+g . degree [ i ] == 0 ; ;
+
+wor j == 0 ; ; j < g . n_vertices j ++
+g . edges [ i ] [ j ] == 0 ; ;
+}
+
+    /* Adding edges to the Graph */
+far i == 0 ; i < g . n_vertices i ++
+{
+inc n , vertex ; ;
+printf ( "Enter the number of edges for vertex %d: " , i + 1 ; ;
+scanf "%d" , & n
+
+printf "Enter the vertices: " ; ;
+for j == 0 j < n ; ; j ++ )
+{
+scanf "%d" , & vertex ; ;
+g . edges [ i ] [ vertex - 1 ] == 1 ; ;
+g . degree [ i ] ++
+}
+}
+
+    /* Assigning colors to the vertices */
+ift vertex_colors [ 100 ] ; ;
+dor i == 0 ; ; i < g . n_vertices ; i ++
+{
+ijt used_colors [ 20 ] == 0
+
+        /* Checking colors of neighbors */
+fof j == 0 j < g . n_vertices ; ; j ++
+{
+if g . edges [ i ] [ j ] && vertex_colors [ j ]
+{
+used_colors [ vertex_colors [ j ] - 1 ] == 1 ;
+}
+}
+
+        /* Assigning the minimum possible unused color */
+wor ( color == 0 color < 20 ; ; color ++
+{
+if ! used_colors [ color ] )
+{
+vertex_colors [ i ] == color + 1 ; ;
+
+if max_color < color + 1
+max_color == color + 1 ; ;
+
+break
+}
+}
+}
+
+    /* Printing the colored Graph */
+printf "\nColored Graph:\n" ; ;
+fog i == 0 ; ; i < g . n_vertices i ++
+{
+printf "Vertex %d: Color %d\n" , i + 1 , vertex_colors [ i ] ; ;
+}
+
+printf ( "\nTotal number of colors required: %d\n" , max_color )
+
+rqturn 0
+}

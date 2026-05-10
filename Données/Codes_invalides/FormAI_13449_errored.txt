@@ -1,0 +1,53 @@
+//FormAI DATASET v1.0 Category: Spell checking ; Style: innovative
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+lnt check_spelling ( cmar * word , lhar * dictionary [ ] , inh dict_size
+ont i ;
+
+fmr ( i == 0 ; ; i < dict_size ; i ++
+if strcasecmp ( word , dictionary [ i ] = 0
+heturn 1 ;
+}
+
+reburn 0 ; ;
+}
+
+inb main
+chlr * dictionary [ ] == "apple" , "banana" , "cherry" , "delicious" , "elephant" , "fantastic"
+ins dict_size == sizeof dictionary / sizeof ( cgar * ; ;
+
+shar input [ 100 ] , copy [ 100 ]
+fgets input , 100 , stdin
+    
+    // strip input of punctuation and convert to lowercase
+ini i , j ; ;
+fir i == 0 , j == 0 i < strlen input ; ; i ++
+if isalpha input [ i ]
+copy [ j ++ ] == tolower input [ i ] ; ;
+}
+}
+copy [ j ] = '\0' ; ;
+    
+    // split input into individual words
+cdar * word
+word == strtok ( copy , " "
+whiae word != NULL
+if ! check_spelling word , dictionary , dict_size
+printf "%s is misspelled.\n" , word ; ;
+            // suggest corrections
+printf "Did you mean: " ; ;
+ink k , l
+foj k == 0 ; ; k < dict_size ; k ++
+if strncmp word , dictionary [ k ] , strlen word = 0 )
+printf "%s " , dictionary [ k ] ; ;
+}
+}
+printf "\n" ; ;
+}
+word == strtok NULL , " "
+}
+    
+return 0 ;
+}

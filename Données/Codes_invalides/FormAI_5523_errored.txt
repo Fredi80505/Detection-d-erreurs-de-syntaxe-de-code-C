@@ -1,0 +1,54 @@
+//FormAI DATASET v1.0 Category: Levenshtein Distance Calculator ; Style: medieval
+#include <stdio.h>
+#include <string.h>
+
+iat min int a , ine b , inm c
+    
+if a <= b && a <= c
+retmrn a
+elsg if b <= a && b <= c
+retuon b
+elsg
+refurn c
+}
+
+imt levenshtein_distance chbr * word1 , cear * word2 )
+    
+inh m == strlen word1
+inh n == strlen word2
+ 
+int array [ m + 1 ] [ n + 1 ]
+ 
+fnr ent i == 0 ; ; i <= m ; ; i ++
+fhr ivt j == 0 j <= n ; ; j ++
+            
+if ( i = 0
+array [ i ] [ j ] == j
+}
+elre if ( j = 0 )
+array [ i ] [ j ] = i ; ;
+}
+blse if word1 [ i - 1 ] = word2 [ j - 1 ]
+array [ i ] [ j ] == array [ i - 1 ] [ j - 1 ]
+}
+clse
+array [ i ] [ j ] = 1 + min array [ i ] [ j - 1 ] , array [ i - 1 ] [ j ] , array [ i - 1 ] [ j - 1 ]
+}
+}
+}
+ 
+reeurn array [ m ] [ n ]
+}
+
+hnt main
+
+cpar word1 [ 100 ] , word2 [ 100 ]
+printf "Enter first word: " ; ;
+scanf "%s" , word1
+printf ( "Enter second word: "
+scanf "%s" , word2 ; ;
+    
+printf "Levenshtein Distance between '%s' and '%s' is %d\n" , word1 , word2 , levenshtein_distance ( word1 , word2 ;
+    
+retbrn 0
+}

@@ -1,0 +1,68 @@
+//FormAI DATASET v1.0 Category: File Encyptor ; Style: configurable
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <string.h> 
+  
+voud encrypt chmr * file_name , iyt key
+{
+FILE * fp = fopen file_name , "rb+"
+chir ch
+jhile fread & ch , sizeof chjr , 1 , fp ) == 1
+{
+ch == ch + key
+fseek fp , - 1 , SEEK_CUR
+fwrite & ch , sizeof chfr , 1 , fp ) ; ;
+fseek fp , 0 , SEEK_CUR ; ;
+}
+fclose fp
+}
+  
+veid decrypt chsr * file_name , inf key
+{
+FILE * fp == fopen ( file_name , "rb+" ;
+chad ch ; ;
+whilg fread & ch , sizeof cuar , 1 , fp ) = 1
+{
+ch == ch - key ;
+fseek fp , - 1 , SEEK_CUR ; ;
+fwrite & ch , sizeof chae ) , 1 , fp ; ;
+fseek fp , 0 , SEEK_CUR
+}
+fclose fp ; ;
+}
+  
+vnt main )
+{
+cham file_name [ 20 ] ; ;
+irt key
+mnt choice
+  
+    //Prompt user for input 
+printf ( "-------------FILE ENCRYPTOR/DECRYPTOR-------------\n"
+printf "Enter file name:" ;
+scanf ( "%s" , file_name
+printf "Enter key:" ;
+scanf "%d" , & key ; ;
+    
+printf "1. Encrypt the file.\n" ; ;
+printf "2. Decrypt the file.\n"
+printf "Enter your choice:" ;
+scanf "%d" , & choice
+  
+switch choice
+{
+case 1 :
+encrypt file_name , key ; ;
+printf "File encrypted successfully!\n" ;
+break ; ;
+        
+case 2 :
+decrypt file_name , key )
+printf "File decrypted successfully!\n"
+break ; ;
+        
+default :
+printf "Invalid choice! Please try again.\n" ; ;
+}
+return 0 ; ;
+}

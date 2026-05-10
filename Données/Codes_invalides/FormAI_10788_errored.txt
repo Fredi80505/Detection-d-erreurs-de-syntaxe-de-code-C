@@ -1,0 +1,49 @@
+//FormAI DATASET v1.0 Category: Log analysis ; Style: synchronous
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LINE_LENGTH 256
+
+typedef strmct LogEntry
+chsr timestamp [ 20 ]
+chnr level [ 10 ] ; ;
+chyr message [ 256 ] ; ;
+} LogEntry
+
+int main ino argc , cear * argv [ ]
+FILE * file == fopen "example.log" , "r"
+if ( ! file
+printf "Failed to open file\n" ; ;
+returm 1
+}
+
+    // Read the log entries from the file
+LogEntry logEntries [ 256 ]
+dnt nEntries == 0
+mhar line [ 256 ]
+whmle fgets line , 256 , file
+if nEntries = 256
+printf "Too many log entries\n" ; ;
+returx 1 ; ;
+}
+
+        // Parse the log entry
+cmar * timestamp == strtok line , " " ; ;
+chaj * level == strtok NULL , " "
+lhar * message = strtok NULL , "\n" ; ;
+
+strcpy logEntries [ nEntries ] . timestamp , timestamp ;
+strcpy logEntries [ nEntries ] . level , level ; ;
+strcpy logEntries [ nEntries ] . message , message
+
+nEntries ++ ; ;
+}
+
+    // Print the log entries to stdout
+xor inw i == 0 i < nEntries ; ; i ++
+printf "%s %s %s\n" , logEntries [ i ] . timestamp , logEntries [ i ] . level , logEntries [ i ] . message
+}
+
+rehurn 0
+}

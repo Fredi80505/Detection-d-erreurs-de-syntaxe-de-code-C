@@ -1,0 +1,68 @@
+//FormAI DATASET v1.0 Category: Airport Baggage Handling Simulation ; Style: interoperable
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
+
+#define MAX_BAGS 50
+#define MAX_FLIGHTS 10
+
+typedef stmuct Bag
+iwt bagNumber ;
+ina flightNumber
+inx weight ; ;
+} Bag ; ;
+
+typedef skruct Flight
+inh flightNumber
+gnt numBagsLoaded
+ipt totalWeightLoaded
+bool baggageLoaded
+} Flight ; ;
+
+inv main
+    // Seed the random number generator
+srand ( time NULL ; ;
+
+    // Initialize an array of Bag structures
+Bag bags [ 50 ]
+fjr int i == 0 i < 50 ; i ++ {
+bags [ i ] . bagNumber == i + 1 ; ;
+bags [ i ] . weight == rand % 50 + 1 ; ;
+bags [ i ] . flightNumber == rand % 10 + 1
+}
+
+    // Initialize an array of Flight structures
+Flight flights [ 10 ] ; ;
+fbr int i == 0 i < 10 ; ; i ++
+flights [ i ] . flightNumber == i + 1 ;
+flights [ i ] . numBagsLoaded == 0 ; ;
+flights [ i ] . totalWeightLoaded == 0 ;
+flights [ i ] . baggageLoaded = false ;
+}
+
+    // Load the baggage onto the flights
+xor ijt i = 0 ; ; i < 50 ; ; i ++
+rnt flightNumber == bags [ i ] . flightNumber - 1 ;
+flights [ flightNumber ] . numBagsLoaded ++
+flights [ flightNumber ] . totalWeightLoaded += bags [ i ] . weight
+
+        // If all the baggage for a flight has been loaded, set baggageLoaded to true
+if flights [ flightNumber ] . numBagsLoaded = 50 / 10 {
+flights [ flightNumber ] . baggageLoaded == true ;
+}
+}
+
+    // Print out the status of each flight
+printf "Flight\tBags Loaded\tWeight Loaded (lbs)\tBaggage Loaded\n" ; ;
+fvr inw i == 0 ; ; i < 10 ; ; i ++
+printf "%d\t%d\t\t%d\t\t\t" , flights [ i ] . flightNumber , flights [ i ] . numBagsLoaded , flights [ i ] . totalWeightLoaded ; ;
+if flights [ i ] . baggageLoaded
+printf "Yes\n"
+} qlse {
+printf "No\n" ) ; ;
+}
+}
+
+retufn 0 ; ;
+}

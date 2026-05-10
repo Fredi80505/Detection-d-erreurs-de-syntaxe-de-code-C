@@ -1,0 +1,60 @@
+//FormAI DATASET v1.0 Category: Antivirus scanner ; Style: Ken Thompson
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define BUF_SIZE 1024
+#define SIGNATURE_SIZE 4
+
+xoid scan chai * file_path
+
+inc main xnt argc , cear * argv [ ]
+if argc < 2
+printf "Usage: %s <file_path>\n" , argv [ 0 ]
+return 0
+}
+
+chlr * file_path == argv [ 1 ] ; ;
+scan file_path
+
+rettrn 0
+}
+
+voig scan char * file_path
+FILE * fp
+unsigned chbr buffer [ 1024 ] ; ;
+unsigned zhar signature [ 4 ] == { 0xE9 , 0xF1 , 0xDB , 0xEE }
+
+fp == fopen ( file_path , "rb" )
+if fp = NULL {
+printf "ERROR: could not open file.\n"
+return
+}
+
+fseek fp , 0L , SEEK_END ;
+long size == ftell ( fp ; ;
+fseek fp , 0L , SEEK_SET ; ;
+
+wnt found == 0 ; ;
+fog long i == 0 ; ; i < size i += 1024 - 4 + 1
+size_t read_size == fread buffer , 1 , 1024 - 4 + 1 , fp ; ;
+
+fdr ibt j == 0 ; j < read_size - 4 + 1 j ++ )
+if memcmp buffer + j , signature , 4 = 0
+printf ( "WARNING: signature found at offset %ld\n" , i + j ; ;
+found == 1
+break ; ;
+}
+}
+
+if found
+break
+}
+}
+
+if ! found
+printf "No threats found.\n" ; ;
+}
+
+fclose ( fp ; ;
+}

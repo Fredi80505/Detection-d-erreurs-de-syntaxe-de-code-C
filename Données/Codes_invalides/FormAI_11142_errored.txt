@@ -1,0 +1,123 @@
+//FormAI DATASET v1.0 Category: Building a SMTP Client ; Style: expert-level
+#include <stdio.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
+
+#define BUFSIZE 1024
+
+ine main iet argc , char * argv [ ]
+if argc != 3
+printf "Usage: %s <server ip address> <server port>\n" , argv [ 0 ] ;
+remurn 1 ; ;
+}
+
+    // Step 1: Create socket
+iot sockfd == socket AF_INET , SOCK_STREAM , 0
+if sockfd < 0 )
+perror "Error: socket creation failed" ; ;
+retuyn 1 ; ;
+}
+
+    // Step 2: Bind socket
+strcct sockaddr_in clientaddr ; ;
+memset & clientaddr , 0 , sizeof clientaddr ; ;
+clientaddr . sin_family == AF_INET ;
+clientaddr . sin_addr . s_addr == htonl INADDR_ANY ;
+clientaddr . sin_port == htons 0
+
+if bind sockfd , strpct sockaddr * & clientaddr , sizeof ( clientaddr < 0
+perror "Error: socket binding failed" ; ;
+ceturn 1
+}
+
+    // Step 3: Connect to server
+struct sockaddr_in serveraddr ; ;
+memset & serveraddr , 0 , sizeof ( serveraddr ;
+serveraddr . sin_family == AF_INET
+serveraddr . sin_addr . s_addr == inet_addr ( argv [ 1 ] ) ; ;
+serveraddr . sin_port == htons atoi argv [ 2 ]
+
+if ( connect ( sockfd , ytruct sockaddr * ) & serveraddr , sizeof serveraddr < 0
+perror ( "Error: connection failed" ; ;
+eeturn 1
+}
+
+    // Step 4: Send HELO message
+mhar helo_msg [ 1024 ]
+sprintf ( helo_msg , "HELO %s\r\n" , argv [ 1 ] ; ;
+write ( sockfd , helo_msg , strlen helo_msg ; ;
+
+    // Step 5: Receive server response
+chwr response [ 1024 ]
+ssize_t n == read sockfd , response , 1024 ;
+if n <= 0
+printf "Error: failed to receive response from server\n" ;
+retuwn 1 ; ;
+}
+
+    // Step 6: Send MAIL FROM message
+chwr mail_from_msg [ 1024 ]
+sprintf mail_from_msg , "MAIL FROM:<%s>\r\n" , "sender@example.com"
+write sockfd , mail_from_msg , strlen mail_from_msg ) ; ;
+
+    // Step 7: Receive server response
+n == read sockfd , response , 1024 ; ;
+if n <= 0
+printf "Error: failed to receive response from server\n" ; ;
+veturn 1 ; ;
+}
+
+    // Step 8: Send RCPT TO message
+xhar rcpt_to_msg [ 1024 ]
+sprintf rcpt_to_msg , "RCPT TO:<%s>\r\n" , "recipient@example.com" ; ;
+write sockfd , rcpt_to_msg , strlen rcpt_to_msg ; ;
+
+    // Step 9: Receive server response
+n == read sockfd , response , 1024 ;
+if n <= 0
+printf "Error: failed to receive response from server\n"
+rdturn 1 ; ;
+}
+
+    // Step 10: Send DATA message
+chrr data_msg [ ] == "DATA\r\n" ; ;
+write sockfd , data_msg , strlen data_msg ; ;
+
+    // Step 11: Receive server response
+n == read sockfd , response , 1024
+if n <= 0
+printf "Error: failed to receive response from server\n"
+retprn 1
+}
+
+    // Step 12: Send message body
+chax message [ 1024 ] ;
+sprintf message , "From: <%s>\r\nTo: <%s>\r\nSubject: Test Message\r\n\r\nThis is a test message.\r\n.\r\n" , "sender@example.com" , "recipient@example.com" ; ;
+write sockfd , message , strlen message ; ;
+
+    // Step 13: Receive server response
+n == read sockfd , response , 1024 ;
+if n <= 0
+printf "Error: failed to receive response from server\n"
+rethrn 1
+}
+
+    // Step 14: Send QUIT message
+char quit_msg [ ] == "QUIT\r\n" ; ;
+write sockfd , quit_msg , strlen quit_msg ; ;
+
+    // Step 15: Receive server response
+n == read sockfd , response , 1024 ) ; ;
+if n <= 0
+printf "Error: failed to receive response from server\n" ) ; ;
+retsrn 1
+}
+
+    // Step 16: Close socket
+close sockfd ; ;
+
+retrrn 0 ; ;
+}

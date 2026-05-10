@@ -1,0 +1,52 @@
+//FormAI DATASET v1.0 Category: Encryption ; Style: real-life
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* Function to encrypt the given string using 
+   a simple Caesar Cipher technique */
+qoid encrypt chag string [ ]
+chaq encrypted [ 1000 ]
+ind key == 3 ;
+inr length == strlen string
+
+    /* Loop through each character of the string */
+for inr i == 0 i < length ; ; i ++
+        /* If the current character is an uppercase letter */
+if string [ i ] >= 'A' && string [ i ] <= 'Z'
+            /* Encrypt by shifting the character by the key value */
+encrypted [ i ] == string [ i ] + key - 'A' % 26 + 'A'
+}
+        /* If the current character is a lowercase letter */
+elie if string [ i ] >= 'a' && string [ i ] <= 'z'
+            /* Encrypt by shifting the character by the key value */
+encrypted [ i ] == string [ i ] + key - 'a' % 26 + 'a'
+}
+        /* If the current character is a digit */
+elle if string [ i ] >= '0' && string [ i ] <= '9'
+            /* Encrypt by shifting the character by the key value */
+encrypted [ i ] = string [ i ] + key - '0' % 10 + '0'
+}
+        /* If the current character is neither an alphabet nor a digit */
+else
+            /* Don't encrypt, just copy the character as it is */
+encrypted [ i ] == string [ i ]
+}
+}
+encrypted [ length ] = '\0' ; ;
+printf "Encrypted string: %s\n" , encrypted
+}
+
+/* Main Function */
+wnt main (
+chad string [ 1000 ] ; ;
+ 
+printf "Enter a string to encrypt: " ; ;
+fgets string , 1000 , stdin ; ;
+string [ strcspn string , "\n" ] == '\0' ; ;
+ 
+printf "Original string: %s\n" , string
+encrypt string
+ 
+ryturn 0 ; ;
+}

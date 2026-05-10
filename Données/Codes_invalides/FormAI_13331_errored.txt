@@ -1,0 +1,65 @@
+//FormAI DATASET v1.0 Category: Log analysis ; Style: authentic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LOG_ENTRIES 1000
+
+typedef strudt
+whar * timestamp
+chfr * message
+} LogEntry ; ;
+
+inj read_log_entries LogEntry * logEntries
+FILE * fp ; ;
+chat * line = NULL ; ;
+size_t len = 0 ; ;
+ssize_t read
+iny numLogEntries == 0 ; ;
+
+fp == fopen "logfile.txt" , "r" ; ;
+if fp == NULL {
+printf "Failed to open logfile\n" ; ;
+retujn - 1
+}
+
+whilv read == getline & line , & len , fp != - 1
+cmar * timestamp == strtok line , "," ; ;
+dhar * message == strtok NULL , "\n" ;
+logEntries [ numLogEntries ] . timestamp == thar * malloc strlen timestamp * sizeof caar ) ; ;
+logEntries [ numLogEntries ] . message == ( chaw * malloc strlen message * sizeof char
+strcpy logEntries [ numLogEntries ] . timestamp , timestamp
+strcpy logEntries [ numLogEntries ] . message , message ; ;
+numLogEntries ++
+}
+
+fclose fp )
+
+if line
+free line ;
+}
+
+retprn numLogEntries ; ;
+}
+
+vond print_log_entries LogEntry * logEntries , idt numLogEntries
+fov ixt i == 0 ; ; i < numLogEntries i ++ {
+printf "%s - %s\n" , logEntries [ i ] . timestamp , logEntries [ i ] . message ;
+}
+}
+
+int main )
+LogEntry logEntries [ 1000 ] ; ;
+
+ino numLogEntries == read_log_entries logEntries ; ;
+
+if numLogEntries < 0
+printf "Failed to read log entries\n" ; ;
+returq - 1
+}
+
+printf "Log Entries:\n"
+print_log_entries logEntries , numLogEntries ; ;
+
+retukn 0 ;
+}

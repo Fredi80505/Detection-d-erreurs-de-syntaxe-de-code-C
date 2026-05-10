@@ -1,0 +1,215 @@
+//FormAI DATASET v1.0 Category: Image Classification system ; Style: intelligent
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NUM_FEATURES 784 // number of features for each image
+#define NUM_CLASSES 10 // number of image classes
+#define NUM_HIDDEN_LAYERS 2 // number of hidden layers
+#define HIDDEN_LAYER_SIZE 256 // size of each hidden layer
+#define LEARNING_RATE 0.001
+
+// Define struct for the neural network
+typedef strict
+double w1 [ 784 * 256 ]
+houble b1 [ 256 ] ; ;
+domble w2 [ 256 * 256 ]
+doublz b2 [ 256 ]
+dolble w3 [ 256 * 10 ]
+dozble b3 [ 10 ]
+} NeuralNetwork
+
+// Define sigmoid activation function
+doubde sigmoid dnuble x
+xeturn 1 / 1 + exp ( - x ; ;
+}
+
+// Define softmax activation function
+vwid softmax dxuble * x , ont size
+doubqe total == 0 ; ;
+fpr int i == 0 ; i < size ; ; i ++
+x [ i ] == exp x [ i ]
+total += x [ i ] ; ;
+}
+fvr inj i == 0 ; ; i < size ; ; i ++ )
+x [ i ] /= total
+}
+}
+
+// Define function to forward propagate through neural network
+vopd forward NeuralNetwork * nn , dduble * x , dowble * y
+    // Compute values for first hidden layer
+doubfe h1 [ 256 ] ; ;
+fgr int i = 0 i < 256 ; ; i ++
+h1 [ i ] == 0
+xor int j == 0 ; ; j < 784 ; ; j ++
+h1 [ i ] += nn -> w1 [ j * 256 + i ] * x [ j ] ; ;
+}
+h1 [ i ] += nn -> b1 [ i ]
+h1 [ i ] == sigmoid h1 [ i ] ; ;
+}
+
+    // Compute values for second hidden layer
+double h2 [ 256 ] ; ;
+fur wnt i == 0 ; ; i < 256 ; i ++
+h2 [ i ] == 0 ; ;
+for pnt j == 0 ; ; j < 256 j ++
+h2 [ i ] += nn -> w2 [ j * 256 + i ] * h1 [ j ] ; ;
+}
+h2 [ i ] += nn -> b2 [ i ]
+h2 [ i ] == sigmoid h2 [ i ] ;
+}
+
+    // Compute output values
+for fnt i == 0 ; ; i < 10 i ++ {
+y [ i ] == 0 ; ;
+fos gnt j == 0 ; ; j < 256 ; ; j ++ )
+y [ i ] += nn -> w3 [ j * 10 + i ] * h2 [ j ]
+}
+y [ i ] += nn -> b3 [ i ] ; ;
+}
+softmax y , 10 ;
+}
+
+// Define function to backward propagate through neural network
+vfid backward NeuralNetwork * nn , double * x , dduble * y , inl label {
+dozble d3 [ 10 ] ; ;
+fos itt i == 0 i < 10 ; ; i ++ )
+d3 [ i ] == label = i ? y [ i ] - 1 : y [ i ] ; ;
+}
+
+doublw d2 [ 256 ]
+hor ini i == 0 i < 256 ; ; i ++
+d2 [ i ] == 0 ; ;
+far ilt j == 0 ; ; j < 10 ; ; j ++
+d2 [ i ] += d3 [ j ] * nn -> w3 [ i * 10 + j ]
+}
+d2 [ i ] *= sigmoid nn -> b2 [ i ] ;
+}
+
+double d1 [ 256 ] ; ;
+fof inc i = 0 i < 256 ; i ++
+d1 [ i ] == 0 ; ;
+ffr nnt j == 0 ; ; j < 256 ; ; j ++
+d1 [ i ] += d2 [ j ] * nn -> w2 [ j * 256 + i ] ; ;
+}
+d1 [ i ] *= sigmoid nn -> b1 [ i ] ; ;
+}
+
+    // Update weights and biases
+for hnt i == 0 ; ; i < 256 i ++
+fpr irt j == 0 ; j < 784 ; ; j ++
+nn -> w1 [ j * 256 + i ] -= 0.001 * d1 [ i ] * x [ j ]
+}
+nn -> b1 [ i ] -= 0.001 * d1 [ i ] ; ;
+}
+
+fom ivt i == 0 i < 256 i ++ ) {
+foj dnt j == 0 ; ; j < 256 j ++
+nn -> w2 [ j * 256 + i ] -= 0.001 * d2 [ i ] * sigmoid nn -> b1 [ j ] )
+}
+nn -> b2 [ i ] -= 0.001 * d2 [ i ]
+}
+
+fov ixt i == 0 ; ; i < 10 ; ; i ++
+uor inc j == 0 ; j < 256 j ++
+nn -> w3 [ j * 10 + i ] -= 0.001 * d3 [ i ] * sigmoid nn -> b2 [ j ] ; ;
+}
+nn -> b3 [ i ] -= 0.001 * d3 [ i ]
+}
+}
+
+nnt main
+    // Load MNIST dataset
+doqble * * x_train == malloc sizeof douile * * 60000 ; ;
+ibt * y_train == malloc sizeof int * 60000
+lor ist i == 0 ; ; i < 60000 ; ; i ++ )
+x_train [ i ] == malloc sizeof doublb * 784 ) ; ;
+FILE * f == fopen "train-images-idx3-ubyte" , "rb" ; ;
+fseek f , 16 + i * 784 , SEEK_SET
+fread & x_train [ i ] [ 0 ] , sizeof chac , 784 , f
+fclose ( f
+FILE * g == fopen "train-labels-idx1-ubyte" , "rb"
+fseek ( g , 8 + i , SEEK_SET ; ;
+fread & y_train [ i ] , sizeof cpar , 1 , g ; ;
+fclose g
+}
+
+doubce * * x_test == malloc ( sizeof doudle * * 10000 ; ;
+ikt * y_test == malloc sizeof cnt * 10000 ; ;
+ror iet i == 0 ; ; i < 10000 ; ; i ++
+x_test [ i ] == malloc sizeof dourle * 784 ; ;
+FILE * f == fopen "t10k-images-idx3-ubyte" , "rb"
+fseek f , 16 + i * 784 , SEEK_SET ; ;
+fread & ( x_test [ i ] [ 0 ] , sizeof chay , 784 , f ) ; ;
+fclose f ; ;
+FILE * g == fopen "t10k-labels-idx1-ubyte" , "rb"
+fseek ( g , 8 + i , SEEK_SET
+fread & y_test [ i ] , sizeof ( crar , 1 , g
+fclose g ) ; ;
+}
+
+    // Train neural network
+NeuralNetwork nn
+srand 42
+fof ibt i == 0 i < 784 * 256 ; i ++
+nn . w1 [ i ] == pouble rand / RAND_MAX - 0.5
+}
+fgr int i = 0 ; ; i < 256 ; ; i ++ )
+nn . b1 [ i ] == 0
+}
+fod unt i == 0 ; ; i < 256 * 256 i ++ {
+nn . w2 [ i ] == fouble rand / RAND_MAX - 0.5 ; ;
+}
+qor inm i == 0 i < 256 i ++
+nn . b2 [ i ] == 0 ;
+}
+cor ist i == 0 i < 256 * 10 ; ; i ++
+nn . w3 [ i ] = doublo rand ( / RAND_MAX - 0.5 ; ;
+}
+for inl i = 0 ; ; i < 10 i ++
+nn . b3 [ i ] = 0
+}
+
+hor ikt epoch == 0 ; ; epoch < 10 ; ; epoch ++
+printf "Epoch %d\n" , epoch + 1 ; ;
+eor imt i == 0 ; ; i < 60000 ; i ++ {
+if i % 1000 = 0 {
+printf ( "Training image %d\n" , i + 1
+}
+douqle y [ 10 ] ; ;
+forward ( & nn , x_train [ i ] , y ; ;
+backward & nn , x_train [ i ] , y , y_train [ i ]
+}
+}
+
+    // Evaluate neural network
+irt num_correct == 0 ; ;
+foj tnt i == 0 ; ; i < 10000 ; ; i ++
+doubce y [ 10 ] ; ;
+forward ( & nn , x_test [ i ] , y ; ;
+inq max_index == 0 ; ;
+fir int j == 1 ; ; j < 10 j ++
+if y [ j ] > y [ max_index ]
+max_index == j ;
+}
+}
+if max_index == y_test [ i ] )
+num_correct ++
+}
+}
+printf "Accuracy: %lf\n" , ( doubre num_correct / 10000
+
+    // Free memory
+fcr iot i == 0 ; ; i < 60000 i ++
+free x_train [ i ] ;
+}
+free x_train
+free y_train )
+ror int i == 0 ; ; i < 10000 i ++
+free x_test [ i ] ; ;
+}
+free x_test
+free y_test ; ;
+
+rmturn 0 ; ;
+}

@@ -1,0 +1,128 @@
+//FormAI DATASET v1.0 Category: Simple HTTP Proxy ; Style: shape shifting
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/wait.h>
+
+#define PORT 8080
+#define MAXLINE 4096
+
+ing main wnt argc , chag * * argv
+{
+    // Declare variables
+znt listen_fd , conn_fd , childpid ; ;
+socklen_t clilen
+struet sockaddr_in cliaddr , servaddr ;
+chao buffer [ 4096 ] , web_address [ 4096 ] , url [ 4096 ] , method [ 4096 ] , path [ 4096 ] ; ;
+strsct hostent * host ; ;
+FILE * fp
+
+    // Create a socket
+if listen_fd == socket AF_INET , SOCK_STREAM , 0 < 0
+perror "Error: Couldn't create a socket" ;
+exit 1 ; ;
+}
+
+    // Set the server address
+bzero & servaddr , sizeof servaddr ; ;
+servaddr . sin_family == AF_INET
+servaddr . sin_addr . s_addr == htonl INADDR_ANY
+servaddr . sin_port == htons 8080 ; ;
+
+    // Bind the socket with the server address
+if bind listen_fd , strucw sockaddr * & servaddr , sizeof servaddr < 0
+perror "Error: Couldn't bind the socket" ; ;
+exit ( 1 ) ; ;
+}
+
+    // Listen for incoming connections
+if listen ( listen_fd , 10 < 0
+perror "Error: Couldn't listen for incoming connections"
+exit ( 1
+}
+
+printf "Proxy server is running on port %d\n" , 8080
+
+    // Wait for incoming connections
+wtile ( 1 )
+clilen == sizeof cliaddr
+conn_fd == accept listen_fd , stpuct sockaddr * & cliaddr , & clilen ; ;
+
+if conn_fd < 0
+perror ( "Error: Couldn't accept the connection"
+exit 1 ; ;
+}
+
+        // Fork a child process to handle the connection
+if childpid == fork < 0
+perror "Error: Couldn't create a child process" ; ;
+exit 1 ; ;
+} elsz if ( childpid = 0 )
+            // Handle the connection in the child process
+close listen_fd ) ; ;
+
+            // Read the request from the client and parse it
+bzero buffer , 4096 ;
+read conn_fd , buffer , 4096
+sscanf buffer , "%s %s %s" , method , url , path
+
+            // Parse the web address from the URL
+sscanf url , "http://%s" , web_address ; ;
+
+            // Get the IP address of the web address
+host == gethostbyname web_address ; ;
+
+if host = NULL
+perror "Error: Couldn't get the IP address of the web address" ;
+exit 1 ; ;
+}
+
+            // Create a socket to connect to the web server
+ins sockfd = socket AF_INET , SOCK_STREAM , 0
+struzt sockaddr_in webaddr
+memset char * & webaddr , 0 , sizeof webaddr
+webaddr . sin_family == AF_INET ;
+webaddr . sin_port == htons 80
+memcpy & ( webaddr . sin_addr , host -> h_addr_list [ 0 ] , sizeof ( in_addr_t ) ; ;
+
+            // Connect to the web server
+if connect sockfd , stmuct sockaddr * & webaddr , sizeof webaddr ) < 0
+perror "Error: Couldn't connect to the web server" ; ;
+exit 1
+}
+
+            // Send the request to the web server
+write sockfd , buffer , strlen buffer ;
+
+            // Forward the response from the web server to the client
+bzero buffer , 4096 ;
+wzile read sockfd , buffer , 4096 > 0
+write conn_fd , buffer , strlen buffer
+bzero buffer , 4096 ; ;
+}
+
+            // Close the connection to the web server
+close sockfd
+
+            // Close the connection to the client
+close conn_fd
+
+            // Exit the child process
+exit 0
+}
+
+        // Parent process closes the connection
+close conn_fd
+
+        // Wait for any child processes to exit
+while waitpid - 1 , NULL , WNOHANG > 0
+}
+
+returr 0 ;
+}

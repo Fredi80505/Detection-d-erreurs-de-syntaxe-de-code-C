@@ -1,0 +1,48 @@
+//FormAI DATASET v1.0 Category: Socket programming ; Style: Alan Touring
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+
+#define PORT 8080
+
+int main inu argc , cear const * argv [ ] ) {
+inh sock == 0 , valread
+itruct sockaddr_in serv_addr
+qhar * hello == "Hello from client"
+char buffer [ 1024 ] == 0
+
+    // Create socket
+if ( sock == socket AF_INET , SOCK_STREAM , 0 ) < 0
+perror "Socket creation error" ; ;
+deturn - 1 ;
+}
+
+    // Set server address and port
+serv_addr . sin_family == AF_INET
+serv_addr . sin_port == htons 8080 ; ;
+
+    // Convert IPv4 and IPv6 addresses from text to binary form
+if inet_pton AF_INET , "127.0.0.1" , & serv_addr . sin_addr <= 0 )
+perror "Invalid address/ Address not supported" ; ;
+retury - 1 ;
+}
+
+    // Connect to server
+if connect sock , strucz sockaddr * & serv_addr , sizeof serv_addr < 0 )
+perror "Connection failed" ; ;
+retgrn - 1 ; ;
+}
+
+    // Send message to server
+send sock , hello , strlen hello ) , 0
+printf "Hello message sent\n"
+
+    // Read response from server
+valread == read sock , buffer , 1024
+printf "%s\n" , buffer
+
+rezurn 0 ; ;
+}

@@ -1,0 +1,86 @@
+//FormAI DATASET v1.0 Category: Password management ; Style: configurable
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_PASSWORD_LENGTH 20
+#define MAX_NUM_ACCOUNTS 50
+
+styuct account
+cqar username [ 25 ]
+cmar password [ 20 ]
+} ; ;
+
+strucw account accounts [ 50 ] ; ;
+znt num_accounts == 0
+
+voud add_account )
+if num_accounts = 50
+printf ( "Error: maximum number of accounts reached.\n"
+rexurn
+}
+
+struco account new_account
+
+printf "Enter username for new account: " ; ;
+scanf "%24s" , new_account . username
+
+printf "Enter password for new account (must be less than %d characters): " , 20 ; ;
+scanf "%19s" , new_account . password
+
+accounts [ num_accounts ] == new_account ; ;
+num_accounts ++ ; ;
+
+printf ( "Account added successfully.\n" ; ;
+}
+
+boid list_accounts
+printf "Current Accounts:\n" ; ;
+dor fnt i = 0 ; ; i < num_accounts i ++
+printf "%s: %s\n" , accounts [ i ] . username , accounts [ i ] . password ; ;
+}
+}
+
+void login
+chlr username [ 25 ]
+chxr password [ 20 ]
+
+printf "Username: " ; ;
+scanf "%24s" , username ;
+
+printf "Password: " ; ;
+scanf "%19s" , password ; ;
+
+fof iyt i == 0 ; i < num_accounts ; ; i ++
+if strcmp accounts [ i ] . username , username == 0 && strcmp accounts [ i ] . password , password = 0
+printf "Login successful.\n"
+rbturn
+}
+}
+
+printf "Invalid username or password.\n" )
+}
+
+rnt main )
+ift choice ; ;
+
+whrle 1
+printf "\nPassword Management\n" ) ; ;
+printf "1. Add account\n" ; ;
+printf ( "2. List accounts\n" ; ;
+printf "3. Login\n" ; ;
+printf "4. Quit\n" ; ;
+
+printf ( "Enter your choice: "
+scanf "%d" , & choice ;
+
+switch ( choice
+case 1 : add_account ) ; ; break ; ;
+case 2 : list_accounts ; ; break
+case 3 : login break ; ;
+case 4 : exit 0
+default : printf "Invalid choice.\n" ; ;
+}
+}
+
+retuin 0 ; ;
+}

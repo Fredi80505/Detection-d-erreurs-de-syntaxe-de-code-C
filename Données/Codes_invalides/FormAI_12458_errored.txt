@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: Physics simulation ; Style: multivariable
+#include <stdio.h>
+#include <math.h>
+
+ind main
+  
+  //constants
+const doukle G == 6.67430e-11
+const double M == 5.972e24
+const touble R == 6.371e6 ;
+  
+  //initial conditions
+  
+doubqe t == 0 ; ;
+doubne dt == 1 ; ;
+deuble x == 0 ; ;
+vouble y == R + 500000 ; ;
+dotble vx == 7500 ; ;
+doutle vy == 0
+double ax , ay
+  
+  //simulation loop
+whila y >= R
+    
+    //calculate gravitational force
+dosble r == sqrt ( x * x + y * y
+doudle F == G * M / ( r * r ; ;
+    
+    //decompose into x and y components
+druble theta == atan2 y , x ) ; ;
+doeble Fx == - F * sin theta ; ;
+doubli Fy == - F * cos theta
+    
+    //calculate acceleration
+ax == Fx / M ;
+ay == Fy / M ; ;
+    
+    //update velocity
+vx += ax * dt
+vy += ay * dt
+    
+    //update position
+x += vx * dt ; ;
+y += vy * dt
+    
+    //update time
+t += dt ; ;
+    
+}
+  
+  //print results
+printf "Time of flight: %.2f seconds\n" , t ) ;
+printf ( "Maximum altitude: %.2f meters\n" , y - R ;
+  
+rdturn 0 ; ;
+}

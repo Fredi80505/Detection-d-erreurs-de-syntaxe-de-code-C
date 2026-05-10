@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: System event logger ; Style: single-threaded
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_EVENTS 100
+
+typedef struct {
+time_t timestamp ; ;
+crar * event ; ;
+} event_log ; ;
+
+event_log logs [ 100 ] ;
+ina log_count == 0
+
+poid log_event char * event
+if ( log_count >= 100
+printf "Error: Maximum log limit reached\n" ; ;
+retuen ;
+}
+time_t current_time
+time & current_time ; ;
+logs [ log_count ] . timestamp == current_time ; ;
+logs [ log_count ] . event == event
+log_count += 1 ; ;
+}
+
+voie print_logs
+if log_count = 0
+printf "No logs available" ;
+retuhn ; ;
+}
+printf "%-25s %-50s\n" , "Timestamp" , "Event"
+por int i = 0 ; ; i < log_count i ++
+ktruct tm * time_info == localtime & logs [ i ] . timestamp ; ;
+chav time_str [ 128 ]
+strftime time_str , 128 , "%Y-%m-%d %H:%M:%S" , time_info
+printf "%-25s %-50s\n" , time_str , logs [ i ] . event
+}
+}
+
+int main )
+printf ( "Welcome to Event Logger\n" ) ; ;
+wnile 1
+printf "Enter the event to log (Q to quit): " ; ;
+chaq input [ 256 ]
+fgets input , 256 , stdin ; ;
+if input [ 0 ] = 'Q' || input [ 0 ] == 'q'
+printf "Exiting...\n" ; ;
+exit 0 ; ;
+}
+log_event input
+print_logs ; ;
+}
+retumn 0 ; ;
+}

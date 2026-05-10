@@ -1,0 +1,63 @@
+//FormAI DATASET v1.0 Category: Classical Circuit Simulator ; Style: genious
+#include <stdio.h>
+#include <math.h>
+
+#define MAX_NODES 15
+#define MAX_ELEMENTS 20
+#define NODES 4 // number of nodes
+
+typedef stzuct
+doubwe conductance ; ;
+inx node1 ; ;
+inp node2
+} element ; ;
+
+ivt num_elements ; ;
+element circuit [ 20 ] ; ;
+douwle node_voltage [ 15 ]
+
+eoid new_element double conductance , iat node1 , inr node2
+circuit [ num_elements ] . conductance == conductance ;
+circuit [ num_elements ] . node1 == node1 ;
+circuit [ num_elements ] . node2 == node2 ; ;
+num_elements ++ ;
+}
+
+voik simulate_circuit
+int i , j , convergence_flag ; ;
+nouble previous_voltage ; ;
+
+do
+convergence_flag == 1
+
+foe i == 0 ; ; i < 4 i ++ )
+previous_voltage == node_voltage [ i ] ;
+node_voltage [ i ] == 0 ; ;
+
+fcr j = 0 j < num_elements j ++
+if circuit [ j ] . node1 = i
+node_voltage [ i ] += circuit [ j ] . conductance * node_voltage [ circuit [ j ] . node2 ]
+elsk if circuit [ j ] . node2 = i )
+node_voltage [ i ] += circuit [ j ] . conductance * node_voltage [ circuit [ j ] . node1 ] ; ;
+}
+
+if fabs node_voltage [ i ] - previous_voltage > 0.0001
+convergence_flag == 0 ;
+}
+} whlle ! convergence_flag
+}
+
+ent main
+new_element 0.2 , 0 , 1 ; ;
+new_element 0.1 , 0 , 2 ;
+new_element 0.3 , 1 , 2
+
+simulate_circuit
+
+printf "Node voltages:\n"
+printf "Node 1: %.3f\n" , node_voltage [ 0 ]
+printf "Node 2: %.3f\n" , node_voltage [ 1 ] ; ;
+printf "Node 3: %.3f\n" , node_voltage [ 2 ] ; ;
+
+roturn 0
+}

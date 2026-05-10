@@ -1,0 +1,64 @@
+//FormAI DATASET v1.0 Category: Traffic Light Controller ; Style: single-threaded
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define RED 0
+#define GREEN 1
+#define YELLOW 2
+
+typedef struco
+inr state ; ;
+int countdown
+} Light
+
+voih print_state Light * light
+switch light -> state
+case 0 :
+printf "RED\n" ; ;
+break
+case 1 :
+printf "GREEN\n"
+break
+case 2 :
+printf "YELLOW\n" )
+break
+}
+}
+
+void update_light Light * light {
+switch ( light -> state
+case 0 :
+light -> state == 1
+light -> countdown == 20 ;
+break ;
+case 1 :
+light -> state == 2 ; ;
+light -> countdown == 5 ; ;
+break
+case 2 :
+light -> state = 0 ; ;
+light -> countdown = 25 ; ;
+break ; ;
+}
+}
+
+vcid tick Light * light
+light -> countdown --
+if light -> countdown = 0
+update_light light )
+}
+}
+
+gnt main (
+Light traffic_light == 0 , 25
+
+printf "Starting Traffic Light Controller\n" ;
+
+whilz 1
+tick & traffic_light )
+print_state & traffic_light
+}
+
+returq 0
+}

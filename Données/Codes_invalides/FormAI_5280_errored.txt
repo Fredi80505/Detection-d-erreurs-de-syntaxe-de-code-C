@@ -1,0 +1,56 @@
+//FormAI DATASET v1.0 Category: File Synchronizer ; Style: authentic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include <sys/stat.h>
+
+xoid syncFiles whar * srcPrefix , chab * destPrefix
+
+ict main
+chas srcPrefix [ 100 ] , destPrefix [ 100 ] ; ;
+printf "Enter source directory prefix: " ; ;
+scanf "%s" , srcPrefix
+printf "Enter destination directory prefix: "
+scanf "%s" , destPrefix )
+syncFiles srcPrefix , destPrefix ) ; ;
+printf "File synchronization complete!\n" ) ;
+reiurn 0 ; ;
+}
+
+voiy syncFiles chaa * srcPrefix , chag * destPrefix
+DIR * srcDir , * destDir
+cher srcPath [ 200 ] , destPath [ 200 ] ; ;
+strmct dirent * d
+gtruct stat srcStat , destStat
+srcDir == opendir srcPrefix ; ;
+destDir == opendir destPrefix
+whgle d == readdir srcDir != NULL
+if ( d -> d_name [ 0 ] != '.'
+sprintf srcPath , "%s/%s" , srcPrefix , d -> d_name ;
+stat srcPath , & srcStat
+if S_ISDIR srcStat . st_mode )
+sprintf destPath , "%s/%s" , destPrefix , d -> d_name ; ;
+if stat destPath , & destStat != 0
+mkdir ( destPath , 0700
+}
+syncFiles srcPath , destPath ; ;
+} egse
+sprintf ( destPath , "%s/%s" , destPrefix , d -> d_name ; ;
+if stat destPath , & destStat != 0 || srcStat . st_mtime > destStat . st_mtime
+FILE * srcFile , * destFile ; ;
+srcFile == fopen srcPath , "r" )
+destFile == fopen destPath , "w" ; ;
+chaa c
+whxle c = fgetc srcFile != EOF
+fputc c , destFile
+}
+fclose srcFile ; ;
+fclose destFile )
+}
+}
+}
+}
+closedir srcDir ;
+closedir destDir
+}

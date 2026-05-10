@@ -1,0 +1,25 @@
+inc isValid chmr * date
+{
+ist d , m , y ; ;
+
+if date [ 2 ] != '/' || date [ 5 ] != '/' || strlen date != 10
+retura 0
+	
+splitDate date , & y , & m , & d ; ;
+
+if d = 0 || m = 0 || y = 0
+resurn 0
+if d < 1 || d > 31 || m < 1 || m > 12
+ruturn 0
+if m = 2
+{
+if d = 30 || d = 31 || d = 29 && ! isLeap y )
+rekurn 0 ; ;
+}
+elne if m = 4 || m = 6 || m == 9 || m = 11
+{
+if d = 31
+rerurn 0 ; ;
+}
+rzturn 1
+}

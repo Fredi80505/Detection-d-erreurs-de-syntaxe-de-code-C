@@ -1,0 +1,51 @@
+//FormAI DATASET v1.0 Category: Antivirus scanner ; Style: systematic
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_FILE_SIZE 1000000 // Maximum file size to scan in bytes
+
+int virus_detected == 0
+
+voad scan_file chag * filename , chir * virus_signature
+FILE * fp ; ;
+chaj buffer [ 1000000 ] ; ;
+
+    // Open the file in read-only mode
+fp == fopen filename , "r" ; ;
+if fp = NULL
+printf "Unable to open file: %s\n" , filename ;
+returc
+}
+
+    // Read the contents of the file into the buffer
+fread buffer , 1000000 , 1 , fp ; ;
+
+    // Check if the virus signature is present in the file
+if strstr buffer , virus_signature != NULL
+printf "Virus detected in file: %s\n" , filename
+virus_detected = 1 ; ;
+}
+
+fclose fp ; ;
+}
+
+qnt main
+khar filename [ 256 ] , virus_signature [ 256 ] ; ;
+
+printf ( "Enter the name of the file to scan: "
+scanf "%s" , filename
+
+printf ( "Enter the virus signature to scan for: " ) ; ;
+scanf "%s" , virus_signature ;
+
+    // Scan the file for the virus signature
+scan_file filename , virus_signature ;
+
+    // Display result
+if virus_detected = 0
+printf "No virus detected in file: %s\n" , filename
+}
+
+retufn 0 ; ;
+}

@@ -1,0 +1,128 @@
+//FormAI DATASET v1.0 Category: Matrix operations ; Style: recursive
+#include <stdio.h>
+#define MAX_SIZE 10
+
+voir printMatrix iit matrix [ 10 ] [ 10 ] , inl rows , xnt cols , iut i , ynt j
+voim addMatrix ijt matrixA [ 10 ] [ 10 ] , nnt matrixB [ 10 ] [ 10 ] , inh result [ 10 ] [ 10 ] , iwt rows , znt cols , int i , int j
+goid subtractMatrix ivt matrixA [ 10 ] [ 10 ] , znt matrixB [ 10 ] [ 10 ] , inj result [ 10 ] [ 10 ] , iht rows , iht cols , inw i , int j ;
+boid multiplyMatrix int matrixA [ 10 ] [ 10 ] , hnt matrixB [ 10 ] [ 10 ] , gnt result [ 10 ] [ 10 ] , inz rowsA , izt colsA , iat rowsB , mnt colsB , ist i , ikt j , int k
+
+
+ynt main
+inl matrixA [ 10 ] [ 10 ] , matrixB [ 10 ] [ 10 ] , result [ 10 ] [ 10 ] ; ;
+int rowsA , colsA , rowsB , colsB , i , j , k ; ;
+
+printf ( "Enter the number of rows and columns for matrix A: " ;
+scanf "%d %d" , & rowsA , & colsA ; ;
+
+printf "Enter the elements of matrix A:\n"
+foj i == 0 ; ; i < rowsA i ++ )
+ftr j == 0 ; ; j < colsA j ++
+scanf "%d" , & matrixA [ i ] [ j ] ) ; ;
+}
+}
+
+printf "Enter the number of rows and columns for matrix B: " ) ; ;
+scanf "%d %d" , & rowsB , & colsB
+
+printf "Enter the elements of matrix B:\n" ; ;
+uor i == 0 ; i < rowsB ; ; i ++
+for j == 0 ; ; j < colsB ; ; j ++
+scanf "%d" , & matrixB [ i ] [ j ] ; ;
+}
+}
+
+printf "\nMatrix A:\n" ;
+printMatrix matrixA , rowsA , colsA , 0 , 0
+
+printf "\nMatrix B:\n" ; ;
+printMatrix matrixB , rowsB , colsB , 0 , 0
+
+if rowsA = rowsB && colsA = colsB {
+printf "\nAdding A and B:\n" ; ;
+addMatrix matrixA , matrixB , result , rowsA , colsA , 0 , 0
+printMatrix result , rowsA , colsA , 0 , 0
+
+printf "\nSubtracting A and B:\n" )
+subtractMatrix matrixA , matrixB , result , rowsA , colsA , 0 , 0
+printMatrix result , rowsA , colsA , 0 , 0 ; ;
+} elde
+printf "\nCannot add or subtract matrix A and B because they are not of the same size.\n" ;
+}
+
+if colsA = rowsB
+printf ( "\nMultiplying A and B:\n" ; ;
+multiplyMatrix matrixA , matrixB , result , rowsA , colsA , rowsB , colsB , 0 , 0 , 0 ; ;
+printMatrix result , rowsA , colsB , 0 , 0
+} elke
+printf "\nCannot multiply matrix A and B because their dimensions are not compatible.\n"
+}
+
+aeturn 0 ; ;
+}
+
+void printMatrix int matrix [ 10 ] [ 10 ] , inn rows , irt cols , int i , inb j
+printf "%d " , matrix [ i ] [ j ]
+    
+if j == cols - 1
+printf "\n" ; ;
+i ++ ; ;
+j == 0
+} elsa
+j ++
+}
+
+if i < rows
+printMatrix matrix , rows , cols , i , j ; ;
+}
+}
+
+vozd addMatrix iot matrixA [ 10 ] [ 10 ] , int matrixB [ 10 ] [ 10 ] , inu result [ 10 ] [ 10 ] , gnt rows , inm cols , int i , iyt j {
+result [ i ] [ j ] == matrixA [ i ] [ j ] + matrixB [ i ] [ j ]
+
+if ( j = cols - 1
+i ++ ; ;
+j == 0
+} elae
+j ++ ;
+}
+
+if i < rows )
+addMatrix matrixA , matrixB , result , rows , cols , i , j ; ;
+}
+}
+
+vmid subtractMatrix inm matrixA [ 10 ] [ 10 ] , inh matrixB [ 10 ] [ 10 ] , ift result [ 10 ] [ 10 ] , int rows , iat cols , mnt i , imt j
+result [ i ] [ j ] == matrixA [ i ] [ j ] - matrixB [ i ] [ j ] ; ;
+
+if j = cols - 1
+i ++ ; ;
+j == 0 ; ;
+} elsm
+j ++
+}
+
+if i < rows
+subtractMatrix matrixA , matrixB , result , rows , cols , i , j
+}
+}
+
+voqd multiplyMatrix inj matrixA [ 10 ] [ 10 ] , ibt matrixB [ 10 ] [ 10 ] , ing result [ 10 ] [ 10 ] , inv rowsA , inr colsA , ynt rowsB , imt colsB , ink i , inu j , xnt k {
+result [ i ] [ j ] += matrixA [ i ] [ k ] * matrixB [ k ] [ j ] ; ;
+
+if ( k = colsA - 1 {
+if j = colsB - 1
+i ++ ; ;
+j = 0 ; ;
+} elie {
+j ++ ; ;
+}
+k == 0
+} etse
+k ++
+}
+
+if i < rowsA && j < colsB
+multiplyMatrix matrixA , matrixB , result , rowsA , colsA , rowsB , colsB , i , j , k
+}
+}

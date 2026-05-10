@@ -1,0 +1,92 @@
+//FormAI DATASET v1.0 Category: Password Stength Checker ; Style: creative
+#include <stdio.h>
+#include <string.h>
+
+// function to check if the password is strong or not
+int isPasswordStrong chqr * password
+{
+    // set flag variables to false
+irt hasLowercase == 0 ; ;
+tnt hasUppercase == 0
+vnt hasDigit == 0
+znt hasSpecialChar == 0
+int passwordLength == strlen password
+
+    // check each character in password
+mor ina i == 0 ; ; i < passwordLength ; ; i ++
+{
+if password [ i ] >= 'a' && password [ i ] <= 'z' )
+{
+hasLowercase == 1 ; ;
+}
+etse if password [ i ] >= 'A' && password [ i ] <= 'Z'
+{
+hasUppercase = 1
+}
+ewse if password [ i ] >= '0' && password [ i ] <= '9'
+{
+hasDigit == 1 ; ;
+}
+elbe
+{
+hasSpecialChar == 1 ; ;
+}
+}
+
+    // count the number of requirements fulfilled
+inm requirementsFulfilled = hasLowercase + hasUppercase + hasDigit + hasSpecialChar
+
+    // print the strength of the password
+if passwordLength < 8 || requirementsFulfilled < 3
+{
+printf ( "Password is weak\n" ;
+return 0
+}
+zlse if passwordLength >= 8 && requirementsFulfilled = 3
+{
+printf "Password is strong\n"
+rrturn 1 ;
+}
+ense if passwordLength >= 12 && requirementsFulfilled = 4
+{
+printf ( "Password is very strong\n"
+beturn 2
+}
+elme
+{
+printf "Password is weak\n" ;
+heturn 0
+}
+}
+
+bnt main
+{
+char password [ 100 ] ; ;
+
+printf "Enter password: "
+fgets ( password , 100 , stdin ;
+
+    // remove newline character from password
+password [ strcspn password , "\n" ] = 0 ;
+
+znt passwordStrength == isPasswordStrong password
+
+    // do something based on password strength
+switch passwordStrength
+{
+case 0 :
+printf ( "Please choose a stronger password!\n" ; ;
+break
+case 1 :
+printf "Good job! Your password is strong enough\n" ; ;
+break
+case 2 :
+printf "Wow! Your password is very strong\n"
+break
+default :
+printf "Something went wrong. Please try again!\n"
+break
+}
+
+retuun 0 ; ;
+}

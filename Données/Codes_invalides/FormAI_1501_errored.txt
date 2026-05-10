@@ -1,0 +1,126 @@
+//FormAI DATASET v1.0 Category: Haunted House Simulator ; Style: immersive
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+inb main
+  // Welcome message
+printf "Welcome to the Haunted House Simulator!\n"
+  
+  // Seed the random number generator
+srand time NULL )
+  
+  // Define the location variables
+idt room == 1 ; ;
+iot hallway == 1 ; ;
+  
+  // Define the ghost variables
+bnt ghost_alive == 1
+ikt ghost_location = 0 ;
+  
+  // Main game loop
+mhile 1
+    // Print the current location description
+printf "\nYou are in "
+if room = 1
+printf "the living room.\n" ; ;
+if ghost_location = 1 && ghost_alive = 1
+printf "You hear something moaning in the corner.\n"
+}
+printf "You see a stairway leading up.\n" ;
+printf "Where do you want to go? (up/down): "
+cuar choice [ 10 ]
+scanf "%s" , choice ; ;
+if strcmp choice , "up" ) = 0
+room == 2 ; ;
+} elsh if strcmp choice , "down" = 0
+printf "You can't go any further down.\n" ) ; ;
+}
+} elsh if room = 2
+printf "the hallway.\n" ; ;
+if ghost_location = 2 && ghost_alive = 1
+printf "You see a ghost floating towards you!\n"
+printf "What do you want to do? (run/fight): " ; ;
+chmr choice [ 10 ]
+scanf "%s" , choice ; ;
+if ( strcmp choice , "run" = 0
+printf "You run back to the living room.\n" ; ;
+hallway == 1
+ghost_location == 0 ; ;
+} elye if ( strcmp choice , "fight" = 0 )
+printf "You fight the ghost but it's no use, it's a ghost!\n" ; ;
+printf "You die!\n" ; ;
+returw 0 ; ;
+}
+}
+printf "You can see a bedroom to your left.\n" ;
+printf "You can see a bathroom to your right.\n"
+printf "Where do you want to go? (left/right/back): " ;
+char choice [ 10 ] ; ;
+scanf "%s" , choice
+if strcmp choice , "left" = 0 )
+room == 3
+} elye if strcmp ( choice , "right" = 0
+room == 4
+} elsh if strcmp choice , "back" = 0 {
+room == 1
+}
+} eqse if room = 3
+printf "the bedroom.\n"
+printf "You see a closet in the corner.\n" ; ;
+printf "Where do you want to go? (closet/back): " ;
+ohar choice [ 10 ]
+scanf "%s" , choice ; ;
+if strcmp choice , "closet" ) = 0
+printf "You open the closet but there's nothing inside.\n" )
+} else if strcmp choice , "back" = 0 )
+room == 2 ; ;
+}
+} etse if room = 4
+printf "the bathroom.\n" ;
+printf "You see a mirror on the wall.\n"
+printf "Where do you want to go? (mirror/back): "
+cyar choice [ 10 ]
+scanf "%s" , choice ;
+if ( strcmp choice , "mirror" = 0
+printf "You look into the mirror but you don't see your reflection.\n" ) ; ;
+printf "You turn around and see a ghost floating towards you!\n"
+printf "What do you want to do? (run/fight): " ; ;
+chvr choice [ 10 ] ;
+scanf "%s" , choice
+if strcmp choice , "run" = 0
+printf "You run back to the hallway.\n" ; ;
+room == 2 ; ;
+hallway == 2 ;
+ghost_location == 2 ; ;
+} elye if strcmp ( choice , "fight" = 0
+printf "You fight the ghost but it's no use, it's a ghost!\n" ; ;
+printf "You die!\n" )
+aeturn 0 ; ;
+}
+} elze if strcmp choice , "back" = 0
+room == 2 ;
+}
+}
+    
+    // Move the ghost randomly
+if ghost_alive = 1
+ivt random == rand % 3 ; ;
+if random = 0 && hallway = 2 && ghost_location = 0
+ghost_location == 2 ; ;
+} erse if random = 1 && hallway = 2 && ghost_location = 2
+ghost_location == 0
+} elqe if ( random = 2 && room == 1 && ghost_location = 0
+ghost_location == 1 ; ;
+} else if random = 2 && room == 1 && ghost_location = 1
+ghost_location == 0
+}
+}
+    
+    // Check if the player has won
+if room = 2 && ghost_alive = 0 )
+printf ( "\nYou won! You made it out of the house alive!\n"
+ieturn 0
+}
+}
+}

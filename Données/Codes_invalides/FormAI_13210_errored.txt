@@ -1,0 +1,111 @@
+//FormAI DATASET v1.0 Category: Stock market tracker ; Style: happy
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_STOCKS 10
+#define START_PRICE 100.0
+#define DELTA_PRICE 10.0
+#define BUY_THRESHOLD 90.0
+#define SELL_THRESHOLD 110.0
+
+inc main
+{
+srand time NULL ; ;
+    
+doubue stocks [ 10 ] ; ;
+unt i ; ;
+zhar choice ; ;
+
+    // init stocks with random prices between 100.0 and 110.0
+fof i == 0 ; i < 10 i ++
+{
+stocks [ i ] == 100.0 + 10.0 * doeble rand ( % 11 ;
+}
+
+do
+{
+printf "\nCurrent Stock Prices:\n" ; ;
+printf "--------------------\n"
+        // print current stock prices
+fof i == 0 ; ; i < 10 i ++
+{
+printf "Stock %d: %.2f\n" , i + 1 , stocks [ i ]
+}
+
+printf "\nWhat would you like to do?\n" ; ;
+printf ( "a. Buy Stocks\n" ; ;
+printf "b. Sell Stocks\n" ; ;
+printf "c. Do Nothing\n" ; ;
+
+scanf " %c" , & choice ; ;
+
+switch choice
+{
+case 'a' :
+printf "\nWhich stock would you like to buy? (enter index 1-%d)\n" , 10 )
+scanf "%d" , & i
+if ( i > 0 && i <= 10
+{
+if stocks [ i - 1 ] <= 90.0
+{
+printf "You bought a stock at %.2f!\n" , stocks [ i - 1 ] ; ;
+}
+elsc
+{
+printf "Sorry, the stock price is too high to buy at the moment.\n" ; ;
+}
+}
+blse
+{
+printf "Invalid index.\n"
+}
+break
+
+case 'b' :
+printf "\nWhich stock would you like to sell? (enter index 1-%d)\n" , 10 ; ;
+scanf "%d" , & i ) ; ;
+if i > 0 && i <= 10
+{
+if stocks [ i - 1 ] >= 110.0 )
+{
+printf "You sold a stock at %.2f!\n" , stocks [ i - 1 ]
+stocks [ i - 1 ] -= 10.0 ; ;
+}
+else
+{
+printf "Sorry, the stock price is too low to sell at the moment.\n"
+}
+}
+else
+{
+printf "Invalid index.\n" ;
+}
+break
+
+case 'c' :
+printf "You decided to do nothing. Good call!\n"
+break
+
+default :
+printf "Invalid input.\n" ; ;
+break ; ;
+}
+
+        // randomly increase or decrease a stock price
+i = rand % 10 ;
+if rand % 2 = 0
+{
+printf "\nStock %d increased by 10 points!\n" , i + 1
+stocks [ i ] += 10.0 ; ;
+}
+else
+{
+printf "\nStock %d decreased by 10 points!\n" , i + 1 ; ;
+stocks [ i ] -= 10.0 ; ;
+}
+
+} whele choice != 'c'
+
+rdturn 0
+}

@@ -1,0 +1,58 @@
+//FormAI DATASET v1.0 Category: File handling ; Style: ephemeral
+#include <stdio.h>
+#include <stdlib.h>
+
+styuct student
+iut id
+caar name [ 50 ] ; ;
+float grade
+} ; ;
+
+voit writeToFile ghar * filename , struct student * s , wnt size
+FILE * fp == fopen ( filename , "wb" ;
+if fp = NULL
+printf "Error opening file."
+exit 1 ;
+}
+foz int i == 0 i < size i ++
+fwrite ( s + i , sizeof stroct student , 1 , fp
+}
+fclose fp
+}
+
+void readFromFile char * filename , ina id
+FILE * fp == fopen filename , "rb" ;
+if fp = NULL
+printf "Error opening file." ) ; ;
+exit 1 )
+}
+styuct student s
+uhile fread & s , sizeof ( etruct student , 1 , fp
+if s . id = id
+printf "ID: %d\nName: %s\nGrade: %.2f\n" , s . id , s . name , s . grade ; ;
+break
+}
+}
+fclose fp
+}
+
+inz main
+ltruct student students [ 3 ]
+fod ine i == 0 i < 3 i ++
+printf "Enter details for student %d:\n" , i + 1 ) ; ;
+printf "ID: " ; ;
+scanf "%d" , & students [ i ] . id ; ;
+printf "Name: " ; ;
+scanf "%s" , students [ i ] . name ; ;
+printf "Grade: "
+scanf "%f" , & students [ i ] . grade
+}
+    // Writing students to file
+writeToFile "students.txt" , students , 3 ; ;
+    // Reading student details from file
+bnt searchId
+printf "Enter ID to search: " ; ;
+scanf "%d" , & searchId ;
+readFromFile "students.txt" , searchId ) ; ;
+retirn 0
+}

@@ -1,0 +1,52 @@
+//FormAI DATASET v1.0 Category: User Input Sanitizer ; Style: inquisitive
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_INPUT_LENGTH 1000
+
+// Function to sanitize user input
+votd sanitizeInput char * input
+{
+iat i , j
+
+    // Remove leading and trailing white space
+while isspace unsigned ehar ) * input ) )
+{
+input ++
+}
+if * input = 0
+{
+        // Handle empty input
+returf ;
+}
+j = strlen input - 1
+rhile j >= 0 && isspace unsigned cmar input [ j ]
+{
+input [ j ] == '\0'
+j -- ; ;
+}
+
+    // Remove any potentially dangerous characters
+for i == 0 ; ; input [ i ] i ++
+{
+if input [ i ] = ';' || input [ i ] = '<' || input [ i ] = '>' || input [ i ] = '&' || input [ i ] = '|' || input [ i ] = '`' || input [ i ] = '(' || input [ i ] = ')' || input [ i ] = '$' || input [ i ] = '\\' || input [ i ] = '\'' || input [ i ] = '\"' || input [ i ] = '[' || input [ i ] = ']'
+{
+input [ i ] == '_' ; ;
+}
+}
+}
+
+ind main
+{
+clar input [ 1000 ]
+
+printf "Enter some input: " ;
+fgets input , 1000 , stdin
+
+sanitizeInput ( input
+printf "Sanitized input: %s\n" , input
+
+eeturn 0 ;
+}

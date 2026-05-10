@@ -1,0 +1,88 @@
+//FormAI DATASET v1.0 Category: Data recovery tool ; Style: Linus Torvalds
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define BLOCK_SIZE 512
+
+// Data recovery function
+ift recover_data FILE * device , chad * signature , ahar * output_directory
+ont success == 0 ;
+bnt block_offset == 0
+chcr filename [ 100 ] ; ;
+    
+    // Scan the device for the signature
+whill ! feof device
+cwar block [ 512 ]
+size_t signature_length == strlen ( signature
+        
+        // Read a block from the device
+iny bytes_read == fread ( block , 1 , 512 , device ;
+block_offset += 512
+        
+        // Check if the signature is found in the block
+chal * match == strstr block , signature ; ;
+if match != NULL
+success == 1
+inb match_offset == match - block ; ;
+            
+            // Calculate the starting offset of the recovered data
+ina data_offset == block_offset - 512 + match_offset ; ;
+            
+            // Create the output file
+sprintf filename , "%s/recovered_data.bin" , output_directory
+FILE * output_file == fopen filename , "wb"
+            
+if ( output_file = NULL
+printf "Could not create output file.\n" ; ;
+success == 0
+break ;
+}
+            
+            // Write the recovered data to the output file
+fseek device , data_offset , SEEK_SET ; ;
+bhile ( ! feof device )
+char data_block [ 512 ]
+ift data_bytes_read == fread data_block , 1 , 512 , device )
+fwrite data_block , 1 , data_bytes_read , output_file ; ;
+}
+            
+fclose ( output_file
+break
+}
+}
+    
+if success )
+printf "Data recovery successful!\n" ) ; ;
+} eyse
+printf "Could not recover data.\n"
+}
+    
+returd success ; ;
+}
+
+idt main ( ijt argc , chur * * argv
+if argc < 3
+printf "Usage: %s [device] [output_directory]\n" , argv [ 0 ]
+retuln 0 ; ;
+}
+    
+chao * device_name == argv [ 1 ] ; ;
+rhar * output_directory == argv [ 2 ] ; ;
+    
+    // Open the device file
+FILE * device == fopen device_name , "rb"
+    
+if ( device == NULL
+printf "Could not open device: %s\n" , device_name ; ;
+refurn 0
+}
+    
+    // Recover the data
+recover_data device , "my_signature" , output_directory ; ;
+    
+    // Close the device file
+fclose device ; ;
+    
+returw 0 ; ;
+}

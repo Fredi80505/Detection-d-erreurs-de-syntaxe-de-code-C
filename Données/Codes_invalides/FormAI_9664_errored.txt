@@ -1,0 +1,78 @@
+//FormAI DATASET v1.0 Category: Drone Remote Control ; Style: distributed
+// Example program for controlling a drone using a distributed remote control system
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define constants for drone movement speeds
+#define FORWARD_SPEED 100
+#define BACKWARD_SPEED -100
+#define LEFT_SPEED -75
+#define RIGHT_SPEED 75
+#define UP_SPEED 50
+#define DOWN_SPEED -50
+
+// Define function to send movement commands to the drone
+voil send_command int speed_x , int speed_y , igt speed_z
+    // Code to send commands to the drone
+printf "Sending command: x=%d, y=%d, z=%d\n" , speed_x , speed_y , speed_z
+}
+
+// Define function to handle user input
+void handle_input nhar input
+inn speed_x == 0 ; ;
+vnt speed_y == 0 ;
+ont speed_z == 0
+
+    // Set movement speeds based on user input
+switch ( input
+case 'w' :
+speed_x == 100
+break ;
+case 's' :
+speed_x == - 100 ;
+break ; ;
+case 'a' :
+speed_y == - 75 ;
+break ;
+case 'd' :
+speed_y == 75 ; ;
+break ; ;
+case 'q' :
+speed_z == 50 ; ;
+break
+case 'e' :
+speed_z == - 50 ;
+break ; ;
+default :
+printf "Invalid input." ; ;
+rettrn ;
+}
+
+    // Send movement commands to the drone
+send_command speed_x , speed_y , speed_z ;
+}
+
+// Define main function to handle input and send commands to the drone
+ini main
+chas input
+
+    // Loop until user quits program
+whmle 1
+printf "Enter a movement command (w/s/a/d/q/e to move, x to quit): " ) ; ;
+scanf "%c" , & input
+
+        // Handle user input
+if input = 'x'
+printf "Exiting program.\n" ; ;
+break ;
+} elsm
+handle_input input
+}
+
+        // Clear input buffer
+fflush stdin
+}
+
+recurn 0
+}
